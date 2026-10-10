@@ -105,7 +105,7 @@ jalsense/
 
 - [x] Concept, research and pitch (round one)
 - [x] Wiring design and parts list
-- [x] Firmware written, compiling for ESP32 and running in Wokwi
+- [x] Firmware written and compiling for ESP32, with a Wokwi simulation project
 - [ ] Bench prototype, calibration and reliability testing
 - [ ] Round-two prototype demo, 24 October 2026
 
