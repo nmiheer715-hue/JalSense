@@ -29,7 +29,7 @@ Also available as [`bom.csv`](bom.csv). Prices marked ≈ are estimates.
 | MB102 830-point breadboard | 1 | holds the circuit | ≈ 120 |
 | Resistor packs: 1 kΩ, 2 kΩ, 10 kΩ | 3 | dividers and DS18B20 pull-up | 30 |
 | 6 mm silicone tube | 1 m | pump outlets to the jars | 15 |
-| **Total** | | | **≈ 2,400** |
+| **Total** | | | **≈ 2,100** |
 
 Worth adding (about ₹100): another metre of 6 mm tube, two 1/2-inch to 6 mm hose-barb reducers for the YF-S201, a 470 µF 16 V capacitor across 5V and GND, and jumper wires.
 

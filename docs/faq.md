@@ -55,7 +55,7 @@ For mopping, flushing and washing, yes. It carries concentrated salts, so long-t
 ## Cost and feasibility
 
 **What does it cost?**
-The bench prototype is about ₹2,400 in parts. A product swaps the pumps for valves and would cost less in volume. A tanker-dependent home could save close to one 12,000-litre tanker a year; the stronger case is apartments and longer membrane life.
+The bench prototype is about ₹2,100 in parts. A product swaps the pumps for valves and would cost less in volume. A tanker-dependent home could save close to one 12,000-litre tanker a year; the stronger case is apartments and longer membrane life.
 
 **Does it need the internet?**
 No. The phone dashboard runs over the ESP32's own Wi-Fi hotspot; no data leaves the home.

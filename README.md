@@ -33,7 +33,7 @@ UV/UF disinfection stays on in both paths; only the RO membrane is skipped. The 
 
 ## The prototype
 
-A bench rig built on a breadboard from off-the-shelf modules, about ₹2,400 in parts:
+A bench rig built on a breadboard from off-the-shelf modules, about ₹2,100 in parts:
 
 | Block | Parts |
 |---|---|
