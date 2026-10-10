@@ -1,21 +1,14 @@
-Part,Qty,Specification,Approx cost INR,Demo rig only
-ESP32 DevKit V1,1,"ESP32-WROOM-32, 30-pin",450,no
-ADS1115 ADC module,1,"16-bit, 4-channel, I2C",300,no
-TDS sensor kit,1,"Analog board + probe, 3.3-5.5 V, 0-1000 ppm",400,no
-Turbidity sensor module,1,"Analog output 0-4.5 V, 5 V supply",400,no
-DS18B20 waterproof probe,1,"Stainless tip, 1 m cable",150,no
-Flow sensor YF-S201,1,"1/2-inch Hall-effect; YF-S401 for flow under 1 L/min",250,no
-OLED display,1,"0.96-inch SSD1306, I2C",220,no
-12 V solenoid valve (normally closed),2,"Direct-acting, 0 MPa minimum pressure",750,no
-IRLZ44N MOSFET,4,"Logic-level, TO-220 (3 + 1 spare)",200,no
-1N5819 Schottky diode,4,"D1-D3 flyback, D4 supply",20,no
-Resistors,11,"220R x3, 10k x5, 12k, 18k, 4.7k",30,no
-Capacitors,3,"470 uF 25 V, 100 uF 16 V, 100 nF ceramic",25,no
-LM2596 buck module,1,Adjustable,100,no
-12 V 2 A adapter + DC jack,1,5.5 x 2.1 mm barrel,250,no
-Push button + toggle switch,2,"Momentary; SPDT",30,no
-12 V mini diaphragm pump,1,"R385 type, self-priming",300,yes
-"Breadboard, jumpers, perfboard, terminals",1,,250,yes
-TDS pen meter,1,Calibration reference,250,yes
-Tubing kit,1,"8 mm silicone tube, T-joint, clamps, barbs",300,yes
-Clear containers,3,Inlet tank and two output jars,150,yes
+Part,Qty,Job,Approx cost INR
+ESP32-WROOM-32 DevKit (38-pin),1,"Controller, Wi-Fi dashboard",400
+Analog TDS meter V1.0,1,Dissolved salts in the inlet water,350
+Turbidity sensor with module,1,Detects cloudy water,450
+DS18B20 waterproof probe (1 m),1,Temperature compensation for TDS,120
+YF-S201 water flow sensor,1,Litres on the bypass path,0
+5 V dual relay module with optocoupler,1,Switches pump A and pump B,90
+DC 3-6 V mini submersible pump,2,"Pump A = bypass, pump B = RO",140
+"0.96"" OLED SSD1306 I2C",1,Live readings and decision,220
+5 V 2 A adapter,1,Powers everything,150
+"DC jack female pigtail 2.1 x 5.5 mm",1,Adapter to breadboard rails,25
+MB102 830-point breadboard,1,Holds the circuit,120
+"Resistor packs 1k, 2k, 10k",3,Dividers and DS18B20 pull-up,30
+6 mm silicone tube (1 m),1,Pump outlets to the jars,15

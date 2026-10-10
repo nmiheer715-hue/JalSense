@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="840" class="sch fc" viewBox="0 0 1000 840" role="img" aria-label="Flowchart. Power on with valves and pump off, then read sensors every second. Four checks in order: lock switch on, sensor fault, TDS at or above 300 ppm, clarity under 85 percent. Any yes leads to the RO path; four no answers lead to bypass. The decision is shown on the OLED and phone. When Dispense is pressed: open the chosen valve, wait 200 ms, start the pump and count flow pulses until 250 mL, no flow for 3 seconds, or a 20 second cap. Then stop the pump, wait 300 ms, close the valve, add the litres saved or reused, and return to reading sensors.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="840" class="sch fc" viewBox="0 0 1000 840" role="img" aria-label="Flowchart. Power on with both pumps off, then read sensors every second. Four checks in order: lock mode on, sensor fault, TDS at or above 300 ppm, clarity under 85 percent. Any yes leads to the RO path; four no answers lead to bypass. The decision is shown on the OLED and phone. When Dispense is pressed: switch on the chosen pump through its relay and measure the volume, by flow sensor on the bypass path or by run time on the RO path, until 250 mL, no flow for 3 seconds, or a 20 second cap. Then switch the pump off, add the litres saved or reused, and return to reading sensors.">
 <style>
 .sch { color: #132329; font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; }
 .sch text { fill: currentColor; font-size: 12px; }
@@ -38,7 +38,7 @@
 <rect x="0" y="0" width="1000" height="840" fill="#FAFCFC"/>
       <!-- column A -->
       <rect class="term" x="95" y="20" width="270" height="44" rx="22"/>
-      <text x="230" y="47" text-anchor="middle">Power on: valves and pump OFF</text>
+      <text x="230" y="47" text-anchor="middle">Power on: both pumps OFF</text>
       <path class="w" d="M230 64 V86" marker-end="url(#ah)"/>
       <circle class="proc" cx="44" cy="115" r="16"/><text class="b" x="44" y="120" text-anchor="middle">B</text>
       <path class="w" d="M60 115 H88" marker-end="url(#ah)"/>
@@ -48,12 +48,12 @@
       <path class="w" d="M230 142 V163" marker-end="url(#ah)"/>
 
       <polygon class="proc" points="230,165 340,215 230,265 120,215"/>
-      <text class="b" x="230" y="220" text-anchor="middle">Lock switch ON?</text>
+      <text class="b" x="230" y="220" text-anchor="middle">Lock mode ON?</text>
       <path class="w" d="M230 265 V288" marker-end="url(#ah)"/><text class="yn" x="240" y="283">no</text>
 
       <polygon class="proc" points="230,290 355,350 230,410 105,350"/>
       <text class="b" x="230" y="336" text-anchor="middle">Sensor fault?</text>
-      <text x="230" y="355" text-anchor="middle">TDS &lt; 20 ppm, or</text>
+      <text x="230" y="355" text-anchor="middle">TDS signal &lt; 150 mV, or</text>
       <text x="230" y="372" text-anchor="middle">turbidity &lt; 0.3 V</text>
       <path class="w" d="M230 410 V433" marker-end="url(#ah)"/><text class="yn" x="240" y="428">no</text>
 
@@ -99,26 +99,26 @@
       <path class="w" d="M790 190 V213" marker-end="url(#ah)"/><text class="yn" x="800" y="207">yes</text>
 
       <rect class="proc" x="660" y="215" width="260" height="48" rx="4"/>
-      <text class="b" x="790" y="236" text-anchor="middle">Open the chosen valve</text>
-      <text x="790" y="254" text-anchor="middle" style="fill:#4B5D64">wait 200 ms</text>
+      <text class="b" x="790" y="236" text-anchor="middle">Switch on the chosen pump</text>
+      <text x="790" y="254" text-anchor="middle" style="fill:#4B5D64">relay 1 = bypass, relay 2 = RO</text>
       <path class="w" d="M790 263 V283" marker-end="url(#ah)"/>
       <rect class="proc" x="660" y="285" width="260" height="48" rx="4"/>
-      <text class="b" x="790" y="306" text-anchor="middle">Start pump</text>
-      <text x="790" y="324" text-anchor="middle" style="fill:#4B5D64">count flow pulses</text>
+      <text class="b" x="790" y="306" text-anchor="middle">Measure the volume</text>
+      <text x="790" y="324" text-anchor="middle" style="fill:#4B5D64">flow sensor, or pump run time</text>
       <path class="w" d="M790 333 V356" marker-end="url(#ah)"/>
 
       <polygon class="proc" points="790,358 930,425 790,492 650,425"/>
       <text class="b" x="790" y="405" text-anchor="middle">Stop now?</text>
       <text x="790" y="423" text-anchor="middle">250 mL reached, or</text>
-      <text x="790" y="440" text-anchor="middle">no flow for 3 s, or</text>
+      <text x="790" y="440" text-anchor="middle">no flow for 3 s (bypass), or</text>
       <text x="790" y="457" text-anchor="middle">20 s safety cap</text>
       <path class="w" d="M930 425 H968 V309 H922" marker-end="url(#ah)"/>
       <text class="yn" x="938" y="416">no</text>
       <path class="w" d="M790 492 V513" marker-end="url(#ah)"/><text class="yn" x="800" y="507">yes</text>
 
       <rect class="proc" x="660" y="515" width="260" height="48" rx="4"/>
-      <text class="b" x="790" y="536" text-anchor="middle">Stop pump, wait 300 ms,</text>
-      <text class="b" x="790" y="554" text-anchor="middle">then close the valve</text>
+      <text class="b" x="790" y="536" text-anchor="middle">Switch the pump off</text>
+      <text x="790" y="554" text-anchor="middle" style="fill:#4B5D64">relay released</text>
       <path class="w" d="M790 563 V583" marker-end="url(#ah)"/>
       <rect class="proc" x="660" y="585" width="260" height="48" rx="4"/>
       <text class="b" x="790" y="606" text-anchor="middle">Add the litres</text>

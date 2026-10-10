@@ -3,13 +3,12 @@
 | What you see | Likely cause | Fix |
 |---|---|---|
 | OLED blank | wiring or address | Check 3V3, GND, SDA on GPIO21, SCL on GPIO22. If Serial says "OLED not found", try 0x3D in the code. |
-| OLED says "ADS1115 missing" | ADC not on the bus | ADDR must go to GND; VDD must be 3.3 V; check SDA/SCL aren't swapped. |
-| TDS reads near 0 in water | probe connector or board power | Reseat the probe plug; TDS board on 3V3; AOUT to ADS1115 A0. |
-| TDS jumps around | bubbles, or probe touching the tank | Keep the probe off the walls and 2 cm from the turbidity sensor. |
+| Always RO with "TDS probe check failed" | TDS signal under 150 mV | Check the probe plug and that TDS A goes to GPIO34. Use water above 100 ppm; very pure water reads too low. |
+| TDS jumps around | bubbles, pump noise, or probe touching the tank | Keep the probe off the walls and away from the pumps; let bubbles clear. |
 | Clarity changes with room lights | optical sensor seeing ambient light | Shade it with black tape or a tube and re-run `c`. |
-| Valve clicks, no water | pilot valve needs pressure, or an air lock | Prime the pump; if still dry, see "If the valves won't open" in [hardware/README.md](../hardware/README.md). |
-| "No flow: refill inlet tank" | empty tank, kinked tube, or flow too low for the sensor | Refill, straighten tubing, check the flow sensor's arrow points with the flow; consider a YF-S401. |
-| ESP32 resets when the pump starts | supply dip or motor noise | C1 close to the loads, C3 across the pump, thick ground wires back to the adapter. |
-| MOSFET hot | wrong part or weak gate drive | Confirm IRLZ44N, not IRFZ44N; check the 220 Ω gate resistor. |
+| A relay stays on, or both click at power-up | JD-VCC jumper still fitted, or relay VCC on 5V | Remove the jumper; VCC to 3V3, JD-VCC to 5V. If a relay is on exactly when it should be off, set `RELAY_ACTIVE_LOW` to `false`. |
+| Relay clicks, no water | pump not submerged, air lock, or kinked tube | Keep the pump fully under water; squeeze the tube to clear air. |
+| "No flow: refill inlet tank" | empty tank, or flow too low for the YF-S201 | Refill. If the sensor barely counts, set `USE_FLOW_SENSOR` to `false`. |
+| ESP32 resets when a pump starts | 5 V rail dip | Add a 470 µF capacitor across 5V and GND; use short, thick wires from the adapter. |
 | Upload fails | driver, cable or boot mode | Install the CP210x or CH340 driver, use a data cable, hold BOOT during "Connecting…". |
 | Phone can't open the dashboard | phone using mobile data | Join `JalSense-Demo`, turn off mobile data, open `http://192.168.4.1`. |

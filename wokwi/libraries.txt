@@ -1,0 +1,4 @@
+OneWire
+DallasTemperature
+Adafruit SSD1306
+Adafruit GFX Library

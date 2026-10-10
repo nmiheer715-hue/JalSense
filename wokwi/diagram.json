@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "author": "Miheer Nikam",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "tds_sensor", "top": -160, "left": -300, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "turbidity_sensor", "top": -40, "left": -300, "attrs": {} },
+    { "type": "board-ds18b20", "id": "temp_probe", "top": 90, "left": -260, "attrs": {} },
+    { "type": "wokwi-resistor", "id": "r_pullup_2k", "top": 60, "left": -150, "rotate": 90, "attrs": { "value": "2000" } },
+    { "type": "wokwi-pushbutton", "id": "dispense", "top": 220, "left": -280, "attrs": { "color": "blue", "label": "Dispense (BOOT)" } },
+    { "type": "wokwi-slide-switch", "id": "lock_jumper", "top": 300, "left": -250, "attrs": {} },
+    { "type": "board-ssd1306", "id": "oled", "top": -130, "left": 160, "attrs": { "i2cAddress": "0x3c" } },
+    { "type": "wokwi-relay-module", "id": "relay_pumpA", "top": 40, "left": 240, "attrs": { "transistor": "pnp" } },
+    { "type": "wokwi-relay-module", "id": "relay_pumpB", "top": 150, "left": 240, "attrs": { "transistor": "pnp" } },
+    { "type": "wokwi-resistor", "id": "rA", "top": 70, "left": 430, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "rB", "top": 180, "left": 430, "attrs": { "value": "220" } },
+    { "type": "wokwi-led", "id": "pumpA_bypass", "top": 30, "left": 540, "attrs": { "color": "blue", "label": "Pump A" } },
+    { "type": "wokwi-led", "id": "pumpB_RO", "top": 140, "left": 540, "attrs": { "color": "orange", "label": "Pump B" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "tds_sensor:VCC", "esp:3V3", "red", [] ],
+    [ "tds_sensor:GND", "esp:GND.1", "black", [] ],
+    [ "tds_sensor:SIG", "esp:34", "green", [] ],
+
+    [ "turbidity_sensor:VCC", "esp:3V3", "red", [] ],
+    [ "turbidity_sensor:GND", "esp:GND.1", "black", [] ],
+    [ "turbidity_sensor:SIG", "esp:35", "green", [] ],
+
+    [ "temp_probe:VCC", "esp:3V3", "red", [] ],
+    [ "temp_probe:GND", "esp:GND.1", "black", [] ],
+    [ "temp_probe:DQ", "esp:4", "gold", [] ],
+    [ "r_pullup_2k:1", "esp:3V3", "red", [] ],
+    [ "r_pullup_2k:2", "esp:4", "gold", [] ],
+
+    [ "dispense:1.l", "esp:0", "blue", [] ],
+    [ "dispense:2.l", "esp:GND.1", "black", [] ],
+
+    [ "lock_jumper:2", "esp:23", "orange", [] ],
+    [ "lock_jumper:1", "esp:GND.2", "black", [] ],
+
+    [ "oled:VCC", "esp:3V3", "red", [] ],
+    [ "oled:GND", "esp:GND.2", "black", [] ],
+    [ "oled:SDA", "esp:21", "blue", [] ],
+    [ "oled:SCL", "esp:22", "purple", [] ],
+
+    [ "relay_pumpA:VCC", "esp:5V", "red", [] ],
+    [ "relay_pumpA:GND", "esp:GND.2", "black", [] ],
+    [ "relay_pumpA:IN", "esp:25", "violet", [] ],
+    [ "relay_pumpA:COM", "esp:3V3", "red", [] ],
+    [ "relay_pumpA:NO", "rA:1", "green", [] ],
+    [ "rA:2", "pumpA_bypass:A", "green", [] ],
+    [ "pumpA_bypass:C", "esp:GND.3", "black", [] ],
+
+    [ "relay_pumpB:VCC", "esp:5V", "red", [] ],
+    [ "relay_pumpB:GND", "esp:GND.2", "black", [] ],
+    [ "relay_pumpB:IN", "esp:26", "violet", [] ],
+    [ "relay_pumpB:COM", "esp:3V3", "red", [] ],
+    [ "relay_pumpB:NO", "rB:1", "green", [] ],
+    [ "rB:2", "pumpB_RO:A", "green", [] ],
+    [ "pumpB_RO:C", "esp:GND.3", "black", [] ]
+  ],
+  "dependencies": {}
+}

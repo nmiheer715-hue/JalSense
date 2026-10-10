@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="830" class="sch" viewBox="0 0 1300 830" role="img" aria-label="JalSense prototype wiring: ESP32 38-pin DevKit with TDS meter on GPIO34, turbidity module through a 10k/10k divider on GPIO35, dual relay module IN1 on GPIO25 and IN2 on GPIO26 switching pump A (bypass) and pump B (RO) from 5 V, YF-S201 flow sensor through a 10k/20k divider on GPIO27, DS18B20 on GPIO4 with a 2k pull-up, OLED on GPIO21 and GPIO22, lock jumper on GPIO23, BOOT button as Dispense, powered by a 5 V 2 A adapter.">
+<style>
+.sch { color: #132329; font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; }
+.sch text { fill: currentColor; font-size: 12px; }
+.sch .ttl { font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif; font-weight: 600; font-size: 13px; }
+.sch .mu { fill: #4B5D64; }
+.sch .w { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sch .bx { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.sch .md { fill: #E1EAE8; stroke: currentColor; stroke-width: 1.4; }
+.sch .res, .sch .sw { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.sch .pl { stroke: currentColor; stroke-width: 2.6; }
+.sch .dot { fill: currentColor; }
+.sch .tag rect { fill: #D5EAED; stroke: #136C7D; stroke-width: 1.2; }
+.sch .tag text { fill: #136C7D; font-weight: 600; }
+.sch .tag.pwr rect { fill: #F5E2D5; stroke: #A04A15; }
+.sch .tag.pwr text { fill: #A04A15; }
+.sch .dio { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.fc text { font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif; font-size: 13px; fill: currentColor; }
+.fc .b { font-weight: 600; }
+.fc .proc { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.fc .term { fill: #E1EAE8; stroke: currentColor; stroke-width: 1.4; }
+.fc .byp { fill: #D5EAED; stroke: #136C7D; stroke-width: 1.6; }
+.fc .ro { fill: #F5E2D5; stroke: #A04A15; stroke-width: 1.6; }
+.fc .tt { fill: #136C7D; }
+.fc .tc { fill: #A04A15; }
+.fc .yn { font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; font-size: 12px; fill: #4B5D64; }
+.rig .tube { fill: none; stroke: #136C7D; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.rig .water { fill: #D5EAED; stroke: none; }
+.rig .vessel { fill: none; stroke: currentColor; stroke-width: 1.6; }
+.rig .probe { stroke: currentColor; stroke-width: 2.4; }
+.rig .cable { stroke: currentColor; stroke-width: 1.2; stroke-dasharray: 3 3; fill: none; }
+</style>
+<defs>
+<g id="gnd" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="-10" y1="0" x2="10" y2="0"/><line x1="-6" y1="4" x2="6" y2="4"/><line x1="-2" y1="8" x2="2" y2="8"/></g>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+<marker id="ahT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:#136C7D"/></marker>
+</defs>
+<rect x="0" y="0" width="1300" height="830" fill="#FAFCFC"/>
+<rect class="md" x="560" y="60" width="200" height="740" rx="4"/>
+<text class="ttl" x="560" y="52">U1 · ESP32-WROOM-32 DevKit (38-pin)</text>
+<text x="568" y="104">3V3</text>
+<text x="568" y="184">GPIO34</text>
+<text x="568" y="304">GPIO35</text>
+<text x="568" y="444">GPIO25</text>
+<text x="568" y="484">GPIO26</text>
+<text x="568" y="644">GPIO27</text>
+<text x="568" y="724">GND</text>
+<text x="568" y="774">5V</text>
+<text x="752" y="104" text-anchor="end">GND</text>
+<text x="752" y="174" text-anchor="end">GPIO23</text>
+<text x="752" y="264" text-anchor="end">GPIO22</text>
+<text x="752" y="304" text-anchor="end">GPIO21</text>
+<text x="752" y="464" text-anchor="end">GPIO4</text>
+<text x="752" y="564" text-anchor="end">GPIO0 · BOOT</text>
+<text class="ttl" x="660" y="382" text-anchor="middle">ESP32</text>
+<text class="mu" x="660" y="400" text-anchor="middle">38-pin DevKit</text>
+<text class="mu" x="660" y="792" text-anchor="middle">USB</text>
+<path class="w" d="M560 100 H520"/>
+<g class="tag pwr"><rect x="454" y="89" width="66" height="22" rx="4"/><text x="487" y="104" text-anchor="middle">+3V3 out</text></g>
+<path class="w" d="M560 720 H530 V732"/>
+<use href="#gnd" x="530" y="732"/>
+<path class="w" d="M560 770 H520"/>
+<g class="tag pwr"><rect x="337" y="759" width="183" height="22" rx="4"/><text x="428" y="774" text-anchor="middle">+5V (remove when on USB)</text></g>
+<path class="w" d="M760 100 H790 V112"/>
+<use href="#gnd" x="790" y="112"/>
+<rect class="bx" x="320" y="150" width="140" height="70" rx="4"/>
+<text class="ttl" x="320" y="142">Analog TDS meter V1.0</text>
+<text x="328" y="174">+</text>
+<text x="328" y="204">−</text>
+<text x="452" y="184" text-anchor="end">A</text>
+<path class="w" d="M460 180 H560"/>
+<path class="w" d="M320 170 H300"/>
+<g class="tag pwr"><rect x="256" y="159" width="44" height="22" rx="4"/><text x="278" y="174" text-anchor="middle">+3V3</text></g>
+<path class="w" d="M320 200 H306 V212"/>
+<use href="#gnd" x="306" y="212"/>
+<rect class="bx" x="320" y="260" width="140" height="80" rx="4"/>
+<text class="ttl" x="320" y="252">Turbidity module (A pin)</text>
+<text x="328" y="284">VCC</text>
+<text x="328" y="324">GND</text>
+<text x="452" y="304" text-anchor="end">A</text>
+<path class="w" d="M460 300 H480 M520 300 H560"/>
+<rect class="res" x="480" y="293" width="40" height="14"/>
+<text x="500" y="288" text-anchor="middle">R1 10k</text>
+<circle class="dot" cx="540" cy="300" r="3.2"/>
+<path class="w" d="M540 300 V315 M540 355 V365"/>
+<rect class="res" x="533" y="315" width="14" height="40"/>
+<text x="528" y="340" text-anchor="end">R2 10k</text>
+<use href="#gnd" x="540" y="365"/>
+<path class="w" d="M320 280 H300"/>
+<g class="tag pwr"><rect x="256" y="269" width="44" height="22" rx="4"/><text x="278" y="284" text-anchor="middle">+5V</text></g>
+<path class="w" d="M320 320 H306 V332"/>
+<use href="#gnd" x="306" y="332"/>
+<rect class="bx" x="320" y="385" width="140" height="190" rx="4"/>
+<text class="ttl" x="320" y="377">5 V dual relay module</text>
+<text x="328" y="404">VCC</text>
+<text x="328" y="429">GND</text>
+<text x="328" y="454">JD-VCC</text>
+<text x="328" y="484">COM1</text>
+<text x="328" y="509">NO1</text>
+<text x="328" y="534">COM2</text>
+<text x="328" y="559">NO2</text>
+<text x="452" y="444" text-anchor="end">IN1</text>
+<text x="452" y="484" text-anchor="end">IN2</text>
+<path class="w" d="M460 440 H560"/>
+<path class="w" d="M460 480 H560"/>
+<path class="w" d="M320 400 H300"/>
+<g class="tag pwr"><rect x="256" y="389" width="44" height="22" rx="4"/><text x="278" y="404" text-anchor="middle">+3V3</text></g>
+<path class="w" d="M320 425 H306 V435"/>
+<use href="#gnd" x="306" y="435"/>
+<path class="w" d="M320 450 H300"/>
+<g class="tag pwr"><rect x="256" y="439" width="44" height="22" rx="4"/><text x="278" y="454" text-anchor="middle">+5V</text></g>
+<path class="w" d="M320 480 H300"/>
+<g class="tag pwr"><rect x="256" y="469" width="44" height="22" rx="4"/><text x="278" y="484" text-anchor="middle">+5V</text></g>
+<path class="w" d="M320 530 H300"/>
+<g class="tag pwr"><rect x="256" y="519" width="44" height="22" rx="4"/><text x="278" y="534" text-anchor="middle">+5V</text></g>
+<text class="mu" x="390" y="592" text-anchor="middle">remove the JD-VCC jumper</text>
+<rect class="bx" x="60" y="488" width="110" height="40" rx="4"/>
+<text class="ttl" x="60" y="480">Pump A · bypass</text>
+<text x="162" y="509" text-anchor="end">+</text>
+<text class="mu" x="70" y="512">M</text>
+<path class="w" d="M320 505 H170"/>
+<path class="w" d="M115 528 V540"/>
+<use href="#gnd" x="115" y="540"/>
+<rect class="bx" x="60" y="578" width="110" height="40" rx="4"/>
+<text class="ttl" x="60" y="570">Pump B · RO</text>
+<text x="162" y="599" text-anchor="end">+</text>
+<text class="mu" x="70" y="602">M</text>
+<path class="w" d="M320 555 H240 V595 H170"/>
+<path class="w" d="M115 618 V628"/>
+<use href="#gnd" x="115" y="628"/>
+<text class="mu" x="60" y="662">3–6 V submersible pumps</text>
+<rect class="bx" x="320" y="630" width="140" height="70" rx="4"/>
+<text class="ttl" x="320" y="622">YF-S201 flow sensor</text>
+<text x="328" y="654">red</text>
+<text x="328" y="684">black</text>
+<text x="452" y="644" text-anchor="end">yellow</text>
+<path class="w" d="M460 640 H480 M520 640 H560"/>
+<rect class="res" x="480" y="633" width="40" height="14"/>
+<text x="500" y="628" text-anchor="middle">R3 10k</text>
+<circle class="dot" cx="540" cy="640" r="3.2"/>
+<path class="w" d="M540 640 V650 M540 690 V698"/>
+<rect class="res" x="533" y="650" width="14" height="40"/>
+<text x="528" y="675" text-anchor="end">R4 20k</text>
+<use href="#gnd" x="540" y="698"/>
+<path class="w" d="M320 650 H300"/>
+<g class="tag pwr"><rect x="256" y="639" width="44" height="22" rx="4"/><text x="278" y="654" text-anchor="middle">+5V</text></g>
+<path class="w" d="M320 680 H306 V692"/>
+<use href="#gnd" x="306" y="692"/>
+<text class="mu" x="320" y="724">R4 = two 10k in series</text>
+<path class="w" d="M760 170 H830"/>
+<circle class="sw" cx="834" cy="170" r="3.5"/><circle class="sw" cx="874" cy="170" r="3.5"/>
+<path class="w" style="stroke-dasharray:4 3" d="M837 168 Q854 150 871 168"/>
+<path class="w" d="M878 170 H890 V182"/>
+<use href="#gnd" x="890" y="182"/>
+<text class="ttl" x="930" y="166">Lock jumper (optional)</text>
+<text class="mu" x="930" y="184">fitted = always RO</text>
+<rect class="bx" x="900" y="230" width="150" height="90" rx="4"/>
+<text class="ttl" x="900" y="222">OLED SSD1306 · 0x3C</text>
+<text x="908" y="264">SCL</text>
+<text x="908" y="304">SDA</text>
+<text x="1042" y="254" text-anchor="end">VCC</text>
+<text x="1042" y="294" text-anchor="end">GND</text>
+<path class="w" d="M760 260 H900"/>
+<path class="w" d="M760 300 H900"/>
+<path class="w" d="M1050 250 H1070"/>
+<g class="tag pwr"><rect x="1070" y="239" width="44" height="22" rx="4"/><text x="1092" y="254" text-anchor="middle">+3V3</text></g>
+<path class="w" d="M1050 290 H1064 V302"/>
+<use href="#gnd" x="1064" y="302"/>
+<rect class="bx" x="900" y="420" width="150" height="80" rx="4"/>
+<text class="ttl" x="900" y="412">DS18B20 probe</text>
+<text x="908" y="464">yellow</text>
+<text x="1042" y="444" text-anchor="end">red</text>
+<text x="1042" y="484" text-anchor="end">black</text>
+<path class="w" d="M760 460 H900"/>
+<circle class="dot" cx="830" cy="460" r="3.2"/>
+<path class="w" d="M830 460 V446 M830 406 V396"/>
+<rect class="res" x="823" y="406" width="14" height="40"/>
+<text x="842" y="431">R5 2k</text>
+<g class="tag pwr"><rect x="804" y="374" width="52" height="22" rx="4"/><text x="830" y="389" text-anchor="middle">+3V3</text></g>
+<path class="w" d="M1050 440 H1070"/>
+<g class="tag pwr"><rect x="1070" y="429" width="44" height="22" rx="4"/><text x="1092" y="444" text-anchor="middle">+3V3</text></g>
+<path class="w" d="M1050 480 H1064 V492"/>
+<use href="#gnd" x="1064" y="492"/>
+<path class="w" d="M760 560 H820"/>
+<circle class="sw" cx="824" cy="560" r="3.5"/><circle class="sw" cx="864" cy="560" r="3.5"/>
+<path class="w" d="M827 552 H861 M844 552 V542"/>
+<path class="w" d="M868 560 H880 V572"/>
+<use href="#gnd" x="880" y="572"/>
+<text class="ttl" x="910" y="556">BOOT button = Dispense</text>
+<text class="mu" x="910" y="574">already on the ESP32 board</text>
+<rect class="bx" x="900" y="650" width="150" height="80" rx="4"/>
+<text class="ttl" x="900" y="642">5 V 2 A adapter</text>
+<text class="mu" x="910" y="676">DC jack pigtail</text>
+<text x="1042" y="694" text-anchor="end">+ red</text>
+<text x="1042" y="720" text-anchor="end">− black</text>
+<path class="w" d="M1050 690 H1070"/>
+<g class="tag pwr"><rect x="1070" y="679" width="44" height="22" rx="4"/><text x="1092" y="694" text-anchor="middle">+5V</text></g>
+<path class="w" d="M1050 716 H1064 V728"/>
+<use href="#gnd" x="1064" y="728"/>
+<path class="w" style="stroke-dasharray:4 3" d="M1114 690 H1160 V706 M1160 718 V734"/>
+<line class="pl" x1="1146" y1="706" x2="1174" y2="706"/><line class="pl" x1="1146" y1="718" x2="1174" y2="718"/>
+<use href="#gnd" x="1160" y="734"/>
+<text class="mu" x="1182" y="708">470 µF</text>
+<text class="mu" x="1182" y="724">add if you can</text>
+<text class="mu" x="40" y="818">Tags with the same name are the same wire (net). Copper = power, ⏚ = common ground.</text>
+</svg>

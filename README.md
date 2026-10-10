@@ -6,7 +6,7 @@ JalSense reads the incoming water and runs the purifier's reverse-osmosis (RO) m
 
 UN Sustainable Development Goal 6, Clean Water and Sanitation. Selected for the prototype round of an SDG hackathon (October 2026, about 150 teams).
 
-![Demo rig: inlet tank with sensors, pump, flow sensor, and two valves feeding a bypass jar and an RO-path jar](docs/demo-rig.svg)
+![Demo rig: inlet tank with sensors and two pumps; pump A feeds the drinking-water jar through a flow sensor, pump B feeds the RO-path jar](docs/demo-rig.svg)
 
 ## The problem
 
@@ -24,54 +24,60 @@ Households can't tell when their water actually needs RO, so they run it on ever
 |---|---|
 | TDS below 300 ppm and clarity at least 85% of clear water | **Bypass**: UF + UV only, RO skipped |
 | TDS at or above 300 ppm, or cloudy water | **RO**, reject to the reuse tank |
-| TDS probe reads under 20 ppm (dry or unplugged), or turbidity signal under 0.3 V | **RO** (fail-safe) |
-| Lock switch on, for arsenic or fluoride areas | **RO**, always |
+| TDS signal under 150 mV (dry probe, or too low to trust), or turbidity signal under 0.3 V | **RO** (fail-safe) |
+| Lock mode on, for arsenic or fluoride areas | **RO**, always |
 
 UV/UF disinfection stays on in both paths; only the RO membrane is skipped. The fault checks run before the water-quality checks, so a broken sensor can never cause a bypass.
 
 ![Firmware flowchart](docs/flowchart.svg)
 
-## Hardware
+## The prototype
+
+A bench rig built on a breadboard from off-the-shelf modules, about ₹2,400 in parts:
 
 | Block | Parts |
 |---|---|
-| Controller | ESP32 DevKit V1 (ESP32-WROOM-32) |
-| Sensing | Analog TDS sensor and turbidity sensor read by an **ADS1115 16-bit ADC**; DS18B20 temperature probe for TDS compensation; YF-S201 flow sensor |
-| Switching | Two 12 V normally-closed solenoid valves and a 12 V pump, each driven by an IRLZ44N logic-level MOSFET with a flyback diode |
-| Interface | 0.96" SSD1306 OLED, Dispense button, lock-mode switch, phone dashboard over the ESP32's own Wi-Fi |
-| Power | 12 V 2 A adapter, LM2596 buck to 5 V, ESP32 regulator for 3.3 V |
+| Controller | ESP32-WROOM-32 DevKit (38-pin) |
+| Sensing | Analog TDS meter V1.0, turbidity sensor module, DS18B20 waterproof temperature probe, YF-S201 flow sensor on the bypass line |
+| Switching | 5 V dual relay module with optocouplers, driving two 3–6 V submersible pumps (pump A = bypass path, pump B = RO path) |
+| Interface | 0.96" SSD1306 OLED, the ESP32's BOOT button as Dispense, a GPIO23 jumper or the phone as lock mode, and a phone dashboard over the ESP32's own Wi-Fi |
+| Power | One 5 V 2 A adapter |
 
-Parts cost about **₹3,800** for the retrofit kit (≈ ₹4,800 for the full bench demo rig). Full parts list, wiring table and pre-power checklist: [`hardware/`](hardware/README.md).
+In a home, mains or tank pressure feeds the purifier and two solenoid valves choose the path. On the bench there's no pressure, so two small pumps play the part of those valves; the sensing, decision logic and relay control are the same.
 
-**Why an external ADC?** The ESP32's built-in ADC is inaccurate below about 150 mV. Water at 50 ppm reads about 0.12 V and a dry probe reads near 0 V, so the built-in ADC could not tell them apart, which would break the fail-safe. [6]
+![Wiring diagram](hardware/jalsense-wiring.svg)
 
-![Controller and sensors schematic](hardware/schematic-2-controller.svg)
+Full parts list, wiring table and pre-power checklist: [`hardware/`](hardware/README.md). A high-resolution PNG of the wiring diagram is in [`hardware/jalsense-wiring.png`](hardware/jalsense-wiring.png).
 
-The power and driver sheets are in [`hardware/`](hardware/README.md).
+## Try it in the browser
+
+The [`wokwi/`](wokwi/README.md) folder runs the same firmware on a simulated ESP32 in [Wokwi](https://wokwi.com), with knobs standing in for the TDS and turbidity sensors and LEDs for the pumps.
 
 ## Firmware
 
 [`firmware/JalSense/JalSense.ino`](firmware/JalSense/JalSense.ino), Arduino framework for ESP32.
 
-- Reads TDS (temperature-compensated), clarity and temperature every second, with a 15-sample median filter
-- Fail-safe decision logic (lock mode and sensor faults first)
-- Non-blocking dispense state machine: the valve opens 200 ms before the pump starts and closes 300 ms after it stops; the pump stops on target volume, after 3 s of no flow (dry-run protection) or at a 20 s cap
-- Flow metering by interrupt; litres saved (bypass) and reused (RO reject) counted per session
-- OLED readout and a phone dashboard served from the ESP32's own Wi-Fi hotspot (no internet needed)
+- Reads TDS (temperature-compensated), clarity and temperature every second, using the ESP32's calibrated millivolt readings and a 21-sample median filter
+- Fail-safe decision logic: lock mode and sensor faults are checked first
+- Relays are active-LOW and set OFF before anything else at start-up
+- Dispenses 250 mL: measured by the flow sensor on the bypass path and by calibrated pump run time on the RO path; the bypass pump stops after 3 s of no flow; 20 s cap on every run
+- Litres saved (bypass) and reused (RO reject) counted per session
+- OLED readout and a phone dashboard from the ESP32's own Wi-Fi hotspot, with Dispense and Lock buttons
 - Calibration over the serial monitor, stored in flash
 
-Compiles without sketch warnings on ESP32 Arduino core **2.0.9** and **3.3.12**.
+Compiles without sketch warnings on ESP32 Arduino core 3.3.12, both as the hardware build and the Wokwi build (`#define JALSENSE_SIM 1`).
 
-**Build:** Arduino IDE 2 → Boards Manager: *esp32 by Espressif Systems* → Library Manager: *OneWire*, *DallasTemperature*, *Adafruit SSD1306* (with Adafruit GFX and BusIO), *Adafruit ADS1X15* → board *ESP32 Dev Module* → upload.
+**Build:** Arduino IDE 2 → Boards Manager: *esp32 by Espressif Systems* → Library Manager: *OneWire*, *DallasTemperature*, *Adafruit SSD1306* (with Adafruit GFX and BusIO) → board *ESP32 Dev Module* → upload.
 
 **Phone dashboard:** join Wi-Fi `JalSense-Demo` (password `jalsense123`), turn off mobile data, open `http://192.168.4.1`.
 
 | Serial command (115200 baud, Newline) | Does |
 |---|---|
+| `s` | print current readings and the decision |
 | `p180` | calibrate TDS against a TDS pen reading of 180 ppm |
 | `c` | clear-water calibration for the turbidity sensor |
+| `a` / `b`, then `ma210` / `mb190` | run pump A / B for 10 s into a jug, then save the volume |
 | `r`, then `l960` | flow calibration: reset pulses, dispense into a jug, enter mL collected |
-| `s` | print current readings and the decision |
 | `x` | reset calibration to defaults |
 
 Step-by-step: [`docs/calibration.md`](docs/calibration.md).
@@ -79,12 +85,13 @@ Step-by-step: [`docs/calibration.md`](docs/calibration.md).
 ## Repository layout
 
 ```
-JalSense/
+jalsense/
 ├── firmware/JalSense/JalSense.ino   ESP32 firmware
+├── wokwi/                           browser simulation (diagram.json, sketch.ino)
 ├── hardware/
 │   ├── README.md                    parts list, wiring table, pre-power checklist
 │   ├── bom.csv                      parts list as a spreadsheet
-│   └── schematic-*.svg              power, controller and driver sheets
+│   └── jalsense-wiring.svg / .png   wiring diagram
 └── docs/
     ├── flowchart.svg, demo-rig.svg
     ├── calibration.md
@@ -97,21 +104,22 @@ JalSense/
 ## Status
 
 - [x] Concept, research and pitch (round one)
-- [x] Circuit design, wiring table and parts list
-- [x] Firmware written and compiling for ESP32
+- [x] Wiring design and parts list
+- [x] Firmware written, compiling for ESP32 and running in Wokwi
 - [ ] Bench prototype, calibration and reliability testing
 - [ ] Round-two prototype demo, 24 October 2026
 
-The firmware has not yet run on real hardware. This section will be updated with photos and measured results after the build.
+The firmware has not yet run on the real hardware. This section will be updated with photos and measured results after the build.
 
 ## Real and simulated in the demo rig
 
-The sensing, decision, valve switching, pump control, flow metering, fail-safes and dashboards are real. The RO membrane and the UF/UV stages are represented by labelled jars, and the reject volume on the RO path is calculated at 75% of that path's flow, inside the 50–80% range RO units waste. In a home, mains or tank pressure replaces the pump and the two outlets feed the purifier's own stages.
+The sensing, decision, pump switching, flow metering, fail-safes and dashboards are real. The RO membrane and the UF/UV stages are represented by labelled jars, two pumps stand in for the two valves a real retrofit would use, and the reject volume on the RO path is calculated at 75% of that path's volume, inside the 50–80% range RO units waste.
 
 ## Limits
 
 - TDS does not detect microbes, so UV/UF disinfection always stays on.
 - TDS does not detect arsenic, fluoride or nitrate; homes in affected areas use lock mode, set from a lab test or the district groundwater report.
+- The ESP32's ADC is accurate only above about 150 mV, so water under about 60 ppm reads as "unknown" and runs RO. A product version would add a 16-bit ADC.
 - The low-cost turbidity sensor detects visibly cloudy water but cannot resolve 1 NTU; a product version would use a nephelometric sensor.
 - Household savings figures are estimates (10 L/day purified at a 75% reject rate) until a pilot measures them.
 
@@ -127,7 +135,8 @@ Built by Team JalSense for an SDG hackathon. Maintained by [Miheer Nikam](https:
 4. [Business Today: Bengaluru water shortfall, March 2024](https://www.businesstoday.in/india/story/bengaluru-facing-shortage-of-500-million-litres-water-shortage-per-day-says-karnataka-cm-421978-2024-03-19)
 5. [DFRobot SEN0244 analog TDS sensor](https://wiki.dfrobot.com/sen0244/)
 6. [Espressif ESP-IDF: ESP32 ADC](https://docs.espressif.com/projects/esp-idf/en/v4.4.8/esp32/api-reference/peripherals/adc.html)
-7. Bureau of Indian Standards, IS 10500:2012 Drinking Water Specification
+7. [Wokwi relay module reference](https://docs.wokwi.com/parts/wokwi-relay-module)
+8. Bureau of Indian Standards, IS 10500:2012 Drinking Water Specification
 
 ## License
 

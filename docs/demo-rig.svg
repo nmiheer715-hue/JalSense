@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="450" class="sch rig" viewBox="0 0 1000 450" role="img" aria-label="Demo rig: an inlet tank with TDS, turbidity and temperature probes feeds a 12 volt pump, then a flow sensor, then a T-joint that splits to valve A, which leads to the drinking water jar, and valve B, which leads to the RO path jar.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="450" class="sch rig" viewBox="0 0 1000 450" role="img" aria-label="Demo rig: an inlet tank holds the TDS, turbidity and temperature probes and two submersible pumps. Pump A sends water through the flow sensor into the drinking water jar. Pump B sends water into the RO path jar.">
 <style>
 .sch { color: #132329; font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; }
 .sch text { fill: currentColor; font-size: 12px; }
@@ -36,46 +36,31 @@
 <marker id="ahT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:#136C7D"/></marker>
 </defs>
 <rect x="0" y="0" width="1000" height="450" fill="#FAFCFC"/>
-      <text class="ttl" x="60" y="352">Inlet tank</text>
-      <text class="mu" x="60" y="370">pour the water samples here</text>
-      <!-- probes -->
       <text x="100" y="40" text-anchor="middle">TDS</text>
       <text x="142" y="40" text-anchor="middle">Turb.</text>
       <text x="186" y="40" text-anchor="middle">Temp</text>
       <path class="cable" d="M100 48 V110 M142 48 V110 M186 48 V110"/>
-      <rect class="water" x="62" y="170" width="156" height="158"/>
-      <rect class="vessel" x="60" y="110" width="160" height="220" rx="4"/>
+      <rect class="water" x="62" y="170" width="256" height="158"/>
+      <rect class="vessel" x="60" y="110" width="260" height="220" rx="4"/>
       <line class="probe" x1="100" y1="110" x2="100" y2="250"/>
       <rect class="bx" x="94" y="236" width="12" height="28" rx="2"/>
       <rect class="md" x="130" y="196" width="24" height="44" rx="4"/>
       <line class="probe" x1="142" y1="110" x2="142" y2="196"/>
       <line class="probe" x1="186" y1="110" x2="186" y2="282"/>
-      <!-- tubes -->
-      <path class="tube" d="M220 300 H284"/>
-      <path class="tube" d="M336 300 H390"/>
-      <path class="tube" d="M460 300 H530"/>
-      <path class="tube" d="M530 300 V150 H600"/>
-      <path class="tube" d="M530 300 V380 H600"/>
-      <path class="tube" d="M660 150 H776" marker-end="url(#ahT)"/>
-      <path class="tube" d="M660 380 H776" marker-end="url(#ahT)"/>
-      <circle class="dot" cx="530" cy="300" r="6" style="fill:#136C7D"/>
-      <!-- pump -->
-      <circle class="md" cx="310" cy="300" r="26"/>
-      <text x="310" y="305" text-anchor="middle">P</text>
-      <text class="ttl" x="310" y="350" text-anchor="middle">12 V pump</text>
-      <text class="mu" x="310" y="368" text-anchor="middle">driven by Q3</text>
-      <!-- flow sensor -->
-      <rect class="md" x="390" y="284" width="70" height="32" rx="6"/>
-      <text class="ttl" x="425" y="350" text-anchor="middle">Flow sensor</text>
-      <text class="mu" x="425" y="368" text-anchor="middle">YF-S201</text>
-      <!-- valves -->
-      <rect class="md" x="600" y="132" width="60" height="36" rx="4"/>
-      <path class="w" d="M612 150 h36"/>
-      <text class="ttl" x="630" y="96" text-anchor="middle">Valve A · Q1</text>
-      <rect class="md" x="600" y="362" width="60" height="36" rx="4"/>
-      <path class="w" d="M612 380 h36"/>
-      <text class="ttl" x="630" y="422" text-anchor="middle">Valve B · Q2</text>
-      <!-- jars -->
+      <path class="tube" d="M232 284 V70 H420 V150 H460"/>
+      <path class="tube" d="M530 150 H776" marker-end="url(#ahT)"/>
+      <path class="tube" d="M282 284 V100 H380 V380 H776" marker-end="url(#ahT)"/>
+      <rect class="md" x="214" y="284" width="36" height="38" rx="4"/>
+      <text class="ttl" x="232" y="308" text-anchor="middle">A</text>
+      <rect class="md" x="264" y="284" width="36" height="38" rx="4"/>
+      <text class="ttl" x="282" y="308" text-anchor="middle">B</text>
+      <text class="ttl" x="60" y="352">Inlet tank with pumps A and B</text>
+      <text class="mu" x="60" y="370">pour the water samples here</text>
+      <rect class="md" x="460" y="134" width="70" height="32" rx="6"/>
+      <text class="ttl" x="495" y="190" text-anchor="middle">Flow sensor</text>
+      <text class="mu" x="495" y="208" text-anchor="middle">YF-S201</text>
+      <text class="mu" x="560" y="140">pump A · relay 1</text>
+      <text class="mu" x="560" y="370">pump B · relay 2</text>
       <text class="ttl" x="780" y="62">Drinking water jar</text>
       <rect class="water" x="782" y="140" width="156" height="68"/>
       <rect class="vessel" x="780" y="76" width="160" height="134" rx="4"/>
