@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="450" class="sch rig" viewBox="0 0 1000 450" role="img" aria-label="Demo rig: an inlet tank with TDS, turbidity and temperature probes feeds a 12 volt pump, then a flow sensor, then a T-joint that splits to valve A, which leads to the drinking water jar, and valve B, which leads to the RO path jar.">
+<style>
+.sch { color: #132329; font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; }
+.sch text { fill: currentColor; font-size: 12px; }
+.sch .ttl { font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif; font-weight: 600; font-size: 13px; }
+.sch .mu { fill: #4B5D64; }
+.sch .w { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sch .bx { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.sch .md { fill: #E1EAE8; stroke: currentColor; stroke-width: 1.4; }
+.sch .res, .sch .sw { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.sch .pl { stroke: currentColor; stroke-width: 2.6; }
+.sch .dot { fill: currentColor; }
+.sch .tag rect { fill: #D5EAED; stroke: #136C7D; stroke-width: 1.2; }
+.sch .tag text { fill: #136C7D; font-weight: 600; }
+.sch .tag.pwr rect { fill: #F5E2D5; stroke: #A04A15; }
+.sch .tag.pwr text { fill: #A04A15; }
+.sch .dio { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.fc text { font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif; font-size: 13px; fill: currentColor; }
+.fc .b { font-weight: 600; }
+.fc .proc { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.fc .term { fill: #E1EAE8; stroke: currentColor; stroke-width: 1.4; }
+.fc .byp { fill: #D5EAED; stroke: #136C7D; stroke-width: 1.6; }
+.fc .ro { fill: #F5E2D5; stroke: #A04A15; stroke-width: 1.6; }
+.fc .tt { fill: #136C7D; }
+.fc .tc { fill: #A04A15; }
+.fc .yn { font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; font-size: 12px; fill: #4B5D64; }
+.rig .tube { fill: none; stroke: #136C7D; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.rig .water { fill: #D5EAED; stroke: none; }
+.rig .vessel { fill: none; stroke: currentColor; stroke-width: 1.6; }
+.rig .probe { stroke: currentColor; stroke-width: 2.4; }
+.rig .cable { stroke: currentColor; stroke-width: 1.2; stroke-dasharray: 3 3; fill: none; }
+</style>
+<defs>
+<g id="gnd" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="-10" y1="0" x2="10" y2="0"/><line x1="-6" y1="4" x2="6" y2="4"/><line x1="-2" y1="8" x2="2" y2="8"/></g>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+<marker id="ahT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:#136C7D"/></marker>
+</defs>
+<rect x="0" y="0" width="1000" height="450" fill="#FAFCFC"/>
+      <text class="ttl" x="60" y="352">Inlet tank</text>
+      <text class="mu" x="60" y="370">pour the water samples here</text>
+      <!-- probes -->
+      <text x="100" y="40" text-anchor="middle">TDS</text>
+      <text x="142" y="40" text-anchor="middle">Turb.</text>
+      <text x="186" y="40" text-anchor="middle">Temp</text>
+      <path class="cable" d="M100 48 V110 M142 48 V110 M186 48 V110"/>
+      <rect class="water" x="62" y="170" width="156" height="158"/>
+      <rect class="vessel" x="60" y="110" width="160" height="220" rx="4"/>
+      <line class="probe" x1="100" y1="110" x2="100" y2="250"/>
+      <rect class="bx" x="94" y="236" width="12" height="28" rx="2"/>
+      <rect class="md" x="130" y="196" width="24" height="44" rx="4"/>
+      <line class="probe" x1="142" y1="110" x2="142" y2="196"/>
+      <line class="probe" x1="186" y1="110" x2="186" y2="282"/>
+      <!-- tubes -->
+      <path class="tube" d="M220 300 H284"/>
+      <path class="tube" d="M336 300 H390"/>
+      <path class="tube" d="M460 300 H530"/>
+      <path class="tube" d="M530 300 V150 H600"/>
+      <path class="tube" d="M530 300 V380 H600"/>
+      <path class="tube" d="M660 150 H776" marker-end="url(#ahT)"/>
+      <path class="tube" d="M660 380 H776" marker-end="url(#ahT)"/>
+      <circle class="dot" cx="530" cy="300" r="6" style="fill:#136C7D"/>
+      <!-- pump -->
+      <circle class="md" cx="310" cy="300" r="26"/>
+      <text x="310" y="305" text-anchor="middle">P</text>
+      <text class="ttl" x="310" y="350" text-anchor="middle">12 V pump</text>
+      <text class="mu" x="310" y="368" text-anchor="middle">driven by Q3</text>
+      <!-- flow sensor -->
+      <rect class="md" x="390" y="284" width="70" height="32" rx="6"/>
+      <text class="ttl" x="425" y="350" text-anchor="middle">Flow sensor</text>
+      <text class="mu" x="425" y="368" text-anchor="middle">YF-S201</text>
+      <!-- valves -->
+      <rect class="md" x="600" y="132" width="60" height="36" rx="4"/>
+      <path class="w" d="M612 150 h36"/>
+      <text class="ttl" x="630" y="96" text-anchor="middle">Valve A · Q1</text>
+      <rect class="md" x="600" y="362" width="60" height="36" rx="4"/>
+      <path class="w" d="M612 380 h36"/>
+      <text class="ttl" x="630" y="422" text-anchor="middle">Valve B · Q2</text>
+      <!-- jars -->
+      <text class="ttl" x="780" y="62">Drinking water jar</text>
+      <rect class="water" x="782" y="140" width="156" height="68"/>
+      <rect class="vessel" x="780" y="76" width="160" height="134" rx="4"/>
+      <text x="860" y="104" text-anchor="middle" style="fill:#136C7D;font-weight:600">BYPASS path</text>
+      <text class="mu" x="860" y="122" text-anchor="middle">label: UF + UV</text>
+      <text class="ttl" x="780" y="292">RO path jar</text>
+      <rect class="water" x="782" y="370" width="156" height="68"/>
+      <rect class="vessel" x="780" y="306" width="160" height="134" rx="4"/>
+      <text x="860" y="334" text-anchor="middle" style="fill:#A04A15;font-weight:600">RO path</text>
+      <text class="mu" x="860" y="352" text-anchor="middle">membrane simulated</text>
+    </svg>

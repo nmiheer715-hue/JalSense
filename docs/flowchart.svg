@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="840" class="sch fc" viewBox="0 0 1000 840" role="img" aria-label="Flowchart. Power on with valves and pump off, then read sensors every second. Four checks in order: lock switch on, sensor fault, TDS at or above 300 ppm, clarity under 85 percent. Any yes leads to the RO path; four no answers lead to bypass. The decision is shown on the OLED and phone. When Dispense is pressed: open the chosen valve, wait 200 ms, start the pump and count flow pulses until 250 mL, no flow for 3 seconds, or a 20 second cap. Then stop the pump, wait 300 ms, close the valve, add the litres saved or reused, and return to reading sensors.">
+<style>
+.sch { color: #132329; font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; }
+.sch text { fill: currentColor; font-size: 12px; }
+.sch .ttl { font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif; font-weight: 600; font-size: 13px; }
+.sch .mu { fill: #4B5D64; }
+.sch .w { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sch .bx { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.sch .md { fill: #E1EAE8; stroke: currentColor; stroke-width: 1.4; }
+.sch .res, .sch .sw { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.sch .pl { stroke: currentColor; stroke-width: 2.6; }
+.sch .dot { fill: currentColor; }
+.sch .tag rect { fill: #D5EAED; stroke: #136C7D; stroke-width: 1.2; }
+.sch .tag text { fill: #136C7D; font-weight: 600; }
+.sch .tag.pwr rect { fill: #F5E2D5; stroke: #A04A15; }
+.sch .tag.pwr text { fill: #A04A15; }
+.sch .dio { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.fc text { font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif; font-size: 13px; fill: currentColor; }
+.fc .b { font-weight: 600; }
+.fc .proc { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.fc .term { fill: #E1EAE8; stroke: currentColor; stroke-width: 1.4; }
+.fc .byp { fill: #D5EAED; stroke: #136C7D; stroke-width: 1.6; }
+.fc .ro { fill: #F5E2D5; stroke: #A04A15; stroke-width: 1.6; }
+.fc .tt { fill: #136C7D; }
+.fc .tc { fill: #A04A15; }
+.fc .yn { font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; font-size: 12px; fill: #4B5D64; }
+.rig .tube { fill: none; stroke: #136C7D; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.rig .water { fill: #D5EAED; stroke: none; }
+.rig .vessel { fill: none; stroke: currentColor; stroke-width: 1.6; }
+.rig .probe { stroke: currentColor; stroke-width: 2.4; }
+.rig .cable { stroke: currentColor; stroke-width: 1.2; stroke-dasharray: 3 3; fill: none; }
+</style>
+<defs>
+<g id="gnd" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="-10" y1="0" x2="10" y2="0"/><line x1="-6" y1="4" x2="6" y2="4"/><line x1="-2" y1="8" x2="2" y2="8"/></g>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+<marker id="ahT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:#136C7D"/></marker>
+</defs>
+<rect x="0" y="0" width="1000" height="840" fill="#FAFCFC"/>
+      <!-- column A -->
+      <rect class="term" x="95" y="20" width="270" height="44" rx="22"/>
+      <text x="230" y="47" text-anchor="middle">Power on: valves and pump OFF</text>
+      <path class="w" d="M230 64 V86" marker-end="url(#ah)"/>
+      <circle class="proc" cx="44" cy="115" r="16"/><text class="b" x="44" y="120" text-anchor="middle">B</text>
+      <path class="w" d="M60 115 H88" marker-end="url(#ah)"/>
+      <rect class="proc" x="90" y="88" width="280" height="54" rx="4"/>
+      <text class="b" x="230" y="111" text-anchor="middle">Read TDS, temperature, clarity</text>
+      <text x="230" y="130" text-anchor="middle" style="fill:#4B5D64">every 1 second</text>
+      <path class="w" d="M230 142 V163" marker-end="url(#ah)"/>
+
+      <polygon class="proc" points="230,165 340,215 230,265 120,215"/>
+      <text class="b" x="230" y="220" text-anchor="middle">Lock switch ON?</text>
+      <path class="w" d="M230 265 V288" marker-end="url(#ah)"/><text class="yn" x="240" y="283">no</text>
+
+      <polygon class="proc" points="230,290 355,350 230,410 105,350"/>
+      <text class="b" x="230" y="336" text-anchor="middle">Sensor fault?</text>
+      <text x="230" y="355" text-anchor="middle">TDS &lt; 20 ppm, or</text>
+      <text x="230" y="372" text-anchor="middle">turbidity &lt; 0.3 V</text>
+      <path class="w" d="M230 410 V433" marker-end="url(#ah)"/><text class="yn" x="240" y="428">no</text>
+
+      <polygon class="proc" points="230,435 340,485 230,535 120,485"/>
+      <text class="b" x="230" y="490" text-anchor="middle">TDS ≥ 300 ppm?</text>
+      <path class="w" d="M230 535 V558" marker-end="url(#ah)"/><text class="yn" x="240" y="553">no</text>
+
+      <polygon class="proc" points="230,560 350,610 230,660 110,610"/>
+      <text class="b" x="230" y="605" text-anchor="middle">Clarity under 85%</text>
+      <text x="230" y="623" text-anchor="middle">of clear water?</text>
+      <path class="w" d="M230 660 V683" marker-end="url(#ah)"/><text class="yn" x="240" y="678">no</text>
+
+      <rect class="byp" x="100" y="685" width="260" height="54" rx="4"/>
+      <text class="b tt" x="230" y="707" text-anchor="middle">BYPASS: skip RO</text>
+      <text x="230" y="727" text-anchor="middle">UF + UV only, nothing wasted</text>
+
+      <!-- yes bus -->
+      <path class="w" d="M340 215 H480 M355 350 H480 M340 485 H480 M350 610 H480"/>
+      <path class="w" d="M480 215 V683" marker-end="url(#ah)"/>
+      <circle class="dot" cx="480" cy="350" r="3.4"/><circle class="dot" cx="480" cy="485" r="3.4"/><circle class="dot" cx="480" cy="610" r="3.4"/>
+      <text class="yn" x="352" y="207">yes</text><text class="yn" x="368" y="342">yes</text><text class="yn" x="352" y="477">yes</text><text class="yn" x="362" y="602">yes</text>
+
+      <rect class="ro" x="380" y="685" width="200" height="54" rx="4"/>
+      <text class="b tc" x="480" y="707" text-anchor="middle">RO path</text>
+      <text x="480" y="727" text-anchor="middle">reject → reuse tank</text>
+
+      <path class="w" d="M230 739 V760 H480 V739"/>
+      <path class="w" d="M355 760 V776" marker-end="url(#ah)"/>
+      <rect class="proc" x="215" y="778" width="280" height="48" rx="4"/>
+      <text x="355" y="807" text-anchor="middle">Show decision on OLED and phone</text>
+      <path class="w" d="M495 802 H562" marker-end="url(#ah)"/>
+      <circle class="proc" cx="580" cy="802" r="16"/><text class="b" x="580" y="807" text-anchor="middle">A</text>
+
+      <!-- column B -->
+      <circle class="proc" cx="790" cy="40" r="16"/><text class="b" x="790" y="45" text-anchor="middle">A</text>
+      <path class="w" d="M790 56 V78" marker-end="url(#ah)"/>
+      <polygon class="proc" points="790,80 920,135 790,190 660,135"/>
+      <text class="b" x="790" y="131" text-anchor="middle">Dispense pressed?</text>
+      <text x="790" y="149" text-anchor="middle">button or phone</text>
+      <path class="w" d="M660 135 H622" marker-end="url(#ah)"/>
+      <circle class="proc" cx="604" cy="135" r="16"/><text class="b" x="604" y="140" text-anchor="middle">B</text>
+      <text class="yn" x="636" y="126">no</text>
+      <path class="w" d="M790 190 V213" marker-end="url(#ah)"/><text class="yn" x="800" y="207">yes</text>
+
+      <rect class="proc" x="660" y="215" width="260" height="48" rx="4"/>
+      <text class="b" x="790" y="236" text-anchor="middle">Open the chosen valve</text>
+      <text x="790" y="254" text-anchor="middle" style="fill:#4B5D64">wait 200 ms</text>
+      <path class="w" d="M790 263 V283" marker-end="url(#ah)"/>
+      <rect class="proc" x="660" y="285" width="260" height="48" rx="4"/>
+      <text class="b" x="790" y="306" text-anchor="middle">Start pump</text>
+      <text x="790" y="324" text-anchor="middle" style="fill:#4B5D64">count flow pulses</text>
+      <path class="w" d="M790 333 V356" marker-end="url(#ah)"/>
+
+      <polygon class="proc" points="790,358 930,425 790,492 650,425"/>
+      <text class="b" x="790" y="405" text-anchor="middle">Stop now?</text>
+      <text x="790" y="423" text-anchor="middle">250 mL reached, or</text>
+      <text x="790" y="440" text-anchor="middle">no flow for 3 s, or</text>
+      <text x="790" y="457" text-anchor="middle">20 s safety cap</text>
+      <path class="w" d="M930 425 H968 V309 H922" marker-end="url(#ah)"/>
+      <text class="yn" x="938" y="416">no</text>
+      <path class="w" d="M790 492 V513" marker-end="url(#ah)"/><text class="yn" x="800" y="507">yes</text>
+
+      <rect class="proc" x="660" y="515" width="260" height="48" rx="4"/>
+      <text class="b" x="790" y="536" text-anchor="middle">Stop pump, wait 300 ms,</text>
+      <text class="b" x="790" y="554" text-anchor="middle">then close the valve</text>
+      <path class="w" d="M790 563 V583" marker-end="url(#ah)"/>
+      <rect class="proc" x="660" y="585" width="260" height="48" rx="4"/>
+      <text class="b" x="790" y="606" text-anchor="middle">Add the litres</text>
+      <text x="790" y="624" text-anchor="middle" style="fill:#4B5D64">saved (bypass) or reused (RO)</text>
+      <path class="w" d="M790 633 V655" marker-end="url(#ah)"/>
+      <circle class="proc" cx="790" cy="673" r="16"/><text class="b" x="790" y="678" text-anchor="middle">B</text>
+    </svg>

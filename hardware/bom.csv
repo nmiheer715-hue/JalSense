@@ -1,0 +1,21 @@
+Part,Qty,Specification,Approx cost INR,Demo rig only
+ESP32 DevKit V1,1,"ESP32-WROOM-32, 30-pin",450,no
+ADS1115 ADC module,1,"16-bit, 4-channel, I2C",300,no
+TDS sensor kit,1,"Analog board + probe, 3.3-5.5 V, 0-1000 ppm",400,no
+Turbidity sensor module,1,"Analog output 0-4.5 V, 5 V supply",400,no
+DS18B20 waterproof probe,1,"Stainless tip, 1 m cable",150,no
+Flow sensor YF-S201,1,"1/2-inch Hall-effect; YF-S401 for flow under 1 L/min",250,no
+OLED display,1,"0.96-inch SSD1306, I2C",220,no
+12 V solenoid valve (normally closed),2,"Direct-acting, 0 MPa minimum pressure",750,no
+IRLZ44N MOSFET,4,"Logic-level, TO-220 (3 + 1 spare)",200,no
+1N5819 Schottky diode,4,"D1-D3 flyback, D4 supply",20,no
+Resistors,11,"220R x3, 10k x5, 12k, 18k, 4.7k",30,no
+Capacitors,3,"470 uF 25 V, 100 uF 16 V, 100 nF ceramic",25,no
+LM2596 buck module,1,Adjustable,100,no
+12 V 2 A adapter + DC jack,1,5.5 x 2.1 mm barrel,250,no
+Push button + toggle switch,2,"Momentary; SPDT",30,no
+12 V mini diaphragm pump,1,"R385 type, self-priming",300,yes
+"Breadboard, jumpers, perfboard, terminals",1,,250,yes
+TDS pen meter,1,Calibration reference,250,yes
+Tubing kit,1,"8 mm silicone tube, T-joint, clamps, barbs",300,yes
+Clear containers,3,Inlet tank and two output jars,150,yes

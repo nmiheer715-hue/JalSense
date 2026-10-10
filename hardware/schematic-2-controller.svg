@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="690" class="sch" viewBox="0 0 1000 690" role="img" aria-label="Sheet 2, controller and sensors: TDS board output to ADS1115 input A0; turbidity output through a 10 k and 12 k divider to A1; ADS1115 SDA and SCL to ESP32 GPIO21 and GPIO22; flow sensor signal through a 10 k and 18 k divider to GPIO27; DS18B20 data to GPIO4 with a 4.7 k pull-up; Dispense button on GPIO13 and lock switch on GPIO23, both to ground; GPIO25, 26 and 32 drive the MOSFET gates; OLED on the I2C bus.">
+<style>
+.sch { color: #132329; font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; }
+.sch text { fill: currentColor; font-size: 12px; }
+.sch .ttl { font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif; font-weight: 600; font-size: 13px; }
+.sch .mu { fill: #4B5D64; }
+.sch .w { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sch .bx { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.sch .md { fill: #E1EAE8; stroke: currentColor; stroke-width: 1.4; }
+.sch .res, .sch .sw { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.sch .pl { stroke: currentColor; stroke-width: 2.6; }
+.sch .dot { fill: currentColor; }
+.sch .tag rect { fill: #D5EAED; stroke: #136C7D; stroke-width: 1.2; }
+.sch .tag text { fill: #136C7D; font-weight: 600; }
+.sch .tag.pwr rect { fill: #F5E2D5; stroke: #A04A15; }
+.sch .tag.pwr text { fill: #A04A15; }
+.sch .dio { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.fc text { font-family: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif; font-size: 13px; fill: currentColor; }
+.fc .b { font-weight: 600; }
+.fc .proc { fill: #FAFCFC; stroke: currentColor; stroke-width: 1.4; }
+.fc .term { fill: #E1EAE8; stroke: currentColor; stroke-width: 1.4; }
+.fc .byp { fill: #D5EAED; stroke: #136C7D; stroke-width: 1.6; }
+.fc .ro { fill: #F5E2D5; stroke: #A04A15; stroke-width: 1.6; }
+.fc .tt { fill: #136C7D; }
+.fc .tc { fill: #A04A15; }
+.fc .yn { font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; font-size: 12px; fill: #4B5D64; }
+.rig .tube { fill: none; stroke: #136C7D; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.rig .water { fill: #D5EAED; stroke: none; }
+.rig .vessel { fill: none; stroke: currentColor; stroke-width: 1.6; }
+.rig .probe { stroke: currentColor; stroke-width: 2.4; }
+.rig .cable { stroke: currentColor; stroke-width: 1.2; stroke-dasharray: 3 3; fill: none; }
+</style>
+<defs>
+<g id="gnd" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="-10" y1="0" x2="10" y2="0"/><line x1="-6" y1="4" x2="6" y2="4"/><line x1="-2" y1="8" x2="2" y2="8"/></g>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+<marker id="ahT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:#136C7D"/></marker>
+</defs>
+<rect x="0" y="0" width="1000" height="690" fill="#FAFCFC"/>
+      <!-- TDS board -->
+      <text class="ttl" x="30" y="32">TDS sensor board</text>
+      <rect class="bx" x="30" y="40" width="130" height="85" rx="4"/>
+      <text x="150" y="64" text-anchor="end">AOUT</text><text x="150" y="89" text-anchor="end">VCC</text><text x="150" y="114" text-anchor="end">GND</text>
+      <path class="w" d="M160 60 H290"/>
+      <path class="w" d="M160 85 H185"/>
+      <g class="tag pwr"><rect x="185" y="74" width="52" height="22" rx="4"/><text x="211" y="89" text-anchor="middle">+3V3</text></g>
+      <path class="w" d="M160 110 H172 V122"/><use href="#gnd" x="172" y="122"/>
+      <!-- Turbidity -->
+      <text class="ttl" x="30" y="152">Turbidity sensor</text>
+      <rect class="bx" x="30" y="160" width="130" height="90" rx="4"/>
+      <text x="150" y="184" text-anchor="end">AOUT</text><text x="150" y="209" text-anchor="end">VCC</text><text x="150" y="234" text-anchor="end">GND</text>
+      <path class="w" d="M160 180 H180 M220 180 H290"/>
+      <rect class="res" x="180" y="173" width="40" height="14"/>
+      <text x="200" y="166" text-anchor="middle">R1 10k</text>
+      <circle class="dot" cx="250" cy="180" r="3.2"/>
+      <path class="w" d="M250 180 V195 M250 235 V245"/>
+      <rect class="res" x="243" y="195" width="14" height="40"/>
+      <text x="238" y="234" text-anchor="end">R2 12k</text>
+      <use href="#gnd" x="250" y="245"/>
+      <path class="w" d="M160 205 H185"/>
+      <g class="tag pwr"><rect x="185" y="194" width="44" height="22" rx="4"/><text x="207" y="209" text-anchor="middle">+5V</text></g>
+      <path class="w" d="M160 230 H172 V242"/><use href="#gnd" x="172" y="242"/>
+      <!-- ADS1115 -->
+      <text class="ttl" x="290" y="32">U3 · ADS1115 ADC</text>
+      <rect class="md" x="290" y="40" width="120" height="220" rx="4"/>
+      <text x="300" y="64">A0</text><text x="300" y="184">A1</text>
+      <text x="400" y="84" text-anchor="end">SDA</text><text x="400" y="124" text-anchor="end">SCL</text>
+      <text class="mu" x="350" y="160" text-anchor="middle">0x48</text>
+      <text x="320" y="252" text-anchor="middle">VDD</text><text x="360" y="252" text-anchor="middle">GND</text><text x="395" y="236" text-anchor="middle">ADDR</text>
+      <path class="w" d="M320 260 V282"/>
+      <g class="tag pwr"><rect x="294" y="282" width="52" height="22" rx="4"/><text x="320" y="297" text-anchor="middle">+3V3</text></g>
+      <path class="w" d="M360 260 V285 M395 260 V272 H360"/><circle class="dot" cx="360" cy="272" r="3.2"/>
+      <use href="#gnd" x="360" y="285"/>
+      <!-- I2C to ESP32 -->
+      <path class="w" d="M410 80 H480 M410 120 H480"/>
+      <text x="445" y="73" text-anchor="middle" style="fill:#136C7D;font-weight:600">SDA</text>
+      <text x="445" y="113" text-anchor="middle" style="fill:#136C7D;font-weight:600">SCL</text>
+      <!-- Flow sensor -->
+      <text class="ttl" x="30" y="332">YF-S201 flow sensor</text>
+      <rect class="bx" x="30" y="340" width="130" height="90" rx="4"/>
+      <text x="150" y="364" text-anchor="end">SIG</text><text x="150" y="389" text-anchor="end">VCC</text><text x="150" y="414" text-anchor="end">GND</text>
+      <path class="w" d="M160 360 H180 M220 360 H480"/>
+      <rect class="res" x="180" y="353" width="40" height="14"/>
+      <text x="200" y="346" text-anchor="middle">R3 10k</text>
+      <circle class="dot" cx="250" cy="360" r="3.2"/>
+      <path class="w" d="M250 360 V375 M250 415 V430"/>
+      <rect class="res" x="243" y="375" width="14" height="40"/>
+      <text x="238" y="420" text-anchor="end">R4 18k</text>
+      <use href="#gnd" x="250" y="430"/>
+      <path class="w" d="M160 385 H185"/>
+      <g class="tag pwr"><rect x="185" y="374" width="44" height="22" rx="4"/><text x="207" y="389" text-anchor="middle">+5V</text></g>
+      <path class="w" d="M160 410 H172 V422"/><use href="#gnd" x="172" y="422"/>
+      <!-- DS18B20 -->
+      <text class="ttl" x="30" y="452">DS18B20 probe</text>
+      <rect class="bx" x="30" y="460" width="130" height="85" rx="4"/>
+      <text x="150" y="484" text-anchor="end">DQ</text><text x="150" y="509" text-anchor="end">VDD</text><text x="150" y="534" text-anchor="end">GND</text>
+      <path class="w" d="M160 480 H480"/>
+      <circle class="dot" cx="330" cy="480" r="3.2"/>
+      <path class="w" d="M330 480 V466 M330 426 V414"/>
+      <rect class="res" x="323" y="426" width="14" height="40"/>
+      <text x="344" y="452">R5 4.7k</text>
+      <g class="tag pwr"><rect x="304" y="392" width="52" height="22" rx="4"/><text x="330" y="407" text-anchor="middle">+3V3</text></g>
+      <path class="w" d="M160 505 H185"/>
+      <g class="tag pwr"><rect x="185" y="494" width="52" height="22" rx="4"/><text x="211" y="509" text-anchor="middle">+3V3</text></g>
+      <path class="w" d="M160 530 H172 V542"/><use href="#gnd" x="172" y="542"/>
+      <!-- SW1 -->
+      <text x="320" y="560" text-anchor="middle">SW1 Dispense</text>
+      <path class="w" d="M480 580 H343 M297 580 H270 V592"/>
+      <circle class="sw" cx="340" cy="580" r="3"/><circle class="sw" cx="300" cy="580" r="3"/>
+      <path class="w" d="M302 578 L336 566"/>
+      <use href="#gnd" x="270" y="592"/>
+      <!-- SW2 -->
+      <text x="320" y="620" text-anchor="middle">SW2 Lock mode</text>
+      <path class="w" d="M480 640 H343 M297 640 H270 V652"/>
+      <circle class="sw" cx="340" cy="640" r="3"/><circle class="sw" cx="300" cy="640" r="3"/>
+      <path class="w" d="M302 638 L336 626"/>
+      <use href="#gnd" x="270" y="652"/>
+      <!-- ESP32 -->
+      <text class="ttl" x="480" y="32">U1 · ESP32-WROOM-32 DevKit V1</text>
+      <rect class="md" x="480" y="40" width="180" height="630" rx="4"/>
+      <text x="490" y="84">GPIO21 · SDA</text>
+      <text x="490" y="124">GPIO22 · SCL</text>
+      <text x="490" y="364">GPIO27 · flow</text>
+      <text x="490" y="484">GPIO4 · 1-Wire</text>
+      <text x="490" y="584">GPIO13 · button</text>
+      <text x="490" y="644">GPIO23 · lock</text>
+      <text x="650" y="84" text-anchor="end">GPIO25</text>
+      <text x="650" y="124" text-anchor="end">GPIO26</text>
+      <text x="650" y="164" text-anchor="end">GPIO32</text>
+      <text x="650" y="524" text-anchor="end">VIN</text>
+      <text x="650" y="574" text-anchor="end">3V3</text>
+      <text x="650" y="624" text-anchor="end">GND</text>
+      <text class="ttl" x="570" y="262" text-anchor="middle">ESP32</text>
+      <text class="mu" x="570" y="280" text-anchor="middle">DevKit V1</text>
+      <!-- gate outputs -->
+      <path class="w" d="M660 80 H700 M660 120 H700 M660 160 H700"/>
+      <g class="tag"><rect x="700" y="69" width="214" height="22" rx="4"/><text x="807" y="84" text-anchor="middle">Q1 gate → valve A (bypass)</text></g>
+      <g class="tag"><rect x="700" y="109" width="214" height="22" rx="4"/><text x="807" y="124" text-anchor="middle">Q2 gate → valve B (RO)</text></g>
+      <g class="tag"><rect x="700" y="149" width="214" height="22" rx="4"/><text x="807" y="164" text-anchor="middle">Q3 gate → pump</text></g>
+      <!-- OLED -->
+      <text class="ttl" x="800" y="240">OLED SSD1306 · 0x3C</text>
+      <rect class="bx" x="800" y="250" width="150" height="130" rx="4"/>
+      <text x="810" y="279">SDA</text><text x="810" y="309">SCL</text><text x="810" y="339">VCC</text><text x="810" y="364">GND</text>
+      <path class="w" d="M800 275 H764 M800 305 H764 M800 335 H764 M800 360 H780 V372"/>
+      <g class="tag"><rect x="716" y="264" width="48" height="22" rx="4"/><text x="740" y="279" text-anchor="middle">SDA</text></g>
+      <g class="tag"><rect x="716" y="294" width="48" height="22" rx="4"/><text x="740" y="309" text-anchor="middle">SCL</text></g>
+      <g class="tag pwr"><rect x="708" y="324" width="56" height="22" rx="4"/><text x="736" y="339" text-anchor="middle">+3V3</text></g>
+      <use href="#gnd" x="780" y="372"/>
+      <!-- power pins -->
+      <path class="w" d="M660 520 H700 M660 570 H700 M660 620 H690 V632"/>
+      <g class="tag pwr"><rect x="700" y="509" width="120" height="22" rx="4"/><text x="760" y="524" text-anchor="middle">+5V via D4</text></g>
+      <g class="tag pwr"><rect x="700" y="559" width="52" height="22" rx="4"/><text x="726" y="574" text-anchor="middle">+3V3</text></g>
+      <use href="#gnd" x="690" y="632"/>
+    </svg>
