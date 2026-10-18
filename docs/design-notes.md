@@ -36,4 +36,4 @@ Why each part of the circuit and firmware is there.
 
 ## Decision logic
 
-The checks run in a fixed order: lock mode, then sensor faults, then TDS, then clarity. Faults come before water-quality limits, so a broken sensor can never lead to a bypass. The decision is locked when a dispense starts. The bypass pump stops after 3 s without flow pulses, and every run has a 20 s cap.
+The checks run in a fixed order: lock mode, then sensor faults, then clarity, then TDS. Faults come before water-quality limits, so a broken sensor can never lead to a bypass. Clarity comes before TDS because TDS measures dissolved salts and turbidity measures suspended particles; they are independent, so low-TDS water can still be cloudy, and the screen should name the visible problem first. The decision is locked when a dispense starts. The bypass pump stops after 3 s without flow pulses, and every run has a 20 s cap.

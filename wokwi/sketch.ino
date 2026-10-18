@@ -207,13 +207,15 @@ float medianMv(int pin, int n) {
 }
 
 // The safety-critical rule. Lock mode and sensor faults are checked first,
-// so a broken sensor can never lead to a bypass.
+// so a broken sensor can never lead to a bypass. Clarity is checked before
+// TDS: dissolved salts (TDS) and suspended particles (turbidity) are
+// independent, so low-TDS water can still be cloudy.
 Path decide(const Readings& r, Reason& why) {
   if (locked())                              { why = R_LOCK;       return PATH_RO; }
   if (r.tdsMv < TDS_MIN_VALID_MV)            { why = R_FAULT_TDS;  return PATH_RO; }
   if (r.turbMv < TURB_MIN_VALID_MV)          { why = R_FAULT_TURB; return PATH_RO; }
-  if (r.tdsPpm >= TDS_LIMIT_PPM)             { why = R_HIGH_TDS;   return PATH_RO; }
-  if (r.turbMv < turbClearMv * CLOUDY_RATIO) { why = R_CLOUDY;     return PATH_RO; }
+  if (r.turbMv < turbClearMv * CLOUDY_RATIO) { why = R_CLOUDY;     return PATH_RO; }  // clarity first:
+  if (r.tdsPpm >= TDS_LIMIT_PPM)             { why = R_HIGH_TDS;   return PATH_RO; }  // low TDS != clear
   why = R_CLEAN;
   return PATH_BYPASS;
 }

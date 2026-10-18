@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="840" class="sch fc" viewBox="0 0 1000 840" role="img" aria-label="Flowchart. Power on with both pumps off, then read sensors every second. Four checks in order: lock mode on, sensor fault, TDS at or above 300 ppm, clarity under 85 percent. Any yes leads to the RO path; four no answers lead to bypass. The decision is shown on the OLED and phone. When Dispense is pressed: switch on the chosen pump through its relay and measure the volume, by flow sensor on the bypass path or by run time on the RO path, until 250 mL, no flow for 3 seconds, or a 20 second cap. Then switch the pump off, add the litres saved or reused, and return to reading sensors.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="840" class="sch fc" viewBox="0 0 1000 840" role="img" aria-label="Flowchart. Power on with both pumps off, then read sensors every second. Four checks in order: lock mode on, sensor fault, clarity under 85 percent, TDS at or above 300 ppm. Any yes leads to the RO path; four no answers lead to bypass. The decision is shown on the OLED and phone. When Dispense is pressed: switch on the chosen pump through its relay and measure the volume, by flow sensor on the bypass path or by run time on the RO path, until 250 mL, no flow for 3 seconds, or a 20 second cap. Then switch the pump off, add the litres saved or reused, and return to reading sensors.">
 <style>
 .sch { color: #132329; font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; }
 .sch text { fill: currentColor; font-size: 12px; }
@@ -57,13 +57,13 @@
       <text x="230" y="372" text-anchor="middle">turbidity &lt; 0.3 V</text>
       <path class="w" d="M230 410 V433" marker-end="url(#ah)"/><text class="yn" x="240" y="428">no</text>
 
-      <polygon class="proc" points="230,435 340,485 230,535 120,485"/>
-      <text class="b" x="230" y="490" text-anchor="middle">TDS ≥ 300 ppm?</text>
+      <polygon class="proc" points="230,435 350,485 230,535 110,485"/>
+      <text class="b" x="230" y="480" text-anchor="middle">Clarity under 85%</text>
+      <text x="230" y="498" text-anchor="middle">of clear water?</text>
       <path class="w" d="M230 535 V558" marker-end="url(#ah)"/><text class="yn" x="240" y="553">no</text>
 
-      <polygon class="proc" points="230,560 350,610 230,660 110,610"/>
-      <text class="b" x="230" y="605" text-anchor="middle">Clarity under 85%</text>
-      <text x="230" y="623" text-anchor="middle">of clear water?</text>
+      <polygon class="proc" points="230,560 340,610 230,660 120,610"/>
+      <text class="b" x="230" y="615" text-anchor="middle">TDS ≥ 300 ppm?</text>
       <path class="w" d="M230 660 V683" marker-end="url(#ah)"/><text class="yn" x="240" y="678">no</text>
 
       <rect class="byp" x="100" y="685" width="260" height="54" rx="4"/>
@@ -71,10 +71,10 @@
       <text x="230" y="727" text-anchor="middle">UF + UV only, nothing wasted</text>
 
       <!-- yes bus -->
-      <path class="w" d="M340 215 H480 M355 350 H480 M340 485 H480 M350 610 H480"/>
+      <path class="w" d="M340 215 H480 M355 350 H480 M350 485 H480 M340 610 H480"/>
       <path class="w" d="M480 215 V683" marker-end="url(#ah)"/>
       <circle class="dot" cx="480" cy="350" r="3.4"/><circle class="dot" cx="480" cy="485" r="3.4"/><circle class="dot" cx="480" cy="610" r="3.4"/>
-      <text class="yn" x="352" y="207">yes</text><text class="yn" x="368" y="342">yes</text><text class="yn" x="352" y="477">yes</text><text class="yn" x="362" y="602">yes</text>
+      <text class="yn" x="352" y="207">yes</text><text class="yn" x="368" y="342">yes</text><text class="yn" x="362" y="477">yes</text><text class="yn" x="352" y="602">yes</text>
 
       <rect class="ro" x="380" y="685" width="200" height="54" rx="4"/>
       <text class="b tc" x="480" y="707" text-anchor="middle">RO path</text>

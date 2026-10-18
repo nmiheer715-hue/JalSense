@@ -22,12 +22,12 @@ Households can't tell when their water actually needs RO, so they run it on ever
 
 | If the sensors read… | JalSense does this |
 |---|---|
-| TDS below 300 ppm and clarity at least 85% of clear water | **Bypass**: UF + UV only, RO skipped |
-| TDS at or above 300 ppm, or cloudy water | **RO**, reject to the reuse tank |
+| Clarity at least 85% of clear water and TDS below 300 ppm | **Bypass**: UF + UV only, RO skipped |
+| Cloudy water, or TDS at or above 300 ppm | **RO**, reject to the reuse tank |
 | TDS signal under 150 mV (dry probe, or too low to trust), or turbidity signal under 0.3 V | **RO** (fail-safe) |
 | Lock mode on, for arsenic or fluoride areas | **RO**, always |
 
-UV/UF disinfection stays on in both paths; only the RO membrane is skipped. The fault checks run before the water-quality checks, so a broken sensor can never cause a bypass.
+UV/UF disinfection stays on in both paths; only the RO membrane is skipped. The fault checks run before the water-quality checks, so a broken sensor can never cause a bypass. Clarity is checked before TDS because dissolved salts and suspended particles are independent: low-TDS water can still be cloudy.
 
 ![Firmware flowchart](docs/flowchart.svg)
 
