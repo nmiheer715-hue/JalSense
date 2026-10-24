@@ -528,8 +528,11 @@ void setup() {
   if (!oledOk) Serial.println("OLED not found at 0x3C (check wiring, or try 0x3D)");
 
 #if !JALSENSE_SIM
+  WiFi.persistent(false);                           // don't wear flash / reuse old settings
   WiFi.mode(WIFI_AP);
-  WiFi.softAP(AP_SSID, AP_PASS);
+  WiFi.setSleep(false);                             // no Wi-Fi power-save: phone joins and loads faster
+  WiFi.softAPConfig(IPAddress(192, 168, 4, 1), IPAddress(192, 168, 4, 1), IPAddress(255, 255, 255, 0));
+  WiFi.softAP(AP_SSID, AP_PASS, 6, 0, 2);           // channel 6, visible, up to 2 phones
   Serial.print("Dashboard: join Wi-Fi '"); Serial.print(AP_SSID);
   Serial.print("' and open http://"); Serial.println(WiFi.softAPIP());
   server.on("/", []() { server.send_P(200, "text/html", PAGE); });
