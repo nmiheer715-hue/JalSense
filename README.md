@@ -189,7 +189,6 @@ jalsense/
 - [x] Firmware written and compiling for ESP32, with a Wokwi simulation project
 - [x] Bench prototype built and running on real hardware (sensors, relays, pumps, OLED and phone dashboard)
 - [ ] Longer reliability testing, measured results and photos
-- [ ] Round-two prototype demo, 24 October 2026
 
 The firmware runs on the real hardware. This section will be updated with photos and measured results.
 
