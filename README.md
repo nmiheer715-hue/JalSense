@@ -1,12 +1,43 @@
+<div align="center">
+
 # JalSense
 
 **A smart retrofit for home RO water purifiers: purify only what needs purifying.**
 
-JalSense reads the incoming water and runs the purifier's reverse-osmosis (RO) membrane only when the water actually needs it. When it does, the salty reject water goes to a reuse tank instead of the drain. It fits the purifier a family already owns.
+[![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f.svg)](LICENSE)
+[![Platform: ESP32](https://img.shields.io/badge/platform-ESP32-e7352c.svg)](firmware/)
+[![Framework: Arduino](https://img.shields.io/badge/framework-Arduino-00979d.svg)](firmware/)
+[![UN SDG 6](https://img.shields.io/badge/UN%20SDG-6%20Clean%20Water-26bde2.svg)](#the-problem)
+[![Simulate in Wokwi](https://img.shields.io/badge/simulate-Wokwi-6c5ce7.svg)](wokwi/README.md)
 
-UN Sustainable Development Goal 6, Clean Water and Sanitation. Selected for the prototype round of an SDG hackathon (October 2026, about 150 teams).
+[Quick start](#quick-start) · [How it decides](#how-jalsense-decides) · [Live dashboard](#live-dashboard) · [Hardware](#hardware-and-build-sheets) · [Documentation](#documentation)
 
-![Demo rig: inlet tank with sensors and two pumps; pump A feeds the drinking-water jar through a flow sensor, pump B feeds the RO-path jar](docs/demo-rig.svg)
+<br>
+
+<img src="hardware/jalsense-prototype-exploded-view.png" alt="JalSense prototype exploded view" width="900">
+
+</div>
+
+JalSense reads the incoming water and runs the purifier's reverse-osmosis (RO) membrane **only when the water actually needs it**. When it does, the salty reject water goes to a reuse tank instead of the drain. It fits the purifier a family already owns.
+
+This repository holds the ESP32 firmware, the hardware design (schematic, breadboard layout and exploded views), the documentation, and a browser simulation. JalSense supports UN Sustainable Development Goal 6, Clean Water and Sanitation, and was selected for the prototype round of an SDG hackathon (October 2026, about 150 teams).
+
+## Contents
+
+- [The problem](#the-problem)
+- [How JalSense decides](#how-jalsense-decides)
+- [Quick start](#quick-start)
+- [The prototype](#the-prototype)
+- [Firmware](#firmware)
+- [Live dashboard](#live-dashboard)
+- [Hardware and build sheets](#hardware-and-build-sheets)
+- [Try it in the browser](#try-it-in-the-browser)
+- [Documentation](#documentation)
+- [Repository layout](#repository-layout)
+- [Project status](#project-status)
+- [Real and simulated in the demo rig](#real-and-simulated-in-the-demo-rig)
+- [Limits](#limits)
+- [Team](#team) · [Sources](#sources) · [License](#license)
 
 ## The problem
 
@@ -29,7 +60,19 @@ Households can't tell when their water actually needs RO, so they run it on ever
 
 UV/UF disinfection stays on in both paths; only the RO membrane is skipped. The fault checks run before the water-quality checks, so a broken sensor can never cause a bypass. Clarity is checked before TDS because dissolved salts and suspended particles are independent: low-TDS water can still be cloudy.
 
-![Firmware flowchart](docs/flowchart.svg)
+<div align="center">
+<img src="docs/flowchart.svg" alt="Firmware decision flowchart" width="900">
+</div>
+
+## Quick start
+
+You need an ESP32 DevKit and the parts in [`hardware/bom.csv`](hardware/bom.csv), wired as in the [schematic](hardware/jalsense-circuit-schematic-v2.png) or the [breadboard layout](hardware/jalsense-breadboard-build-v2.png).
+
+1. **Install the tools.** Arduino IDE 2, then *esp32 by Espressif Systems* in Boards Manager, and the libraries *OneWire*, *DallasTemperature*, *Adafruit SSD1306* (with Adafruit GFX and BusIO).
+2. **Upload the firmware.** Open [`firmware/JalSense_auto/JalSense_auto.ino`](firmware/JalSense_auto/JalSense_auto.ino), choose the board *ESP32 Dev Module*, set *Upload Speed* to 115200, and upload. If it stalls at "Connecting…", hold the BOOT button.
+3. **Calibrate** from the Serial Monitor (115200 baud, Newline): `p<ppm>` for TDS against a pen meter, `c` for clear water, and `a` / `b` for the pump rates. Step by step: [`docs/calibration.md`](docs/calibration.md).
+4. **Open the dashboard.** Join Wi-Fi `JalSense-Demo` (password `jalsense123`), turn mobile data off, and browse to `http://192.168.4.1`.
+5. **Run the demo.** The one-page [build and demo guide](docs/build-and-demo-guide.pdf) and the [demo script](docs/demo-script.md) walk through it.
 
 ## The prototype
 
@@ -45,39 +88,47 @@ A bench rig built on a breadboard from off-the-shelf modules:
 
 In a home, mains or tank pressure feeds the purifier and two solenoid valves choose the path. On the bench there's no pressure, so two small pumps play the part of those valves; the sensing, decision logic and relay control are the same.
 
-![Wiring diagram](hardware/jalsense-wiring.svg)
-
-Full parts list, wiring table and pre-power checklist: [`hardware/`](hardware/README.md). A high-resolution PNG of the wiring diagram is in [`hardware/jalsense-wiring.png`](hardware/jalsense-wiring.png). The schematic of the **prototype as built** (5.5 kΩ resistors, relay VCC on 5 V) is [`hardware/jalsense-circuit-schematic-v2.png`](hardware/jalsense-circuit-schematic-v2.png).
-
-![Prototype exploded view](hardware/jalsense-prototype-exploded-view.png)
-
-Breadboard layout, hole by hole: [`hardware/jalsense-breadboard-build-v2.png`](hardware/jalsense-breadboard-build-v2.png). Exploded view of the retrofit unit: [`hardware/jalsense-retrofit-exploded-view.png`](hardware/jalsense-retrofit-exploded-view.png).
-
-## Try it in the browser
-
-The [`wokwi/`](wokwi/README.md) folder runs the same firmware on a simulated ESP32 in [Wokwi](https://wokwi.com), with knobs standing in for the TDS and turbidity sensors and LEDs for the pumps.
+<div align="center">
+<img src="docs/demo-rig.svg" alt="Demo rig: inlet tank with sensors and two pumps; pump A feeds the drinking-water jar through a flow sensor, pump B feeds the RO-path jar" width="900">
+</div>
 
 ## Firmware
 
-[`firmware/JalSense/JalSense.ino`](firmware/JalSense/JalSense.ino), Arduino framework for ESP32.
+| Sketch | Use it for |
+|---|---|
+| [`firmware/JalSense_auto/`](firmware/JalSense_auto/JalSense_auto.ino) | **The latest build.** Everything below, plus Auto mode, SH1106 OLED support and a faster Wi-Fi hotspot |
+| [`firmware/JalSense/`](firmware/JalSense/JalSense.ino) | The original sketch. It also builds the Wokwi simulation (`#define JALSENSE_SIM 1`) |
+| [`firmware/tools/`](firmware/tools/) | `OLED_test` and `OLED_test2`: display and I2C checks |
+
+What the firmware does:
 
 - Reads TDS (temperature-compensated), clarity and temperature every second, using the ESP32's calibrated millivolt readings and a 21-sample median filter
 - Fail-safe decision logic: lock mode and sensor faults are checked first
 - Relays are active-LOW and set OFF before anything else at start-up
 - Dispenses 250 mL: measured by the flow sensor on the bypass path and by calibrated pump run time on the RO path; the bypass pump stops after 3 s of no flow; 20 s cap on every run
+- **Auto mode** (`JalSense_auto`): the pumps start by themselves from the TDS and clarity readings. The decision must hold for 3 s, it pauses on a sensor fault, and it switches itself off after 1 L or on a "No flow" or "Timeout" error
 - Litres saved (bypass) and reused (RO reject) counted per session
-- OLED readout and a phone dashboard from the ESP32's own Wi-Fi hotspot, with Dispense and Lock buttons
+- OLED readout and a phone dashboard from the ESP32's own Wi-Fi hotspot, with Dispense, Lock and Auto buttons
 - Calibration over the serial monitor, stored in flash
 
-Compiles without sketch warnings on ESP32 Arduino core 3.3.12, both as the hardware build and the Wokwi build (`#define JALSENSE_SIM 1`).
+Compiles on ESP32 Arduino core 3.3.12. The original sketch builds without warnings, both as the hardware build and the Wokwi build. `JalSense_auto` reports a high TDS before cloudiness when both apply; the decision (RO) is the same. What changed while building the rig, and why: [`docs/prototype-build-notes.md`](docs/prototype-build-notes.md).
 
-**Build:** Arduino IDE 2 → Boards Manager: *esp32 by Espressif Systems* → Library Manager: *OneWire*, *DallasTemperature*, *Adafruit SSD1306* (with Adafruit GFX and BusIO) → board *ESP32 Dev Module* → upload.
+<details>
+<summary><b>Serial commands</b> (115200 baud, Newline)</summary>
 
-**Phone dashboard:** join Wi-Fi `JalSense-Demo` (password `jalsense123`), turn off mobile data, open `http://192.168.4.1`.
+| Command | Does |
+|---|---|
+| `s` | print current readings and the decision |
+| `p180` | calibrate TDS against a TDS pen reading of 180 ppm |
+| `c` | clear-water calibration for the turbidity sensor |
+| `a` / `b`, then `ma210` / `mb190` | run pump A / B for 10 s into a jug, then save the volume |
+| `r`, then `l960` | flow calibration: reset pulses, dispense into a jug, enter mL collected |
+| `o` | turn auto mode on or off (`JalSense_auto`) |
+| `x` | reset calibration to defaults |
 
-**Latest build:** [`firmware/JalSense_auto/JalSense_auto.ino`](firmware/JalSense_auto/JalSense_auto.ino) adds an **Auto mode** (the pumps start by themselves from the TDS and clarity readings, with safety limits), support for OLED modules with an SH1106 chip, and a faster Wi-Fi hotspot. What changed and why: [`docs/prototype-build-notes.md`](docs/prototype-build-notes.md). One-page build and demo guide: [`docs/build-and-demo-guide.pdf`](docs/build-and-demo-guide.pdf).
+</details>
 
-## Live dashboard (monitor the results)
+## Live dashboard
 
 The ESP32 serves a small website over its own Wi-Fi hotspot, so you can watch the device from a phone with no internet:
 
@@ -87,43 +138,51 @@ The ESP32 serves a small website over its own Wi-Fi hotspot, so you can watch th
 
 The same numbers are available as JSON at `http://192.168.4.1/data`. This is a local page served by the board, not an online website. Details, the JSON fields and ideas for remote monitoring: [`docs/phone-dashboard.md`](docs/phone-dashboard.md).
 
-| Serial command (115200 baud, Newline) | Does |
-|---|---|
-| `s` | print current readings and the decision |
-| `p180` | calibrate TDS against a TDS pen reading of 180 ppm |
-| `c` | clear-water calibration for the turbidity sensor |
-| `a` / `b`, then `ma210` / `mb190` | run pump A / B for 10 s into a jug, then save the volume |
-| `r`, then `l960` | flow calibration: reset pulses, dispense into a jug, enter mL collected |
-| `x` | reset calibration to defaults |
+## Hardware and build sheets
 
-Step-by-step: [`docs/calibration.md`](docs/calibration.md).
+Full parts list, wiring table and pre-power checklist: [`hardware/`](hardware/README.md).
+
+| Sheet | What it shows |
+|---|---|
+| [Schematic, as built](hardware/jalsense-circuit-schematic-v2.png) | the working prototype: 5.5 kΩ resistors, relay VCC on 5 V, analog TDS meter on GPIO34 |
+| [Breadboard layout](hardware/jalsense-breadboard-build-v2.png) | every wire, hole by hole, with a wiring table |
+| [Prototype exploded view](hardware/jalsense-prototype-exploded-view.png) | the bench rig, pulled apart ([4K](hardware/jalsense-prototype-exploded-view-4k.png)) |
+| [Retrofit exploded view](hardware/jalsense-retrofit-exploded-view.png) | the retrofit unit that would go inside a purifier |
+| [Original wiring drawing](hardware/jalsense-wiring.png) | the first design drawing, kept for reference |
+
+Product photos on the build sheets belong to their owners, as named in each sheet's footer; the drawings themselves are original.
+
+## Try it in the browser
+
+The [`wokwi/`](wokwi/README.md) folder runs the same firmware on a simulated ESP32 in [Wokwi](https://wokwi.com), with knobs standing in for the TDS and turbidity sensors and LEDs for the pumps.
+
+## Documentation
+
+| Page | What is in it |
+|---|---|
+| [`docs/calibration.md`](docs/calibration.md) | calibration steps, TDS sensor output table, firmware settings |
+| [`docs/phone-dashboard.md`](docs/phone-dashboard.md) | the live dashboard: how to open it, what it shows, the JSON |
+| [`docs/prototype-build-notes.md`](docs/prototype-build-notes.md) | what changed while building the rig, and the wiring lessons |
+| [`docs/build-and-demo-guide.pdf`](docs/build-and-demo-guide.pdf) | one-page build and demo guide ([HTML](docs/build-and-demo-guide.html)) |
+| [`docs/demo-script.md`](docs/demo-script.md) | the live demo, act by act |
+| [`docs/troubleshooting.md`](docs/troubleshooting.md) | symptoms, causes and fixes |
+| [`docs/design-notes.md`](docs/design-notes.md) | why each part of the circuit is there |
+| [`docs/faq.md`](docs/faq.md) | questions about safety and feasibility |
 
 ## Repository layout
 
 ```
 jalsense/
-├── firmware/JalSense/JalSense.ino   ESP32 firmware
-├── firmware/JalSense_auto/          latest firmware: auto mode, SH1106 OLED fix, faster hotspot
-├── firmware/tools/                  OLED_test, OLED_test2 (display and I2C checks)
-├── wokwi/                           browser simulation (diagram.json, sketch.ino)
-├── hardware/
-│   ├── README.md                    parts list, wiring table, pre-power checklist
-│   ├── bom.csv                      parts list as a spreadsheet
-│   └── jalsense-wiring.svg / .png   wiring diagram
-│   └── jalsense-circuit-schematic-v2.svg / .png   schematic of the built prototype
-└── docs/
-    ├── flowchart.svg, demo-rig.svg
-    ├── calibration.md
-    ├── phone-dashboard.md           the live dashboard: how to open it, what it shows, JSON
-    ├── prototype-build-notes.md     what changed while building the rig
-    ├── build-and-demo-guide.pdf / .html   one-page build and demo guide
-    ├── design-notes.md              why each part of the circuit is there
-    ├── faq.md                       questions about safety, cost and feasibility
-    ├── demo-script.md               the live demo, act by act
-    └── troubleshooting.md
+├── firmware/
+│   ├── JalSense_auto/        latest firmware: auto mode, SH1106 OLED support, faster hotspot
+│   ├── JalSense/             original firmware (also builds the Wokwi simulation)
+│   └── tools/                OLED_test, OLED_test2
+├── wokwi/                    browser simulation (diagram.json, sketch.ino)
+├── hardware/                 parts list, wiring table, schematic, breadboard and exploded views
+└── docs/                     calibration, dashboard, build notes, guide, demo script, FAQ
 ```
 
-## Status
+## Project status
 
 - [x] Concept, research and pitch (round one)
 - [x] Wiring design and parts list
@@ -132,7 +191,7 @@ jalsense/
 - [ ] Longer reliability testing, measured results and photos
 - [ ] Round-two prototype demo, 24 October 2026
 
-The firmware runs on the real hardware; what changed while building it is in [`docs/prototype-build-notes.md`](docs/prototype-build-notes.md). This section will be updated with photos and measured results.
+The firmware runs on the real hardware. This section will be updated with photos and measured results.
 
 ## Real and simulated in the demo rig
 
@@ -143,9 +202,10 @@ The sensing, decision, pump switching, flow metering, fail-safes and dashboards 
 - TDS does not detect microbes, so UV/UF disinfection always stays on.
 - TDS does not detect arsenic, fluoride or nitrate; homes in affected areas use lock mode, set from a lab test or the district groundwater report.
 - The ESP32's ADC is accurate only above about 150 mV, so water under about 60 ppm reads as "unknown" and runs RO. A product version would add a 16-bit ADC.
-- The low-cost turbidity sensor detects visibly cloudy water but cannot resolve 1 NTU; a product version would use a nephelometric sensor.
+- The hobby-grade turbidity sensor detects visibly cloudy water but cannot resolve 1 NTU; a product version would use a nephelometric sensor.
 - The analog TDS meter reads 0 to 1000 ppm; water far above that saturates it and can read wrongly low. Use a wider-range conductivity sensor for high-TDS sources.
 - Household savings figures are estimates (10 L/day purified at a 75% reject rate) until a pilot measures them.
+- This is a prototype. It has not been tested for drinking-water safety.
 
 ## Team
 
@@ -164,4 +224,4 @@ Built by Team JalSense for an SDG hackathon. Maintained by [Miheer Nikam](https:
 
 ## License
 
-[MIT](LICENSE)
+Released under the [MIT License](LICENSE).
