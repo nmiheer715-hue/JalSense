@@ -14,6 +14,10 @@ The hotspot allows up to 2 devices at a time. If the phone says "no internet", c
 
 ## What you see
 
+![The JalSense phone dashboard: BYPASS (left) and RO (right)](images/dashboard-phone.png)
+
+*These two images are rendered from the page in the firmware with sample readings (a clean-water state and a high-TDS state), not photographs of a phone. Replace them with real screenshots when you have them.*
+
 The page refreshes about every 0.7 seconds.
 
 | Card | Shows |

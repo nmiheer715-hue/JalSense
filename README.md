@@ -136,6 +136,12 @@ The ESP32 serves a small website over its own Wi-Fi hotspot, so you can watch th
 2. Open `http://192.168.4.1`.
 3. See the decision (BYPASS or RO) and its reason, TDS, clarity, temperature, litres saved and reused, and the pump status, updated about twice a second. Buttons: **Dispense 250 mL**, **Lock mode**, **Auto mode**.
 
+<div align="center">
+<img src="docs/images/dashboard-phone.png" alt="The JalSense phone dashboard: BYPASS (left) and RO (right)" width="640">
+<br>
+<sub>The dashboard on a phone: BYPASS for clean water (left) and RO for high TDS (right). Rendered from the firmware's own page with sample readings.</sub>
+</div>
+
 The same numbers are available as JSON at `http://192.168.4.1/data`. This is a local page served by the board, not an online website. Details, the JSON fields and ideas for remote monitoring: [`docs/phone-dashboard.md`](docs/phone-dashboard.md).
 
 ## Hardware and build sheets
