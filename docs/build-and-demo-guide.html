@@ -35,8 +35,8 @@ li{margin:1px 0}
 <h2>How it decides (checked in this order)</h2>
 <div class="rule"><span class="n">1</span>Lock mode on? → <b>RO</b></div>
 <div class="rule"><span class="n">2</span>Sensor fault (TDS &lt; 150 mV, turbidity &lt; 0.3 V)? → <b>RO</b> (fail-safe)</div>
-<div class="rule"><span class="n">3</span>TDS ≥ <b>300 ppm</b>? → <b>RO</b></div>
-<div class="rule"><span class="n">4</span>Clarity &lt; <b>85 %</b> of clear water? → <b>RO</b></div>
+<div class="rule"><span class="n">3</span>Clarity &lt; <b>85 %</b> of clear water? → <b>RO</b></div>
+<div class="rule"><span class="n">4</span>TDS ≥ <b>300 ppm</b>? → <b>RO</b></div>
 <div class="rule"><span class="n">5</span>Otherwise → <b>BYPASS</b> (pump A, through the flow sensor)</div>
 <div class="small">Each dispense is 250 mL. Auto mode repeats it by itself (3 s rest), up to 1 L, then switches off.</div>
 

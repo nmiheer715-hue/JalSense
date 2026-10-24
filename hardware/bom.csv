@@ -6,9 +6,10 @@ DS18B20 waterproof probe (1 m),1,Temperature compensation for TDS,120
 YF-S201 water flow sensor,1,Litres on the bypass path,0
 5 V dual relay module with optocoupler,1,Switches pump A and pump B,90
 DC 3-6 V mini submersible pump,2,"Pump A = bypass, pump B = RO",140
-"0.96"" OLED SSD1306 I2C",1,Live readings and decision,220
+"0.96"" OLED I2C (SSD1306 or SH1106)",1,Live readings and decision,220
 5 V 2 A adapter,1,Powers everything,150
 "DC jack female pigtail 2.1 x 5.5 mm",1,Adapter to breadboard rails,25
 MB102 830-point breadboard,1,Holds the circuit,120
-"Resistor packs 1k, 2k, 10k",3,Dividers and DS18B20 pull-up,30
+"Resistors (six of one value: 10k design, 5.5k as built)",6,"Dividers R1 to R4 and DS18B20 pull-up R5",30
+"Capacitor 470 uF 16 V",1,Supply dip at pump start,10
 6 mm silicone tube (1 m),1,Pump outlets to the jars,15

@@ -40,14 +40,14 @@ A bench rig built on a breadboard from off-the-shelf modules, about ₹2,100 in 
 | Controller | ESP32-WROOM-32 DevKit (38-pin) |
 | Sensing | Analog TDS meter V1.0, turbidity sensor module, DS18B20 waterproof temperature probe, YF-S201 flow sensor on the bypass line |
 | Switching | 5 V dual relay module with optocouplers, driving two 3–6 V submersible pumps (pump A = bypass path, pump B = RO path) |
-| Interface | 0.96" SSD1306 OLED, the ESP32's BOOT button as Dispense, a GPIO23 jumper or the phone as lock mode, and a phone dashboard over the ESP32's own Wi-Fi |
-| Power | One 5 V 2 A adapter |
+| Interface | 0.96" OLED (SSD1306 or SH1106 chip), the ESP32's BOOT button as Dispense, a GPIO23 jumper or the phone as lock mode, and a phone dashboard over the ESP32's own Wi-Fi |
+| Power | One 5 V 2 A adapter for the pumps and relay; the ESP32 on USB, with the grounds joined |
 
 In a home, mains or tank pressure feeds the purifier and two solenoid valves choose the path. On the bench there's no pressure, so two small pumps play the part of those valves; the sensing, decision logic and relay control are the same.
 
 ![Wiring diagram](hardware/jalsense-wiring.svg)
 
-Full parts list, wiring table and pre-power checklist: [`hardware/`](hardware/README.md). A high-resolution PNG of the wiring diagram is in [`hardware/jalsense-wiring.png`](hardware/jalsense-wiring.png).
+Full parts list, wiring table and pre-power checklist: [`hardware/`](hardware/README.md). A high-resolution PNG of the wiring diagram is in [`hardware/jalsense-wiring.png`](hardware/jalsense-wiring.png). The schematic of the **prototype as built** (5.5 kΩ resistors, relay VCC on 5 V) is [`hardware/jalsense-circuit-schematic-v2.png`](hardware/jalsense-circuit-schematic-v2.png).
 
 ## Try it in the browser
 
@@ -124,10 +124,11 @@ jalsense/
 - [x] Concept, research and pitch (round one)
 - [x] Wiring design and parts list
 - [x] Firmware written and compiling for ESP32, with a Wokwi simulation project
-- [ ] Bench prototype, calibration and reliability testing
+- [x] Bench prototype built and running on real hardware (sensors, relays, pumps, OLED and phone dashboard)
+- [ ] Longer reliability testing, measured results and photos
 - [ ] Round-two prototype demo, 24 October 2026
 
-The firmware has not yet run on the real hardware. This section will be updated with photos and measured results after the build.
+The firmware runs on the real hardware; what changed while building it is in [`docs/prototype-build-notes.md`](docs/prototype-build-notes.md). This section will be updated with photos and measured results.
 
 ## Real and simulated in the demo rig
 
@@ -139,6 +140,7 @@ The sensing, decision, pump switching, flow metering, fail-safes and dashboards 
 - TDS does not detect arsenic, fluoride or nitrate; homes in affected areas use lock mode, set from a lab test or the district groundwater report.
 - The ESP32's ADC is accurate only above about 150 mV, so water under about 60 ppm reads as "unknown" and runs RO. A product version would add a 16-bit ADC.
 - The low-cost turbidity sensor detects visibly cloudy water but cannot resolve 1 NTU; a product version would use a nephelometric sensor.
+- The analog TDS meter reads 0 to 1000 ppm; water far above that saturates it and can read wrongly low. Use a wider-range conductivity sensor for high-TDS sources.
 - Household savings figures are estimates (10 L/day purified at a 75% reject rate) until a pilot measures them.
 
 ## Team
