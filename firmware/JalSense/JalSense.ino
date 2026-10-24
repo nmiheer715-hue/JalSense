@@ -154,6 +154,30 @@ float litresReused    = 0;   // RO reject captured for reuse
 volatile uint32_t flowPulses = 0;
 void IRAM_ATTR onFlowPulse() { flowPulses = flowPulses + 1; }
 
+// ---- OLED chip type -------------------------------------------------------
+// Many "0.96 inch SSD1306" modules really carry an SH1106 chip. The Adafruit SSD1306 library
+// then shows garbage (one scrolling line + noise). OLED_IS_SH1106 = true writes the frame
+// page by page with a 2-column offset, which is what the SH1106 needs. Set it to false for a
+// real SSD1306 module.
+const bool    OLED_IS_SH1106 = true;
+const uint8_t OLED_ADDR      = 0x3C;
+
+void oledFlush() {
+  if (!OLED_IS_SH1106) { oled.display(); return; }
+  uint8_t* buf = oled.getBuffer();
+  for (uint8_t page = 0; page < 8; page++) {
+    oled.ssd1306_command(0xB0 | page);   // page address
+    oled.ssd1306_command(0x02);          // column low nibble: SH1106 RAM is 132 wide, glass starts at column 2
+    oled.ssd1306_command(0x10);          // column high nibble
+    for (uint8_t x = 0; x < 128; x += 16) {
+      Wire.beginTransmission(OLED_ADDR);
+      Wire.write((uint8_t)0x40);         // data follows
+      Wire.write(buf + page * 128 + x, 16);
+      Wire.endTransmission();
+    }
+  }
+}
+
 // ----------------------------- Helpers -------------------------------------
 const char* pathName(Path p) { return p == PATH_BYPASS ? "BYPASS" : "RO"; }
 
@@ -363,7 +387,7 @@ void updateDisplay() {
     oled.setCursor(0, 54);
     oled.print(reasonShort(activeReason));
   }
-  oled.display();
+  oledFlush();
 }
 
 // ----------------------------- Phone dashboard -----------------------------
@@ -524,7 +548,9 @@ void setup() {
   tempSensor.requestTemperatures();
 
   Wire.begin(21, 22);
-  oledOk = oled.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  Wire.setClock(100000);                            // 100 kHz: more tolerant of long jumper wires
+  oledOk = oled.begin(SSD1306_SWITCHCAPVCC, OLED_ADDR);
+  if (oledOk) { oled.clearDisplay(); oledFlush(); }   // wipe the power-on noise
   if (!oledOk) Serial.println("OLED not found at 0x3C (check wiring, or try 0x3D)");
 
 #if !JALSENSE_SIM
