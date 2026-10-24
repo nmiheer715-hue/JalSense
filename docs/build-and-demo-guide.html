@@ -1,0 +1,116 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>JalSense build and demo guide</title>
+<style>
+@page{size:A4;margin:9mm}
+*{box-sizing:border-box}
+body{font-family:"Segoe UI",Arial,sans-serif;font-size:8.6pt;line-height:1.28;color:#14212b;margin:0}
+h1{font:700 19pt Bahnschrift,"Segoe UI",sans-serif;margin:0;letter-spacing:.5px}
+h1 b{color:#1b8fc4}
+.sub{color:#51687a;margin:1px 0 6px;font-size:8.8pt}
+.hdr{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2.5px solid #1b8fc4;padding-bottom:4px;margin-bottom:6px}
+.chip{font:600 8pt Consolas,monospace;background:#e8f4fb;border:1px solid #9fd0ea;border-radius:10px;padding:1px 7px;color:#0d5a80}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+h2{font:700 9.6pt "Segoe UI",sans-serif;margin:7px 0 3px;color:#0d5a80;text-transform:uppercase;letter-spacing:.7px;border-left:4px solid #1b8fc4;padding-left:6px}
+h2:first-child{margin-top:0}
+table{border-collapse:collapse;width:100%;margin:2px 0}
+td,th{border:1px solid #c9d8e2;padding:1.5px 5px;text-align:left;vertical-align:top}
+th{background:#eef5fa;font-weight:600}
+code,.m{font-family:Consolas,monospace;font-size:8.2pt;background:#f1f5f8;border-radius:3px;padding:0 3px}
+ul,ol{margin:2px 0 2px 15px;padding:0}
+li{margin:1px 0}
+.box{border:1.5px solid #e6a23c;background:#fff8ec;border-radius:6px;padding:4px 7px;margin:5px 0}
+.ok{border-color:#3aa76d;background:#eefaf3}
+.small{font-size:7.8pt;color:#51687a}
+.rule{display:flex;gap:5px;align-items:center;margin:1px 0}
+.n{display:inline-block;width:14px;height:14px;border-radius:7px;background:#1b8fc4;color:#fff;font:700 7.6pt sans-serif;text-align:center;line-height:14px;flex:0 0 14px}
+</style></head><body>
+<div class="hdr">
+  <div><h1>Jal<b>Sense</b>  ·  build &amp; demo guide</h1>
+  <div class="sub">Smart RO bypass: reads TDS and clarity, then runs the bypass pump or the RO pump by itself.</div></div>
+  <div><span class="chip">sketch: JalSense_auto.ino</span> <span class="chip">ESP32 Dev Module</span></div>
+</div>
+
+<div class="cols">
+<div>
+<h2>How it decides (checked in this order)</h2>
+<div class="rule"><span class="n">1</span>Lock mode on? → <b>RO</b></div>
+<div class="rule"><span class="n">2</span>Sensor fault (TDS &lt; 150 mV, turbidity &lt; 0.3 V)? → <b>RO</b> (fail-safe)</div>
+<div class="rule"><span class="n">3</span>TDS ≥ <b>300 ppm</b>? → <b>RO</b></div>
+<div class="rule"><span class="n">4</span>Clarity &lt; <b>85 %</b> of clear water? → <b>RO</b></div>
+<div class="rule"><span class="n">5</span>Otherwise → <b>BYPASS</b> (pump A, through the flow sensor)</div>
+<div class="small">Each dispense is 250 mL. Auto mode repeats it by itself (3 s rest), up to 1 L, then switches off.</div>
+
+<h2>Wiring that works</h2>
+<table>
+<tr><th>Part</th><th>Connects to</th></tr>
+<tr><td>TDS meter (analog)</td><td>+ → 3V3, − → GND, A → <b>GPIO34</b></td></tr>
+<tr><td>Turbidity module</td><td>VCC → 5 V, GND, A → R1 → node → <b>GPIO35</b>; R2 node → GND</td></tr>
+<tr><td>DS18B20 probe</td><td>red 3V3, black GND, yellow <b>GPIO4</b>; R5 from data to 3V3</td></tr>
+<tr><td>Flow sensor YF-S201</td><td>red 5 V, black GND, yellow → R3 → node → <b>GPIO27</b>; R4a + R4b node → GND</td></tr>
+<tr><td>OLED (SH1106 chip)</td><td>VCC 3V3, GND, SDA <b>GPIO21</b>, SCL <b>GPIO22</b></td></tr>
+<tr><td>Relay IN1 / IN2</td><td><b>GPIO25</b> (pump A, bypass) / <b>GPIO26</b> (pump B, RO)</td></tr>
+<tr><td>Relay power</td><td>VCC → <b>5 V</b>, GND; <b>JD-VCC jumper stays ON</b></td></tr>
+<tr><td>Relay output</td><td>COM1, COM2 → 5 V; pump + → <b>NO</b>; pump − → GND</td></tr>
+<tr><td>Lock / dispense</td><td>GPIO23 to GND = lock; BOOT button = dispense</td></tr>
+</table>
+<div class="small">Resistors R1, R2, R3, R4a, R4b, R5 are all 5.5 kΩ. Divider ratios are unchanged, so no code change.</div>
+<div class="box"><b>Power:</b> ESP32 from <b>USB</b>; pumps and relay from the <b>5 V 2 A adapter</b>. Join the grounds. Never feed the ESP32's 5V pin from the adapter while USB is plugged in. Put the 470 µF capacitor across 5 V and GND.</div>
+
+<h2>Upload the code</h2>
+<ol>
+<li>Arduino IDE: board <b>ESP32 Dev Module</b>, <b>Upload Speed 115200</b>.</li>
+<li>Libraries: OneWire, DallasTemperature, Adafruit SSD1306, Adafruit GFX.</li>
+<li>If it stalls at "Connecting…": unplug the adapter, hold <b>BOOT</b>, use a short USB cable.</li>
+</ol>
+
+<h2>Calibrate once (Serial Monitor, 115200)</h2>
+<table>
+<tr><td><code>p&lt;ppm&gt;</code></td><td>probe in a 400–700 ppm solution, e.g. <code>p550</code> (match your pen)</td></tr>
+<tr><td><code>c</code></td><td>probe in clear water → saves the 100 % clarity reference</td></tr>
+<tr><td><code>a</code> / <code>b</code></td><td>10-second pump run; then <code>ma&lt;mL&gt;</code> / <code>mb&lt;mL&gt;</code> with the water collected</td></tr>
+<tr><td><code>s</code></td><td>prints every reading; <code>o</code> auto on/off; <code>x</code> resets calibration</td></tr>
+</table>
+</div>
+
+<div>
+<h2>Before every demo (2 minutes)</h2>
+<ul>
+<li>Tank filled, both pumps <b>fully underwater</b>, tubing short (30–40 cm) and not kinked.</li>
+<li>Probes in the water: TDS, turbidity, temperature. Wipe the turbidity gap clean.</li>
+<li>Type <code>s</code>: TDS and clarity look right; temperature is real (not "probe missing").</li>
+<li>Join Wi-Fi <b>JalSense-Demo</b> (password <span class="m">jalsense123</span>), mobile data off, open <span class="m">http://192.168.4.1</span>.</li>
+</ul>
+
+<h2>Demo script (about 3 minutes)</h2>
+<table>
+<tr><th style="width:24%">Step</th><th>Do this</th><th style="width:24%">Show</th></tr>
+<tr><td><b>1 Clean water</b></td><td>Under 300 ppm, clear. Press BOOT, or let auto mode start.</td><td>BYPASS, pump A, flow count</td></tr>
+<tr><td><b>2 Salty water</b></td><td>Add a pinch of salt (about 0.4 g per litre). TDS climbs past 300.</td><td>Flips to RO, pump B</td></tr>
+<tr><td><b>3 Cloudy water</b></td><td>A few drops of milk. Clarity falls below 85 %.</td><td>RO: "cloudy water"</td></tr>
+<tr><td><b>4 Probe out</b></td><td>Lift the TDS probe out of the water.</td><td>Fault → RO (fail-safe)</td></tr>
+<tr><td><b>5 Lock + phone</b></td><td>Turn on Lock on the phone page, then off.</td><td>LOCK → always RO</td></tr>
+</table>
+<div class="small">Counters: <b>Saved</b> grows after a bypass dispense (reject avoided); <b>Reuse</b> grows after an RO dispense. Both are estimates at a 75 % reject share, and reset at power-up.</div>
+
+<h2>If something goes wrong</h2>
+<table>
+<tr><td><b>OLED garbage</b></td><td>Chip is SH1106: keep <code>OLED_IS_SH1106 = true</code>. Reseat SDA and SCL.</td></tr>
+<tr><td><b>Pump silent</b></td><td>Click on <code>a</code>? No click: relay VCC and JD-VCC on 5 V, jumper on. Click: check COM on 5 V and red lead on NO.</td></tr>
+<tr><td><b>Both pumps run</b></td><td>Pump red leads belong on <b>NO</b>, never on COM or NC.</td></tr>
+<tr><td><b>"No flow" stop</b></td><td>Pipe too long or too high, or tank empty. Flow sensor needs about 1 L/min.</td></tr>
+<tr><td><b>Upload fails</b></td><td>Speed 115200, adapter unplugged, hold BOOT, short cable.</td></tr>
+<tr><td><b>TDS looks wrong</b></td><td>Pin mV near 2.3 V means over range. Send <code>x</code>, then recalibrate with <code>p</code>.</td></tr>
+</table>
+
+<h2>Be honest about the limits</h2>
+<div class="box ok">
+<ul>
+<li>TDS and clarity say nothing about <b>bacteria</b>, <b>arsenic</b> or <b>fluoride</b>. UV and UF stay on in every path, and <b>Lock mode</b> forces RO where those are a concern.</li>
+<li>The analog TDS meter reads <b>0–1000 ppm</b>. Water far above that can read wrongly low.</li>
+<li>Hobby sensors drift: recalibrate against a TDS pen before each demo.</li>
+<li>This is a prototype. It has not been tested for drinking-water safety.</li>
+</ul></div>
+<div class="small">Files: JalSense_auto.ino · circuit and breadboard diagrams (v2) · working-model video.</div>
+</div>
+</div>
+</body></html>

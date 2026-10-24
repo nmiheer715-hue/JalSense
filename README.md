@@ -71,6 +71,18 @@ Compiles without sketch warnings on ESP32 Arduino core 3.3.12, both as the hardw
 
 **Phone dashboard:** join Wi-Fi `JalSense-Demo` (password `jalsense123`), turn off mobile data, open `http://192.168.4.1`.
 
+**Latest build:** [`firmware/JalSense_auto/JalSense_auto.ino`](firmware/JalSense_auto/JalSense_auto.ino) adds an **Auto mode** (the pumps start by themselves from the TDS and clarity readings, with safety limits), support for OLED modules with an SH1106 chip, and a faster Wi-Fi hotspot. What changed and why: [`docs/prototype-build-notes.md`](docs/prototype-build-notes.md). One-page build and demo guide: [`docs/build-and-demo-guide.pdf`](docs/build-and-demo-guide.pdf).
+
+## Live dashboard (monitor the results)
+
+The ESP32 serves a small website over its own Wi-Fi hotspot, so you can watch the device from a phone with no internet:
+
+1. Join Wi-Fi `JalSense-Demo` (password `jalsense123`), turn off mobile data.
+2. Open `http://192.168.4.1`.
+3. See the decision (BYPASS or RO) and its reason, TDS, clarity, temperature, litres saved and reused, and the pump status, updated about twice a second. Buttons: **Dispense 250 mL**, **Lock mode**, **Auto mode**.
+
+The same numbers are available as JSON at `http://192.168.4.1/data`. This is a local page served by the board, not an online website. Details, the JSON fields and ideas for remote monitoring: [`docs/phone-dashboard.md`](docs/phone-dashboard.md).
+
 | Serial command (115200 baud, Newline) | Does |
 |---|---|
 | `s` | print current readings and the decision |
@@ -87,14 +99,20 @@ Step-by-step: [`docs/calibration.md`](docs/calibration.md).
 ```
 jalsense/
 ├── firmware/JalSense/JalSense.ino   ESP32 firmware
+├── firmware/JalSense_auto/          latest firmware: auto mode, SH1106 OLED fix, faster hotspot
+├── firmware/tools/                  OLED_test, OLED_test2 (display and I2C checks)
 ├── wokwi/                           browser simulation (diagram.json, sketch.ino)
 ├── hardware/
 │   ├── README.md                    parts list, wiring table, pre-power checklist
 │   ├── bom.csv                      parts list as a spreadsheet
 │   └── jalsense-wiring.svg / .png   wiring diagram
+│   └── jalsense-circuit-schematic-v2.svg / .png   schematic of the built prototype
 └── docs/
     ├── flowchart.svg, demo-rig.svg
     ├── calibration.md
+    ├── phone-dashboard.md           the live dashboard: how to open it, what it shows, JSON
+    ├── prototype-build-notes.md     what changed while building the rig
+    ├── build-and-demo-guide.pdf / .html   one-page build and demo guide
     ├── design-notes.md              why each part of the circuit is there
     ├── faq.md                       questions about safety, cost and feasibility
     ├── demo-script.md               the live demo, act by act

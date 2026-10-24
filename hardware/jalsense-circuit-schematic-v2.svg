@@ -1,0 +1,727 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1960 1500" width="1960" height="1500">
+<defs>
+<filter id="shadow" x="-10%" y="-10%" width="125%" height="125%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0b1b2b" flood-opacity=".16"/></filter>
+<linearGradient id="gBoard" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#262d36"/><stop offset="1" stop-color="#12161b"/></linearGradient>
+<linearGradient id="gMetal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f6f8"/><stop offset=".5" stop-color="#c3c9d0"/><stop offset="1" stop-color="#e8ebee"/></linearGradient>
+<linearGradient id="gSteel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f8fa"/><stop offset=".45" stop-color="#aab1ba"/><stop offset="1" stop-color="#dfe3e8"/></linearGradient>
+<linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b9a55"/><stop offset="1" stop-color="#0d6d3a"/></linearGradient>
+<linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a8fc0"/><stop offset="1" stop-color="#16688f"/></linearGradient>
+<linearGradient id="gRelay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f8de0"/><stop offset="1" stop-color="#1f5fb3"/></linearGradient>
+<linearGradient id="gCap" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0b2d70"/><stop offset=".35" stop-color="#3b6fd0"/><stop offset="1" stop-color="#0b2d70"/></linearGradient>
+<linearGradient id="gBlack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b4048"/><stop offset="1" stop-color="#14171b"/></linearGradient>
+<linearGradient id="gPump" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a5560"/><stop offset=".5" stop-color="#232a31"/><stop offset="1" stop-color="#0f1317"/></linearGradient>
+<linearGradient id="gFlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3f6f9"/><stop offset="1" stop-color="#b9c4cf"/></linearGradient>
+<marker id="arrW" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2fa4dc"/></marker>
+</defs>
+<rect width="1960" height="1500" fill="#fbfaf7"/>
+<text x="980.0" y="62" font-family="Bahnschrift, 'Segoe UI', Arial, sans-serif" font-size="46" font-weight="800" fill="#14181d" text-anchor="middle" letter-spacing="2">JALSENSE  CIRCUIT SCHEMATIC</text>
+<text x="980.0" y="90" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="500" fill="#5b6672" text-anchor="middle" >Round-two prototype  ·  ESP32 38-pin + 5 V dual relay + 2 pumps  ·  build exactly as drawn  (source: JalSense Round Two Kit)  ·  5.5 k resistors  ·  relay: jumper ON, VCC on 5 V</text>
+<line x1="90" y1="145" x2="90" y2="1290" stroke="#d62828" stroke-width="9" stroke-linecap="round"/>
+<line x1="90" y1="149" x2="90" y2="1286" stroke="#fff" stroke-opacity=".25" stroke-width="2" stroke-dasharray="1 9"/>
+<line x1="130" y1="160" x2="130" y2="1340" stroke="#1f2328" stroke-width="9" stroke-linecap="round"/>
+<line x1="130" y1="164" x2="130" y2="1336" stroke="#fff" stroke-opacity=".25" stroke-width="2" stroke-dasharray="1 9"/>
+<line x1="170" y1="290" x2="170" y2="1310" stroke="#f08a00" stroke-width="9" stroke-linecap="round"/>
+<line x1="170" y1="294" x2="170" y2="1306" stroke="#fff" stroke-opacity=".25" stroke-width="2" stroke-dasharray="1 9"/>
+<line x1="1830" y1="345" x2="1830" y2="1310" stroke="#f08a00" stroke-width="9" stroke-linecap="round"/>
+<line x1="1830" y1="349" x2="1830" y2="1306" stroke="#fff" stroke-opacity=".25" stroke-width="2" stroke-dasharray="1 9"/>
+<line x1="1870" y1="290" x2="1870" y2="1340" stroke="#1f2328" stroke-width="9" stroke-linecap="round"/>
+<line x1="1870" y1="294" x2="1870" y2="1336" stroke="#fff" stroke-opacity=".25" stroke-width="2" stroke-dasharray="1 9"/>
+<path d="M 170,1310 L 1830,1310" fill="none" stroke="#f08a00" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 130,1340 L 1870,1340" fill="none" stroke="#1f2328" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="700.0" y="1324" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="600" fill="#f08a00" text-anchor="middle" >+3V3 rail link  (ESP32 3V3 pin feeds both +3V3 rails)</text>
+<text x="700.0" y="1356" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="600" fill="#444" text-anchor="middle" >GND rail link  (all grounds common)</text>
+<g filter="url(#shadow)">
+<rect x="700" y="100" width="170" height="100" rx="12" fill="url(#gBlack)" stroke="#000"/>
+<rect x="708" y="108" width="154" height="84" rx="8" fill="none" stroke="#fff" stroke-opacity=".12"/>
+</g>
+<text x="785" y="150" font-family="Bahnschrift, 'Segoe UI', sans-serif" font-size="30" font-weight="800" fill="#fff" text-anchor="middle" >5V  2A</text>
+<text x="785" y="172" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="600" fill="#c9d1d9" text-anchor="middle" letter-spacing="1.2">DC WALL ADAPTER</text>
+<text x="785" y="188" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="500" fill="#8b949e" text-anchor="middle" >IN 100-240 V AC</text>
+<path d="M700,150 C660,150 660,150 626,150" stroke="#111" stroke-width="6" fill="none" stroke-linecap="round"/>
+<rect x="560" y="140" width="66" height="20" rx="5" fill="url(#gSteel)" stroke="#6b7280"/>
+<rect x="540" y="136" width="30" height="28" rx="4" fill="#222" stroke="#000"/>
+<g filter="url(#shadow)"><rect x="420" y="126" width="130" height="48" rx="8" fill="url(#gBlack)" stroke="#000"/></g>
+<circle cx="535" cy="150" r="14" fill="#0a0c0e" stroke="#555"/><circle cx="535" cy="150" r="5" fill="#9aa3ad"/>
+<text x="485" y="146" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="800" fill="#e5e7eb" text-anchor="middle" >DC JACK</text>
+<text x="485" y="160" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="500" fill="#9aa3ad" text-anchor="middle" >female pigtail</text>
+<text x="485" y="192" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="500" fill="#6b7280" text-anchor="middle" >2.1 x 5.5 mm  barrel</text>
+<text x="785" y="218" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#6b7280" text-anchor="middle" >5 V 2 A adapter powers everything</text>
+<path d="M 420,140 L 95.0,140.0 Q 90,140 90.0,145.0 L 90,150" fill="none" stroke="#fbfaf7" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 420,140 L 95.0,140.0 Q 90,140 90.0,145.0 L 90,150" fill="none" stroke="#d62828" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 420,160 L 130,160" fill="none" stroke="#fbfaf7" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 420,160 L 130,160" fill="none" stroke="#1f2328" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="404" y="136" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#d62828" text-anchor="end" >+  red</text>
+<text x="404" y="177" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#333" text-anchor="end" >-  black</text>
+<circle cx="90" cy="150" r="5.5" fill="#d62828" stroke="#fff" stroke-width="2"/>
+<circle cx="130" cy="160" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<g filter="url(#shadow)"><rect x="205" y="186" width="44" height="58" rx="6" fill="url(#gCap)" stroke="#0a1f4d"/></g>
+<rect x="205" y="186" width="44" height="9" rx="4" fill="#cfd6df" opacity=".8"/>
+<rect x="236" y="195" width="10" height="49" fill="#d9dee5" opacity=".9"/>
+<text x="241" y="210" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="800" fill="#0b2d70" text-anchor="middle" >-</text>
+<text x="241" y="221" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="800" fill="#0b2d70" text-anchor="middle" >-</text>
+<text x="241" y="232" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="800" fill="#0b2d70" text-anchor="middle" >-</text>
+<text x="241" y="243" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="800" fill="#0b2d70" text-anchor="middle" >-</text>
+<text x="220" y="214" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >470</text>
+<text x="220" y="226" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="700" fill="#fff" text-anchor="middle" >uF</text>
+<text x="220" y="238" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle" >16V</text>
+<path d="M 215,244 L 215.0,256.0 Q 215,262 209.0,262.0 L 90,262" fill="none" stroke="#fbfaf7" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 215,244 L 215.0,256.0 Q 215,262 209.0,262.0 L 90,262" fill="none" stroke="#d62828" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 242,244 L 242.0,272.0 Q 242,278 236.0,278.0 L 130,278" fill="none" stroke="#fbfaf7" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 242,244 L 242.0,272.0 Q 242,278 236.0,278.0 L 130,278" fill="none" stroke="#1f2328" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="90" cy="262" r="4.5" fill="#d62828" stroke="#fff" stroke-width="2"/>
+<circle cx="130" cy="278" r="4.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<text x="262" y="262" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="700" fill="#d62828" text-anchor="start" >+ long leg</text>
+<text x="262" y="276" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="700" fill="#333" text-anchor="start" >- stripe leg</text>
+<text x="228" y="178" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="700" fill="#374151" text-anchor="start" >470uF 16V bulk capacitor</text>
+<text x="228" y="296" font-family="'Segoe UI', Arial, sans-serif" font-size="1" font-weight="400" fill="#1f2937" text-anchor="start" ></text>
+<rect x="72.0" y="321" width="36" height="18" rx="9" fill="#d62828"/>
+<text x="90" y="334" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" >+5V</text>
+<rect x="112.0" y="321" width="36" height="18" rx="9" fill="#2b3138"/>
+<text x="130" y="334" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" >GND</text>
+<rect x="152.0" y="321" width="36" height="18" rx="9" fill="#f08a00"/>
+<text x="170" y="334" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" >3V3</text>
+<rect x="1812.0" y="363" width="36" height="18" rx="9" fill="#f08a00"/>
+<text x="1830" y="376" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" >3V3</text>
+<rect x="1852.0" y="363" width="36" height="18" rx="9" fill="#2b3138"/>
+<text x="1870" y="376" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" >GND</text>
+<text x="130" y="1384" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11.5" font-weight="700" fill="#475569" text-anchor="start" >BREADBOARD RAILS:  red = +5V    blue = GND    second rail = +3V3        gold dot = pin / junction        ground symbol = tie to the GND rail</text>
+<g filter="url(#shadow)">
+<rect x="1000" y="250" width="240" height="760" rx="14" fill="url(#gBoard)" stroke="#000" stroke-width="2"/>
+</g>
+<rect x="1062" y="256" width="116" height="236" rx="3" fill="#0a0d10" stroke="#3a4048"/>
+<path d="M 1076,304 V272 H1090 V304 H1104 V272 H1118 V304 H1132 V272 H1146 V304 H1160 V272" fill="none" stroke="#c9a74b" stroke-width="3"/>
+<rect x="1066" y="310" width="108" height="178" rx="3" fill="url(#gMetal)" stroke="#6b7280"/>
+<text x="1120" y="358" font-family="'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="800" fill="#2b3138" text-anchor="middle" >ESP-WROOM-32</text>
+<text x="1120" y="374" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="700" fill="#4b5563" text-anchor="middle" letter-spacing="1">ESPRESSIF</text>
+<circle cx="1120" cy="410" r="17" fill="none" stroke="#4b5563" stroke-width="2.4"/>
+<path d="M1110,411 q10,-14 20,0" fill="none" stroke="#4b5563" stroke-width="2.4"/><circle cx="1120" cy="416" r="2.4" fill="#4b5563"/>
+<text x="1120" y="455" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="600" fill="#4b5563" text-anchor="middle" >Wi-Fi + Bluetooth</text>
+<text x="1120" y="474" font-family="'Segoe UI', Arial, sans-serif" font-size="7.5" font-weight="500" fill="#6b7280" text-anchor="middle" >FCC  CE  RoHS</text>
+<text x="1120" y="540" font-family="Bahnschrift, 'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#f3f4f6" text-anchor="middle" >ESP32</text>
+<text x="1120" y="556" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="600" fill="#9ca3af" text-anchor="middle" >DevKit 38-pin</text>
+<rect x="1096" y="690" width="48" height="24" rx="2" fill="#14171b" stroke="#444"/>
+<rect x="1104" y="680" width="32" height="10" fill="#aab1ba"/>
+<text x="1120" y="707" font-family="'Segoe UI', Arial, sans-serif" font-size="8" font-weight="700" fill="#cbd5e1" text-anchor="middle" >AMS1117</text>
+<rect x="1090" y="750" width="60" height="60" rx="3" fill="#15181c" stroke="#555"/>
+<circle cx="1099" cy="759" r="3" fill="#aaa"/>
+<text x="1120" y="784" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#cbd5e1" text-anchor="middle" >CP2102</text>
+<circle cx="1150" cy="720" r="4" fill="#ff5a4d"/>
+<rect x="1064" y="860" width="38" height="38" rx="4" fill="url(#gMetal)" stroke="#5b6470"/>
+<circle cx="1083" cy="879" r="11" fill="#14171b"/>
+<text x="1083" y="914" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="800" fill="#e5e7eb" text-anchor="middle" >EN</text>
+<rect x="1118" y="860" width="38" height="38" rx="4" fill="url(#gMetal)" stroke="#5b6470"/>
+<circle cx="1137" cy="879" r="11" fill="#14171b"/>
+<text x="1137" y="914" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="800" fill="#e5e7eb" text-anchor="middle" >BOOT</text>
+<rect x="1112" y="854" width="50" height="72" rx="8" fill="none" stroke="#f08a00" stroke-width="2.4" stroke-dasharray="5 4"/>
+<text x="1120" y="946" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="800" fill="#fbbf24" text-anchor="middle" >BOOT = DISPENSE</text>
+<text x="1120" y="961" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="600" fill="#cbd5e1" text-anchor="middle" >(GPIO0, on the board)</text>
+<rect x="1088" y="1006" width="64" height="40" rx="5" fill="url(#gMetal)" stroke="#5b6470"/>
+<rect x="1098" y="1032" width="44" height="9" rx="2" fill="#0b0d10"/>
+<text x="1120" y="1068" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="600" fill="#64748b" text-anchor="middle" >micro-USB (programming)</text>
+<rect x="1008" y="284" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="290" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="284" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="290" r="2.2" fill="#2b2410"/>
+<rect x="1025" y="281" width="38" height="18" rx="9" fill="#f08a00"/>
+<text x="1044" y="294" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >3V3</text>
+<rect x="1177" y="281" width="38" height="18" rx="9" fill="#2b3138"/>
+<text x="1196" y="294" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >GND</text>
+<rect x="1008" y="322" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="328" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="322" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="328" r="2.2" fill="#2b2410"/>
+<text x="1044" y="332" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >EN</text>
+<rect x="1177" y="319" width="38" height="18" rx="9" fill="#6b7280"/>
+<text x="1196" y="332" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >D23</text>
+<rect x="1008" y="360" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="366" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="360" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="366" r="2.2" fill="#2b2410"/>
+<text x="1044" y="370" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >VP</text>
+<rect x="1177" y="357" width="38" height="18" rx="9" fill="#92400e"/>
+<text x="1196" y="370" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >D22</text>
+<rect x="1008" y="398" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="404" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="398" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="404" r="2.2" fill="#2b2410"/>
+<text x="1044" y="408" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >VN</text>
+<text x="1196" y="408" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >TX0</text>
+<rect x="1008" y="436" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="442" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="436" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="442" r="2.2" fill="#2b2410"/>
+<rect x="1025" y="433" width="38" height="18" rx="9" fill="#8b5cf6"/>
+<text x="1044" y="446" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >D34</text>
+<text x="1196" y="446" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >RX0</text>
+<rect x="1008" y="474" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="480" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="474" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="480" r="2.2" fill="#2b2410"/>
+<rect x="1025" y="471" width="38" height="18" rx="9" fill="#16a34a"/>
+<text x="1044" y="484" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >D35</text>
+<rect x="1177" y="471" width="38" height="18" rx="9" fill="#0d9488"/>
+<text x="1196" y="484" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >D21</text>
+<rect x="1008" y="512" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="518" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="512" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="518" r="2.2" fill="#2b2410"/>
+<text x="1044" y="522" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D32</text>
+<text x="1196" y="522" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >GND</text>
+<rect x="1008" y="550" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="556" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="550" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="556" r="2.2" fill="#2b2410"/>
+<text x="1044" y="560" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D33</text>
+<text x="1196" y="560" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D19</text>
+<rect x="1008" y="588" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="594" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="588" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="594" r="2.2" fill="#2b2410"/>
+<rect x="1025" y="585" width="38" height="18" rx="9" fill="#2563eb"/>
+<text x="1044" y="598" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >D25</text>
+<text x="1196" y="598" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D18</text>
+<rect x="1008" y="626" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="632" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="626" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="632" r="2.2" fill="#2b2410"/>
+<rect x="1025" y="623" width="38" height="18" rx="9" fill="#0ea5e9"/>
+<text x="1044" y="636" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >D26</text>
+<text x="1196" y="636" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D5</text>
+<rect x="1008" y="664" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="670" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="664" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="670" r="2.2" fill="#2b2410"/>
+<rect x="1025" y="661" width="38" height="18" rx="9" fill="#d9a800"/>
+<text x="1044" y="674" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >D27</text>
+<text x="1196" y="674" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D17</text>
+<rect x="1008" y="702" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="708" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="702" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="708" r="2.2" fill="#2b2410"/>
+<text x="1044" y="712" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D14</text>
+<text x="1196" y="712" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D16</text>
+<rect x="1008" y="740" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="746" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="740" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="746" r="2.2" fill="#2b2410"/>
+<text x="1044" y="750" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D12</text>
+<rect x="1177" y="737" width="38" height="18" rx="9" fill="#ec4899"/>
+<text x="1196" y="750" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >D4</text>
+<rect x="1008" y="778" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="784" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="778" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="784" r="2.2" fill="#2b2410"/>
+<text x="1044" y="788" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >GND</text>
+<rect x="1177" y="775" width="38" height="18" rx="9" fill="#b45309"/>
+<text x="1196" y="788" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >D0</text>
+<rect x="1008" y="816" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="822" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="816" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="822" r="2.2" fill="#2b2410"/>
+<text x="1044" y="826" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D13</text>
+<text x="1196" y="826" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D2</text>
+<rect x="1008" y="854" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="860" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="854" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="860" r="2.2" fill="#2b2410"/>
+<text x="1044" y="864" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >SD2</text>
+<text x="1196" y="864" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >D15</text>
+<rect x="1008" y="892" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="898" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="892" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="898" r="2.2" fill="#2b2410"/>
+<text x="1044" y="902" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >SD3</text>
+<text x="1196" y="902" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >SD1</text>
+<rect x="1008" y="930" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="936" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="930" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="936" r="2.2" fill="#2b2410"/>
+<text x="1044" y="940" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >CMD</text>
+<text x="1196" y="940" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >SD0</text>
+<rect x="1008" y="968" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1015" cy="974" r="2.2" fill="#2b2410"/>
+<rect x="1218" y="968" width="14" height="12" rx="2" fill="#e9c75d" stroke="#7a5f12"/><circle cx="1225" cy="974" r="2.2" fill="#2b2410"/>
+<rect x="1025" y="965" width="38" height="18" rx="9" fill="#d62828"/>
+<text x="1044" y="978" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#fff" text-anchor="middle" >5V</text>
+<text x="1196" y="978" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="500" fill="#8a94a0" text-anchor="middle" >CLK</text>
+<text x="1120" y="238" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="800" fill="#111827" text-anchor="middle" >ESP32-WROOM-32 DevKit (38-pin)</text>
+<rect x="480" y="320" width="280" height="140" rx="14" fill="#fff" stroke="#c7ced6" stroke-width="1.6" filter="url(#shadow)"/>
+<text x="620.0" y="339" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="800" fill="#111827" text-anchor="middle" letter-spacing=".4">ANALOG TDS METER V1.0</text>
+<text x="620.0" y="352" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="500" fill="#6b7280" text-anchor="middle" >dissolved salts in the inlet water</text>
+<rect x="568" y="362" width="124" height="64" rx="5" fill="url(#gBlue)" stroke="#0f4d6e"/>
+<rect x="560" y="378" width="14" height="32" rx="2" fill="#f3f4f6" stroke="#9ca3af"/>
+<rect x="608" y="380" width="34" height="16" rx="2" fill="#111"/>
+<line x1="612" y1="396" x2="612" y2="400" stroke="#aaa"/><line x1="612" y1="376" x2="612" y2="380" stroke="#aaa"/>
+<line x1="618" y1="396" x2="618" y2="400" stroke="#aaa"/><line x1="618" y1="376" x2="618" y2="380" stroke="#aaa"/>
+<line x1="624" y1="396" x2="624" y2="400" stroke="#aaa"/><line x1="624" y1="376" x2="624" y2="380" stroke="#aaa"/>
+<line x1="630" y1="396" x2="630" y2="400" stroke="#aaa"/><line x1="630" y1="376" x2="630" y2="380" stroke="#aaa"/>
+<line x1="636" y1="396" x2="636" y2="400" stroke="#aaa"/><line x1="636" y1="376" x2="636" y2="380" stroke="#aaa"/>
+<rect x="672" y="370" width="12" height="9" rx="1.5" fill="#e9c75d" stroke="#7a5f12"/>
+<rect x="672" y="383" width="12" height="9" rx="1.5" fill="#e9c75d" stroke="#7a5f12"/>
+<rect x="672" y="396" width="12" height="9" rx="1.5" fill="#e9c75d" stroke="#7a5f12"/>
+<text x="630" y="416" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#e6f4fb" text-anchor="middle" >TDS  Meter  V1.0</text>
+<path d="M564,404 C540,430 548,444 572,440" stroke="#16191d" stroke-width="3.2" fill="none"/>
+<rect x="572" y="433" width="18" height="14" rx="2" fill="#16191d"/>
+<rect x="590" y="435" width="22" height="3" fill="#cbd2d9"/><rect x="590" y="442" width="22" height="3" fill="#cbd2d9"/>
+<text x="618" y="446" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="600" fill="#6b7280" text-anchor="start" >TDS probe (dips in the water)</text>
+<circle cx="480" cy="352" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="480" cy="352" r="2" fill="#7a5f12"/>
+<text x="493" y="356" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >+</text>
+<text x="493" y="368" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#f08a00" text-anchor="start" >+3V3</text>
+<circle cx="480" cy="430" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="480" cy="430" r="2" fill="#7a5f12"/>
+<text x="493" y="434" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >-</text>
+<text x="493" y="446" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#333" text-anchor="start" >GND</text>
+<circle cx="760" cy="391" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="760" cy="391" r="2" fill="#7a5f12"/>
+<text x="747" y="395" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >A</text>
+<text x="747" y="407" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#6d28d9" text-anchor="end" >analog</text>
+<rect x="480" y="490" width="280" height="150" rx="14" fill="#fff" stroke="#c7ced6" stroke-width="1.6" filter="url(#shadow)"/>
+<text x="620.0" y="509" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="800" fill="#111827" text-anchor="middle" letter-spacing=".4">TURBIDITY SENSOR + MODULE</text>
+<text x="620.0" y="522" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="500" fill="#6b7280" text-anchor="middle" >detects cloudy water  -  use the A pin</text>
+<rect x="566" y="530" width="108" height="56" rx="5" fill="url(#gGreen)" stroke="#0a4a28"/>
+<rect x="578" y="540" width="24" height="24" rx="3" fill="#2f7fd0" stroke="#173f75"/><circle cx="590" cy="552" r="7" fill="#e5e7eb" stroke="#555"/><line x1="585" y1="552" x2="595" y2="552" stroke="#555"/>
+<rect x="614" y="542" width="30" height="14" rx="2" fill="#111"/>
+<rect x="656" y="538" width="12" height="8" rx="1.5" fill="#e9c75d" stroke="#7a5f12"/>
+<rect x="656" y="550" width="12" height="8" rx="1.5" fill="#e9c75d" stroke="#7a5f12"/>
+<rect x="656" y="562" width="12" height="8" rx="1.5" fill="#e9c75d" stroke="#7a5f12"/>
+<text x="594" y="580" font-family="Consolas, 'Cascadia Mono', monospace" font-size="7.5" font-weight="700" fill="#d1fae5" text-anchor="start" >VCC  GND  A  D</text>
+<path d="M568,586 C550,602 558,616 578,614" stroke="#16191d" stroke-width="3" fill="none"/>
+<path d="M578,600 h92 v26 h-30 v-12 h-32 v12 h-30 z" fill="url(#gBlack)" stroke="#000"/>
+<circle cx="592" cy="609" r="2.5" fill="#9ca3af"/><circle cx="656" cy="609" r="2.5" fill="#9ca3af"/>
+<text x="678" y="618" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="600" fill="#6b7280" text-anchor="start" >optical probe</text>
+<circle cx="480" cy="522" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="480" cy="522" r="2" fill="#7a5f12"/>
+<text x="493" y="526" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >VCC</text>
+<text x="493" y="538" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#d62828" text-anchor="start" >+5V</text>
+<circle cx="480" cy="610" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="480" cy="610" r="2" fill="#7a5f12"/>
+<text x="493" y="614" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >GND</text>
+<text x="493" y="626" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#333" text-anchor="start" >GND</text>
+<circle cx="760" cy="566" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="760" cy="566" r="2" fill="#7a5f12"/>
+<text x="747" y="570" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >A</text>
+<text x="747" y="582" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#15803d" text-anchor="end" >to divider</text>
+<rect x="480" y="650" width="280" height="370" rx="14" fill="#fff" stroke="#c7ced6" stroke-width="1.6" filter="url(#shadow)"/>
+<text x="620.0" y="669" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="800" fill="#111827" text-anchor="middle" letter-spacing=".4">5 V DUAL RELAY MODULE</text>
+<text x="620.0" y="682" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="500" fill="#6b7280" text-anchor="middle" >optocoupler, active-LOW inputs</text>
+<rect x="564" y="710" width="140" height="300" rx="5" fill="url(#gGreen)" stroke="#0a4a28"/>
+<text x="494" y="712" font-family="'Segoe UI', Arial, sans-serif" font-size="1" font-weight="400" fill="#1f2937" text-anchor="start" ></text>
+<circle cx="480" cy="685" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="480" cy="685" r="2" fill="#7a5f12"/>
+<text x="493" y="689" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >VCC</text>
+<text x="493" y="701" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#d62828" text-anchor="start" >+5V</text>
+<circle cx="480" cy="715" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="480" cy="715" r="2" fill="#7a5f12"/>
+<text x="493" y="719" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >GND</text>
+<text x="493" y="731" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#333" text-anchor="start" >GND</text>
+<circle cx="480" cy="745" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="480" cy="745" r="2" fill="#7a5f12"/>
+<text x="493" y="749" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >JD-VCC</text>
+<text x="493" y="761" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#15803d" text-anchor="start" >= VCC</text>
+<rect x="574" y="728" width="56" height="24" rx="3" fill="#bbf7d0" stroke="#15803d" stroke-width="2"/>
+<path d="M588,741 l8,8 l18,-16" stroke="#15803d" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="668" y="738" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9" font-weight="800" fill="#bbf7d0" text-anchor="middle" >KEEP the</text>
+<text x="668" y="749" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9" font-weight="800" fill="#bbf7d0" text-anchor="middle" >jumper ON</text>
+<rect x="486" y="772" width="40" height="112" rx="4" fill="#2f7fd0" stroke="#173f75"/>
+<rect x="486" y="892" width="40" height="112" rx="4" fill="#2f7fd0" stroke="#173f75"/>
+<circle cx="506" cy="800" r="9" fill="#cfd5dc" stroke="#555"/><line x1="501" y1="800" x2="511" y2="800" stroke="#555" stroke-width="2"/>
+<circle cx="480" cy="800" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/><circle cx="480" cy="800" r="2" fill="#7a5f12"/>
+<text x="530" y="804" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="800" fill="#1f2937" text-anchor="start" >NC1</text>
+<circle cx="506" cy="836" r="9" fill="#cfd5dc" stroke="#555"/><line x1="501" y1="836" x2="511" y2="836" stroke="#555" stroke-width="2"/>
+<circle cx="480" cy="836" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/><circle cx="480" cy="836" r="2" fill="#7a5f12"/>
+<text x="530" y="840" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="800" fill="#1f2937" text-anchor="start" >COM1</text>
+<circle cx="506" cy="872" r="9" fill="#cfd5dc" stroke="#555"/><line x1="501" y1="872" x2="511" y2="872" stroke="#555" stroke-width="2"/>
+<circle cx="480" cy="872" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/><circle cx="480" cy="872" r="2" fill="#7a5f12"/>
+<text x="530" y="876" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="800" fill="#1f2937" text-anchor="start" >NO1</text>
+<circle cx="506" cy="920" r="9" fill="#cfd5dc" stroke="#555"/><line x1="501" y1="920" x2="511" y2="920" stroke="#555" stroke-width="2"/>
+<circle cx="480" cy="920" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/><circle cx="480" cy="920" r="2" fill="#7a5f12"/>
+<text x="530" y="924" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="800" fill="#1f2937" text-anchor="start" >NC2</text>
+<circle cx="506" cy="956" r="9" fill="#cfd5dc" stroke="#555"/><line x1="501" y1="956" x2="511" y2="956" stroke="#555" stroke-width="2"/>
+<circle cx="480" cy="956" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/><circle cx="480" cy="956" r="2" fill="#7a5f12"/>
+<text x="530" y="960" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="800" fill="#1f2937" text-anchor="start" >COM2</text>
+<circle cx="506" cy="992" r="9" fill="#cfd5dc" stroke="#555"/><line x1="501" y1="992" x2="511" y2="992" stroke="#555" stroke-width="2"/>
+<circle cx="480" cy="992" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/><circle cx="480" cy="992" r="2" fill="#7a5f12"/>
+<text x="530" y="996" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="800" fill="#1f2937" text-anchor="start" >NO2</text>
+<g filter="url(#shadow)"><rect x="580" y="802" width="100" height="70" rx="4" fill="url(#gRelay)" stroke="#143f7a"/></g>
+<text x="630" y="826" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9" font-weight="800" fill="#fff" text-anchor="middle" >SRD-05VDC-SL-C</text>
+<text x="630" y="840" font-family="Consolas, 'Cascadia Mono', monospace" font-size="8" font-weight="600" fill="#dbeafe" text-anchor="middle" >10A 250VAC</text>
+<text x="630" y="858" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="800" fill="#fde047" text-anchor="middle" >RELAY 1</text>
+<g filter="url(#shadow)"><rect x="580" y="922" width="100" height="70" rx="4" fill="url(#gRelay)" stroke="#143f7a"/></g>
+<text x="630" y="946" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9" font-weight="800" fill="#fff" text-anchor="middle" >SRD-05VDC-SL-C</text>
+<text x="630" y="960" font-family="Consolas, 'Cascadia Mono', monospace" font-size="8" font-weight="600" fill="#dbeafe" text-anchor="middle" >10A 250VAC</text>
+<text x="630" y="978" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="800" fill="#fde047" text-anchor="middle" >RELAY 2</text>
+<rect x="684" y="864" width="16" height="30" rx="2" fill="#111"/>
+<circle cx="588" cy="886" r="3.5" fill="#ff5a4d"/>
+<rect x="684" y="984" width="16" height="30" rx="2" fill="#111"/>
+<circle cx="588" cy="1006" r="3.5" fill="#ff5a4d"/>
+<circle cx="760" cy="690" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="760" cy="690" r="2" fill="#7a5f12"/>
+<text x="747" y="694" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >IN1</text>
+<text x="747" y="706" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#2563eb" text-anchor="end" >GPIO25</text>
+<circle cx="760" cy="720" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="760" cy="720" r="2" fill="#7a5f12"/>
+<text x="747" y="724" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >IN2</text>
+<text x="747" y="736" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#0369a1" text-anchor="end" >GPIO26</text>
+<rect x="480" y="1070" width="280" height="140" rx="14" fill="#fff" stroke="#c7ced6" stroke-width="1.6" filter="url(#shadow)"/>
+<text x="620.0" y="1089" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="800" fill="#111827" text-anchor="middle" letter-spacing=".4">YF-S201 WATER FLOW SENSOR</text>
+<text x="620.0" y="1102" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="500" fill="#6b7280" text-anchor="middle" >sits on pump A's (bypass) line</text>
+<g filter="url(#shadow)"><rect x="580" y="1124" width="86" height="52" rx="10" fill="url(#gFlow)" stroke="#6b7a89"/></g>
+<rect x="558" y="1134" width="26" height="32" rx="3" fill="#dfe6ed" stroke="#6b7a89"/>
+<rect x="662" y="1134" width="26" height="32" rx="3" fill="#dfe6ed" stroke="#6b7a89"/>
+<line x1="562" y1="1134" x2="562" y2="1166" stroke="#9aa6b2"/><line x1="666" y1="1134" x2="666" y2="1166" stroke="#9aa6b2"/>
+<line x1="567" y1="1134" x2="567" y2="1166" stroke="#9aa6b2"/><line x1="671" y1="1134" x2="671" y2="1166" stroke="#9aa6b2"/>
+<line x1="572" y1="1134" x2="572" y2="1166" stroke="#9aa6b2"/><line x1="676" y1="1134" x2="676" y2="1166" stroke="#9aa6b2"/>
+<line x1="577" y1="1134" x2="577" y2="1166" stroke="#9aa6b2"/><line x1="681" y1="1134" x2="681" y2="1166" stroke="#9aa6b2"/>
+<rect x="608" y="1108" width="30" height="18" rx="3" fill="url(#gBlack)" stroke="#000"/>
+<path d="M590,1156 h40 m-8,-6 l8,6 l-8,6" stroke="#2f7fd0" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+<text x="623" y="1172" font-family="Consolas, 'Cascadia Mono', monospace" font-size="8.5" font-weight="800" fill="#475569" text-anchor="middle" >YF-S201</text>
+<text x="542" y="1188" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="600" fill="#6b7280" text-anchor="start" >1/2-inch threads</text>
+<text x="542" y="1200" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="600" fill="#6b7280" text-anchor="start" >(use hose-barb reducers)</text>
+<circle cx="480" cy="1100" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="480" cy="1100" r="2" fill="#7a5f12"/>
+<text x="493" y="1104" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >RED</text>
+<text x="493" y="1116" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#d62828" text-anchor="start" >+5V</text>
+<circle cx="480" cy="1170" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="480" cy="1170" r="2" fill="#7a5f12"/>
+<text x="493" y="1174" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >BLACK</text>
+<text x="493" y="1186" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#333" text-anchor="start" >GND</text>
+<circle cx="760" cy="1135" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="760" cy="1135" r="2" fill="#7a5f12"/>
+<text x="747" y="1139" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >YELLOW</text>
+<text x="747" y="1151" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#a16207" text-anchor="end" >signal 5V</text>
+<rect x="210" y="850" width="220" height="94" rx="14" fill="#fff" stroke="#c7ced6" stroke-width="1.6" filter="url(#shadow)"/>
+<text x="320.0" y="869" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="800" fill="#111827" text-anchor="middle" letter-spacing=".4">PUMP A  -  BYPASS</text>
+<text x="320.0" y="882" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="500" fill="#6b7280" text-anchor="middle" >DC 3-6 V submersible</text>
+<g filter="url(#shadow)"><rect x="272.0" y="900" width="88" height="32" rx="14" fill="url(#gPump)" stroke="#000"/></g>
+<rect x="268.0" y="908" width="8" height="16" rx="2" fill="#aab1ba"/>
+<rect x="344.0" y="890" width="12" height="12" rx="2" fill="#e5e7eb" stroke="#6b7280"/>
+<text x="314.0" y="922" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="800" fill="#e5e7eb" text-anchor="middle" >M</text>
+<circle cx="430" cy="872" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="430" cy="872" r="2" fill="#7a5f12"/>
+<text x="417" y="876" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >+</text>
+<text x="417" y="888" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#d62828" text-anchor="end" >red</text>
+<circle cx="210" cy="920" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="210" cy="920" r="2" fill="#7a5f12"/>
+<text x="223" y="924" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >-</text>
+<text x="223" y="936" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#333" text-anchor="start" >black</text>
+<rect x="210" y="972" width="220" height="94" rx="14" fill="#fff" stroke="#c7ced6" stroke-width="1.6" filter="url(#shadow)"/>
+<text x="320.0" y="991" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="800" fill="#111827" text-anchor="middle" letter-spacing=".4">PUMP B  -  RO</text>
+<text x="320.0" y="1004" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="500" fill="#6b7280" text-anchor="middle" >DC 3-6 V submersible</text>
+<g filter="url(#shadow)"><rect x="272.0" y="1022" width="88" height="32" rx="14" fill="url(#gPump)" stroke="#000"/></g>
+<rect x="268.0" y="1030" width="8" height="16" rx="2" fill="#aab1ba"/>
+<rect x="344.0" y="1012" width="12" height="12" rx="2" fill="#e5e7eb" stroke="#6b7280"/>
+<text x="314.0" y="1044" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="800" fill="#e5e7eb" text-anchor="middle" >M</text>
+<circle cx="430" cy="992" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="430" cy="992" r="2" fill="#7a5f12"/>
+<text x="417" y="996" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >+</text>
+<text x="417" y="1008" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#d62828" text-anchor="end" >red</text>
+<circle cx="210" cy="1042" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="210" cy="1042" r="2" fill="#7a5f12"/>
+<text x="223" y="1046" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >-</text>
+<text x="223" y="1058" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#333" text-anchor="start" >black</text>
+<rect x="1390" y="350" width="240" height="170" rx="14" fill="#fff" stroke="#c7ced6" stroke-width="1.6" filter="url(#shadow)"/>
+<text x="1510.0" y="369" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="800" fill="#111827" text-anchor="middle" letter-spacing=".4">OLED 0.96" SSD1306</text>
+<text x="1510.0" y="382" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="500" fill="#6b7280" text-anchor="middle" >I2C, address 0x3C</text>
+<rect x="1462" y="394" width="104" height="96" rx="6" fill="#0d2a6b" stroke="#07173d"/>
+<rect x="1468" y="400" width="92" height="52" rx="3" fill="#050608" stroke="#1f2937"/>
+<text x="1514" y="416" font-family="Consolas, 'Cascadia Mono', monospace" font-size="8.5" font-weight="700" fill="#7dd3fc" text-anchor="middle" >TDS 120 ppm</text>
+<text x="1514" y="429" font-family="Consolas, 'Cascadia Mono', monospace" font-size="8.5" font-weight="700" fill="#7dd3fc" text-anchor="middle" >CLARITY 98%</text>
+<text x="1514" y="443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#ffffff" text-anchor="middle" >BYPASS</text>
+<rect x="1476" y="476" width="9" height="9" rx="1.5" fill="#e9c75d" stroke="#7a5f12"/>
+<text x="1480" y="469" font-family="Consolas, 'Cascadia Mono', monospace" font-size="6" font-weight="700" fill="#cbd5e1" text-anchor="middle" >GND</text>
+<rect x="1496" y="476" width="9" height="9" rx="1.5" fill="#e9c75d" stroke="#7a5f12"/>
+<text x="1500" y="469" font-family="Consolas, 'Cascadia Mono', monospace" font-size="6" font-weight="700" fill="#cbd5e1" text-anchor="middle" >VCC</text>
+<rect x="1516" y="476" width="9" height="9" rx="1.5" fill="#e9c75d" stroke="#7a5f12"/>
+<text x="1520" y="469" font-family="Consolas, 'Cascadia Mono', monospace" font-size="6" font-weight="700" fill="#cbd5e1" text-anchor="middle" >SCL</text>
+<rect x="1536" y="476" width="9" height="9" rx="1.5" fill="#e9c75d" stroke="#7a5f12"/>
+<text x="1540" y="469" font-family="Consolas, 'Cascadia Mono', monospace" font-size="6" font-weight="700" fill="#cbd5e1" text-anchor="middle" >SDA</text>
+<circle cx="1390" cy="366" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="1390" cy="366" r="2" fill="#7a5f12"/>
+<text x="1403" y="370" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >SCL</text>
+<text x="1403" y="382" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="start" >GPIO22</text>
+<circle cx="1390" cy="480" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="1390" cy="480" r="2" fill="#7a5f12"/>
+<text x="1403" y="484" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >SDA</text>
+<text x="1403" y="496" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#0f766e" text-anchor="start" >GPIO21</text>
+<circle cx="1630" cy="400" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="1630" cy="400" r="2" fill="#7a5f12"/>
+<text x="1617" y="404" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >VCC</text>
+<text x="1617" y="416" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#f08a00" text-anchor="end" >+3V3</text>
+<circle cx="1630" cy="440" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="1630" cy="440" r="2" fill="#7a5f12"/>
+<text x="1617" y="444" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >GND</text>
+<text x="1617" y="456" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#333" text-anchor="end" >GND</text>
+<rect x="1390" y="690" width="240" height="150" rx="14" fill="#fff" stroke="#c7ced6" stroke-width="1.6" filter="url(#shadow)"/>
+<text x="1510.0" y="709" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="800" fill="#111827" text-anchor="middle" letter-spacing=".4">DS18B20 PROBE</text>
+<text x="1510.0" y="722" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="500" fill="#6b7280" text-anchor="middle" >waterproof probe, 1 m cable</text>
+<g filter="url(#shadow)"><rect x="1450" y="780" width="82" height="20" rx="10" fill="url(#gSteel)" stroke="#6b7280"/></g>
+<rect x="1522" y="782" width="10" height="16" rx="3" fill="#16191d"/>
+<path d="M1532,790 C1550,790 1546,756 1562,756" stroke="#16191d" stroke-width="4" fill="none"/>
+<path d="M1562,756 l14,-14" stroke="#d62828" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M1562,756 l14,0" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M1562,756 l14,14" stroke="#d9a800" stroke-width="3" fill="none" stroke-linecap="round"/>
+<text x="1490" y="818" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="600" fill="#6b7280" text-anchor="middle" >stainless probe tip goes in the tank</text>
+<circle cx="1390" cy="746" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="1390" cy="746" r="2" fill="#7a5f12"/>
+<text x="1403" y="750" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="start" >DATA</text>
+<text x="1403" y="762" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#a16207" text-anchor="start" >yellow</text>
+<circle cx="1630" cy="720" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="1630" cy="720" r="2" fill="#7a5f12"/>
+<text x="1617" y="724" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >VCC</text>
+<text x="1617" y="736" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#f08a00" text-anchor="end" >red +3V3</text>
+<circle cx="1630" cy="790" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<circle cx="1630" cy="790" r="2" fill="#7a5f12"/>
+<text x="1617" y="794" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="700" fill="#111827" text-anchor="end" >GND</text>
+<text x="1617" y="806" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#333" text-anchor="end" >black</text>
+<path d="M 480,352 L 170,352" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,352 L 170,352" fill="none" stroke="#f08a00" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="170" cy="352" r="5.5" fill="#f08a00" stroke="#fff" stroke-width="2"/>
+<path d="M 480,430 L 130,430" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,430 L 130,430" fill="none" stroke="#1f2328" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="130" cy="430" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<path d="M 480,522 L 90,522" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,522 L 90,522" fill="none" stroke="#d62828" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="90" cy="522" r="5.5" fill="#d62828" stroke="#fff" stroke-width="2"/>
+<path d="M 480,610 L 130,610" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,610 L 130,610" fill="none" stroke="#1f2328" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="130" cy="610" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<path d="M 480,685 L 90,685" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,685 L 90,685" fill="none" stroke="#d62828" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="90" cy="685" r="5.5" fill="#d62828" stroke="#fff" stroke-width="2"/>
+<path d="M 480,715 L 130,715" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,715 L 130,715" fill="none" stroke="#1f2328" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="130" cy="715" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<path d="M 480,836 L 90,836" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,836 L 90,836" fill="none" stroke="#d62828" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="90" cy="836" r="5.5" fill="#d62828" stroke="#fff" stroke-width="2"/>
+<path d="M 480,956 L 90,956" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,956 L 90,956" fill="none" stroke="#d62828" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="90" cy="956" r="5.5" fill="#d62828" stroke="#fff" stroke-width="2"/>
+<path d="M 480,1100 L 90,1100" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,1100 L 90,1100" fill="none" stroke="#d62828" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="90" cy="1100" r="5.5" fill="#d62828" stroke="#fff" stroke-width="2"/>
+<path d="M 480,1170 L 130,1170" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,1170 L 130,1170" fill="none" stroke="#1f2328" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="130" cy="1170" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<path d="M 210,920 L 130,920" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 210,920 L 130,920" fill="none" stroke="#1f2328" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="130" cy="920" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<path d="M 210,1042 L 130,1042" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 210,1042 L 130,1042" fill="none" stroke="#1f2328" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="130" cy="1042" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<path d="M 480,872 L 430,872" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,872 L 430,872" fill="none" stroke="#7c3a1d" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,992 L 430,992" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 480,992 L 430,992" fill="none" stroke="#7c3a1d" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="455" y="866" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="800" fill="#7c3a1d" text-anchor="middle" >NO1</text>
+<text x="455" y="986" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="800" fill="#7c3a1d" text-anchor="middle" >NO2</text>
+<path d="M 1000,290 L 170,290" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1000,290 L 170,290" fill="none" stroke="#f08a00" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="170" cy="290" r="5.5" fill="#f08a00" stroke="#fff" stroke-width="2"/>
+<circle cx="1000" cy="290" r="5.5" fill="#f08a00" stroke="#fff" stroke-width="2"/>
+<text x="620" y="282" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="700" fill="#f08a00" text-anchor="start" >ESP32 3V3 pin  -&gt;  +3V3 rail</text>
+<path d="M 1000,974 L 992.5,974.0 Q 985,974 985.0,981.5 L 985.0,1280.0 Q 985,1290 975.0,1290.0 L 90,1290" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1000,974 L 992.5,974.0 Q 985,974 985.0,981.5 L 985.0,1280.0 Q 985,1290 975.0,1290.0 L 90,1290" fill="none" stroke="#d62828" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="10 6"/>
+<circle cx="90" cy="1290" r="5.5" fill="#d62828" stroke="#fff" stroke-width="2"/>
+<circle cx="1000" cy="974" r="5.5" fill="#d62828" stroke="#fff" stroke-width="2"/>
+<rect x="410.0" y="1267" width="300" height="18" rx="9" fill="#d62828"/>
+<text x="560" y="1280" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" >REMOVE THIS WIRE WHEN USB IS PLUGGED IN</text>
+<path d="M 760,391 L 860.0,391.0 Q 870,391 870.0,401.0 L 870.0,432.0 Q 870,442 880.0,442.0 L 1000,442" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 760,391 L 860.0,391.0 Q 870,391 870.0,401.0 L 870.0,432.0 Q 870,442 880.0,442.0 L 1000,442" fill="none" stroke="#8b5cf6" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="760" cy="391" r="5.5" fill="#8b5cf6" stroke="#fff" stroke-width="2"/>
+<circle cx="1000" cy="442" r="5.5" fill="#8b5cf6" stroke="#fff" stroke-width="2"/>
+<text x="790" y="385" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#6d28d9" text-anchor="middle" >GPIO34</text>
+<text x="790" y="405" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9" font-weight="600" fill="#6d28d9" text-anchor="middle" >0-2.3 V direct</text>
+<path d="M 760,566 L 890.0,566.0 Q 900,566 900.0,556.0 L 900.0,490.0 Q 900,480 910.0,480.0 L 1000,480" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 760,566 L 890.0,566.0 Q 900,566 900.0,556.0 L 900.0,490.0 Q 900,480 910.0,480.0 L 1000,480" fill="none" stroke="#16a34a" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="760" cy="566" r="5.5" fill="#16a34a" stroke="#fff" stroke-width="2"/>
+<circle cx="1000" cy="480" r="5.5" fill="#16a34a" stroke="#fff" stroke-width="2"/>
+<g>
+<rect x="789" y="558.5" width="46" height="15" rx="7" fill="#e6cf9c" stroke="#9c8650" stroke-width="1"/>
+<rect x="796" y="558.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="804" y="558.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="812" y="558.5" width="4" height="15" fill="#d62828"/>
+<rect x="824" y="558.5" width="4" height="15" fill="#c9a227"/>
+</g>
+<text x="812" y="552" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#374151" text-anchor="middle" >R1 5.5k</text>
+<circle cx="852" cy="566" r="4.5" fill="#16a34a" stroke="#fff" stroke-width="2"/>
+<path d="M 852,566 L 852,632" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 852,566 L 852,632" fill="none" stroke="#16a34a" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<g transform="rotate(90 852 598)">
+<rect x="829" y="590.5" width="46" height="15" rx="7" fill="#e6cf9c" stroke="#9c8650" stroke-width="1"/>
+<rect x="836" y="590.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="844" y="590.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="852" y="590.5" width="4" height="15" fill="#d62828"/>
+<rect x="864" y="590.5" width="4" height="15" fill="#c9a227"/>
+</g>
+<text x="868" y="602" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#374151" text-anchor="start" >R2 5.5k</text>
+<g stroke="#444" stroke-width="2.4" stroke-linecap="round"><line x1="852" y1="633" x2="852" y2="641"/><line x1="841" y1="641" x2="863" y2="641"/><line x1="845" y1="646" x2="859" y2="646"/><line x1="849" y1="651" x2="855" y2="651"/></g>
+<text x="838" y="606" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#15803d" text-anchor="end" >4.5 V in</text>
+<text x="838" y="618" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#15803d" text-anchor="end" >2.25 V max</text>
+<text x="935" y="520" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#15803d" text-anchor="middle" >GPIO35</text>
+<path d="M 760,690 L 915.0,690.0 Q 925,690 925.0,680.0 L 925.0,604.0 Q 925,594 935.0,594.0 L 1000,594" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 760,690 L 915.0,690.0 Q 925,690 925.0,680.0 L 925.0,604.0 Q 925,594 935.0,594.0 L 1000,594" fill="none" stroke="#2563eb" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="760" cy="690" r="5.5" fill="#2563eb" stroke="#fff" stroke-width="2"/>
+<circle cx="1000" cy="594" r="5.5" fill="#2563eb" stroke="#fff" stroke-width="2"/>
+<text x="810" y="684" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#1d4ed8" text-anchor="middle" >GPIO25</text>
+<path d="M 760,720 L 940.0,720.0 Q 950,720 950.0,710.0 L 950.0,642.0 Q 950,632 960.0,632.0 L 1000,632" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 760,720 L 940.0,720.0 Q 950,720 950.0,710.0 L 950.0,642.0 Q 950,632 960.0,632.0 L 1000,632" fill="none" stroke="#0ea5e9" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="760" cy="720" r="5.5" fill="#0ea5e9" stroke="#fff" stroke-width="2"/>
+<circle cx="1000" cy="632" r="5.5" fill="#0ea5e9" stroke="#fff" stroke-width="2"/>
+<text x="810" y="714" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#0369a1" text-anchor="middle" >GPIO26</text>
+<path d="M 760,1135 L 965.0,1135.0 Q 975,1135 975.0,1125.0 L 975.0,680.0 Q 975,670 985.0,670.0 L 1000,670" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 760,1135 L 965.0,1135.0 Q 975,1135 975.0,1125.0 L 975.0,680.0 Q 975,670 985.0,670.0 L 1000,670" fill="none" stroke="#d9a800" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="760" cy="1135" r="5.5" fill="#d9a800" stroke="#fff" stroke-width="2"/>
+<circle cx="1000" cy="670" r="5.5" fill="#d9a800" stroke="#fff" stroke-width="2"/>
+<g>
+<rect x="789" y="1127.5" width="46" height="15" rx="7" fill="#e6cf9c" stroke="#9c8650" stroke-width="1"/>
+<rect x="796" y="1127.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="804" y="1127.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="812" y="1127.5" width="4" height="15" fill="#d62828"/>
+<rect x="824" y="1127.5" width="4" height="15" fill="#c9a227"/>
+</g>
+<text x="812" y="1121" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#374151" text-anchor="middle" >R3 5.5k</text>
+<circle cx="852" cy="1135" r="4.5" fill="#d9a800" stroke="#fff" stroke-width="2"/>
+<path d="M 852,1135 L 852,1250" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 852,1135 L 852,1250" fill="none" stroke="#d9a800" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<g transform="rotate(90 852 1165)">
+<rect x="829" y="1157.5" width="46" height="15" rx="7" fill="#e6cf9c" stroke="#9c8650" stroke-width="1"/>
+<rect x="836" y="1157.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="844" y="1157.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="852" y="1157.5" width="4" height="15" fill="#d62828"/>
+<rect x="864" y="1157.5" width="4" height="15" fill="#c9a227"/>
+</g>
+<text x="868" y="1169" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#374151" text-anchor="start" >R4a 5.5k</text>
+<g transform="rotate(90 852 1213)">
+<rect x="829" y="1205.5" width="46" height="15" rx="7" fill="#e6cf9c" stroke="#9c8650" stroke-width="1"/>
+<rect x="836" y="1205.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="844" y="1205.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="852" y="1205.5" width="4" height="15" fill="#d62828"/>
+<rect x="864" y="1205.5" width="4" height="15" fill="#c9a227"/>
+</g>
+<text x="868" y="1217" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#374151" text-anchor="start" >R4b 5.5k</text>
+<g stroke="#444" stroke-width="2.4" stroke-linecap="round"><line x1="852" y1="1250" x2="852" y2="1258"/><line x1="841" y1="1258" x2="863" y2="1258"/><line x1="845" y1="1263" x2="859" y2="1263"/><line x1="849" y1="1268" x2="855" y2="1268"/></g>
+<text x="838" y="1196" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#a16207" text-anchor="end" >5 V in</text>
+<text x="838" y="1208" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#a16207" text-anchor="end" >3.3 V max</text>
+<text x="868" y="1262" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#a16207" text-anchor="start" >R4 = 2 x 5.5k = 11k</text>
+<text x="880" y="1126" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#a16207" text-anchor="middle" >GPIO27</text>
+<path d="M 1240,290 L 1870,290" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1240,290 L 1870,290" fill="none" stroke="#1f2328" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1240" cy="290" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<circle cx="1870" cy="290" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<path d="M 1240,328 L 1400,328" fill="none" stroke="#fbfaf7" stroke-width="8.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1240,328 L 1400,328" fill="none" stroke="#6b7280" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="8 6"/>
+<path d="M 1480,328 L 1870,328" fill="none" stroke="#fbfaf7" stroke-width="8.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1480,328 L 1870,328" fill="none" stroke="#6b7280" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="8 6"/>
+<circle cx="1240" cy="328" r="5.5" fill="#6b7280" stroke="#fff" stroke-width="2"/>
+<circle cx="1870" cy="328" r="5.5" fill="#6b7280" stroke="#fff" stroke-width="2"/>
+<circle cx="1400" cy="328" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/><circle cx="1480" cy="328" r="6" fill="#e9c75d" stroke="#7a5f12" stroke-width="1.6"/>
+<path d="M1400,322 C1410,298 1470,298 1480,322" fill="none" stroke="#b45309" stroke-width="4" stroke-linecap="round"/>
+<text x="1440" y="276" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="800" fill="#b45309" text-anchor="middle" >OPTIONAL LOCK JUMPER:  wire D23 to GND = LOCK MODE (always RO)</text>
+<text x="1300" y="322" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#4b5563" text-anchor="middle" >GPIO23</text>
+<path d="M 1240,366 L 1390,366" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1240,366 L 1390,366" fill="none" stroke="#92400e" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1240" cy="366" r="5.5" fill="#92400e" stroke="#fff" stroke-width="2"/>
+<circle cx="1390" cy="366" r="5.5" fill="#92400e" stroke="#fff" stroke-width="2"/>
+<text x="1315" y="359" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#92400e" text-anchor="middle" >GPIO22</text>
+<path d="M 1240,480 L 1390,480" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1240,480 L 1390,480" fill="none" stroke="#0d9488" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1240" cy="480" r="5.5" fill="#0d9488" stroke="#fff" stroke-width="2"/>
+<circle cx="1390" cy="480" r="5.5" fill="#0d9488" stroke="#fff" stroke-width="2"/>
+<text x="1315" y="473" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#0f766e" text-anchor="middle" >GPIO21</text>
+<path d="M 1630,400 L 1830,400" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1630,400 L 1830,400" fill="none" stroke="#f08a00" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1830" cy="400" r="5.5" fill="#f08a00" stroke="#fff" stroke-width="2"/>
+<path d="M 1630,440 L 1870,440" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1630,440 L 1870,440" fill="none" stroke="#1f2328" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1870" cy="440" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<path d="M 1240,746 L 1390,746" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1240,746 L 1390,746" fill="none" stroke="#ec4899" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1240" cy="746" r="5.5" fill="#ec4899" stroke="#fff" stroke-width="2"/>
+<circle cx="1390" cy="746" r="5.5" fill="#ec4899" stroke="#fff" stroke-width="2"/>
+<text x="1278" y="738" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="800" fill="#be185d" text-anchor="middle" >GPIO4</text>
+<circle cx="1320" cy="746" r="4.5" fill="#ec4899" stroke="#fff" stroke-width="2"/>
+<path d="M 1320,746 L 1320.0,634.0 Q 1320,625 1329.0,625.0 L 1830,625" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1320,746 L 1320.0,634.0 Q 1320,625 1329.0,625.0 L 1830,625" fill="none" stroke="#f08a00" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<g transform="rotate(90 1320 690)">
+<rect x="1297" y="682.5" width="46" height="15" rx="7" fill="#e6cf9c" stroke="#9c8650" stroke-width="1"/>
+<rect x="1304" y="682.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="1312" y="682.5" width="4" height="15" fill="#2f8f3a"/>
+<rect x="1320" y="682.5" width="4" height="15" fill="#d62828"/>
+<rect x="1332" y="682.5" width="4" height="15" fill="#c9a227"/>
+</g>
+<text x="1334" y="689" font-family="Consolas, 'Cascadia Mono', monospace" font-size="11" font-weight="700" fill="#374151" text-anchor="start" >R5 5.5k</text>
+<text x="1334" y="703" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="700" fill="#374151" text-anchor="start" >pull-up</text>
+<circle cx="1830" cy="625" r="5.5" fill="#f08a00" stroke="#fff" stroke-width="2"/>
+<path d="M 1630,720 L 1830,720" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1630,720 L 1830,720" fill="none" stroke="#f08a00" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1830" cy="720" r="5.5" fill="#f08a00" stroke="#fff" stroke-width="2"/>
+<path d="M 1630,790 L 1870,790" fill="none" stroke="#fbfaf7" stroke-width="9.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1630,790 L 1870,790" fill="none" stroke="#1f2328" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1870" cy="790" r="5.5" fill="#1f2328" stroke="#fff" stroke-width="2"/>
+<text x="1252" y="788" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="700" fill="#b45309" text-anchor="start" >GPIO0 = BOOT</text>
+<rect x="1300" y="96" width="490" height="150" rx="14" fill="#fff" stroke="#cfd6de" stroke-width="1.4" stroke-dasharray="7 5"/>
+<text x="1318" y="122" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="800" fill="#334155" text-anchor="start" letter-spacing="1">WIRE KEY</text>
+<rect x="1318" y="141.0" width="26" height="6" rx="3" fill="#d62828"/>
+<text x="1352" y="148.0" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >+5V</text>
+<rect x="1318" y="155.5" width="26" height="6" rx="3" fill="#f08a00"/>
+<text x="1352" y="162.5" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >+3V3</text>
+<rect x="1318" y="170.0" width="26" height="6" rx="3" fill="#1f2328"/>
+<text x="1352" y="177.0" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >GND</text>
+<rect x="1318" y="184.5" width="26" height="6" rx="3" fill="#8b5cf6"/>
+<text x="1352" y="191.5" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >TDS  A  -&gt;  GPIO34</text>
+<rect x="1318" y="199.0" width="26" height="6" rx="3" fill="#16a34a"/>
+<text x="1352" y="206.0" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >Turbidity A -&gt; GPIO35</text>
+<rect x="1318" y="213.5" width="26" height="6" rx="3" fill="#2563eb"/>
+<text x="1352" y="220.5" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >Relay IN1 -&gt; GPIO25</text>
+<rect x="1318" y="228.0" width="26" height="6" rx="3" fill="#0ea5e9"/>
+<text x="1352" y="235.0" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >Relay IN2 -&gt; GPIO26</text>
+<rect x="1563" y="141.0" width="26" height="6" rx="3" fill="#d9a800"/>
+<text x="1597" y="148.0" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >Flow signal -&gt; GPIO27</text>
+<rect x="1563" y="155.5" width="26" height="6" rx="3" fill="#ec4899"/>
+<text x="1597" y="162.5" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >DS18B20 data -&gt; GPIO4</text>
+<rect x="1563" y="170.0" width="26" height="6" rx="3" fill="#0d9488"/>
+<text x="1597" y="177.0" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >OLED SDA -&gt; GPIO21</text>
+<rect x="1563" y="184.5" width="26" height="6" rx="3" fill="#92400e"/>
+<text x="1597" y="191.5" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >OLED SCL -&gt; GPIO22</text>
+<rect x="1563" y="199.0" width="26" height="6" rx="3" fill="#6b7280"/>
+<text x="1597" y="206.0" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >Lock jumper -&gt; GPIO23 (opt.)</text>
+<rect x="1563" y="213.5" width="26" height="6" rx="3" fill="#7c3a1d"/>
+<text x="1597" y="220.5" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >Relay NO -&gt; pump (+)</text>
+<rect x="1300" y="905" width="490" height="170" rx="14" fill="#fff" stroke="#cfd6de" stroke-width="1.4" stroke-dasharray="7 5"/>
+<text x="1318" y="931" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="800" fill="#334155" text-anchor="start" letter-spacing="1">WATER PATH  (what the pumps do)</text>
+<rect x="1318" y="959" width="92" height="96" rx="8" fill="#e8f5fc" stroke="#2f7fd0" stroke-width="2"/>
+<rect x="1320" y="991" width="88" height="62" rx="6" fill="#9fd4f2" opacity=".75"/>
+<text x="1364" y="977" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="800" fill="#0b4f7a" text-anchor="middle" >INLET TANK</text>
+<rect x="1332" y="985" width="8" height="40" rx="2" fill="#475569"/>
+<text x="1336" y="1041" font-family="Consolas, 'Cascadia Mono', monospace" font-size="7.5" font-weight="700" fill="#0b4f7a" text-anchor="middle" >TDS</text>
+<rect x="1358" y="985" width="8" height="40" rx="2" fill="#475569"/>
+<text x="1362" y="1041" font-family="Consolas, 'Cascadia Mono', monospace" font-size="7.5" font-weight="700" fill="#0b4f7a" text-anchor="middle" >TURB</text>
+<rect x="1384" y="985" width="8" height="40" rx="2" fill="#475569"/>
+<text x="1388" y="1041" font-family="Consolas, 'Cascadia Mono', monospace" font-size="7.5" font-weight="700" fill="#0b4f7a" text-anchor="middle" >TEMP</text>
+<path d="M1410,989 H1450" stroke="#2fa4dc" stroke-width="3.4" marker-end="url(#arrW)" fill="none"/>
+<rect x="1454" y="973" width="70" height="30" rx="7" fill="#fff" stroke="#475569" stroke-width="1.6"/>
+<text x="1489.0" y="992" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="800" fill="#111827" text-anchor="middle" >PUMP A</text>
+<path d="M1524,989 H1552" stroke="#2fa4dc" stroke-width="3.4" marker-end="url(#arrW)" fill="none"/>
+<rect x="1556" y="973" width="84" height="30" rx="7" fill="#fff" stroke="#475569" stroke-width="1.6"/>
+<text x="1598.0" y="992" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="800" fill="#111827" text-anchor="middle" >YF-S201</text>
+<path d="M1640,989 H1668" stroke="#2fa4dc" stroke-width="3.4" marker-end="url(#arrW)" fill="none"/>
+<rect x="1672" y="967" width="102" height="30" rx="7" fill="#e3f6ea" stroke="#15803d" stroke-width="1.6"/>
+<text x="1723.0" y="986" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="800" fill="#111827" text-anchor="middle" >DRINKING JAR</text>
+<text x="1723" y="1011" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#15803d" text-anchor="middle" >BYPASS (relay 1)</text>
+<path d="M1410,1029 H1450" stroke="#2fa4dc" stroke-width="3.4" marker-end="url(#arrW)" fill="none"/>
+<rect x="1454" y="1013" width="70" height="30" rx="7" fill="#fff" stroke="#475569" stroke-width="1.6"/>
+<text x="1489.0" y="1032" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="800" fill="#111827" text-anchor="middle" >PUMP B</text>
+<path d="M1524,1029 H1668" stroke="#2fa4dc" stroke-width="3.4" marker-end="url(#arrW)" fill="none"/>
+<rect x="1672" y="1023" width="102" height="30" rx="7" fill="#fff1e2" stroke="#c2570c" stroke-width="1.6"/>
+<text x="1723.0" y="1042" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="800" fill="#111827" text-anchor="middle" >RO JAR</text>
+<text x="1723" y="1067" font-family="Consolas, 'Cascadia Mono', monospace" font-size="9.5" font-weight="700" fill="#c2570c" text-anchor="middle" >RO path (relay 2)</text>
+<text x="1590" y="1048" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle" >6 mm silicone tube</text>
+<rect x="1300" y="1095" width="490" height="194" rx="14" fill="#fff" stroke="#cfd6de" stroke-width="1.4" stroke-dasharray="7 5"/>
+<text x="1318" y="1121" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="800" fill="#b45309" text-anchor="start" letter-spacing="1">BEFORE THE FIRST POWER-ON</text>
+<text x="1318" y="1147" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#374151" text-anchor="start" >1  Relay: KEEP the JD-VCC &lt;-&gt; VCC jumper ON. Relay VCC = +5V (not 3V3).</text>
+<text x="1318" y="1166" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#374151" text-anchor="start" >2  Laptop USB plugged in?  Unplug the 5V-rail -&gt; ESP32 5V wire.</text>
+<text x="1318" y="1185" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#374151" text-anchor="start" >3  Turbidity: use the A (analog) pin, not D.</text>
+<text x="1318" y="1204" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#374151" text-anchor="start" >4  Flow: blow on the wheel; GPIO27 must swing 0 - 3.3 V.</text>
+<text x="1318" y="1223" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#374151" text-anchor="start" >5  Fit the 470 uF cap across 5V and GND near the relay.</text>
+<text x="1318" y="1242" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#374151" text-anchor="start" >6  Keep the breadboard above the water line (drip tray below).</text>
+<text x="1318" y="1261" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#374151" text-anchor="start" >7  Resistors: all six are 5.5 k (R1 R2 R3 R4a R4b R5).</text>
+<text x="1318" y="1280" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#374151" text-anchor="start" >    Dividers keep the same ratio (/2 and x2/3): no code change.</text>
+<rect x="130" y="1400" width="1660" height="58" rx="12" fill="#fff" stroke="#cfd6de" stroke-width="1.4"/>
+<text x="146" y="1422" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="800" fill="#334155" text-anchor="start" letter-spacing="1">ESP32 PIN MAP</text>
+<rect x="280" y="1411" width="58" height="16" rx="8" fill="#8b5cf6"/>
+<text x="309" y="1423" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" >GPIO34</text>
+<text x="346" y="1423" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >TDS  A</text>
+<rect x="580" y="1411" width="58" height="16" rx="8" fill="#16a34a"/>
+<text x="609" y="1423" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" >GPIO35</text>
+<text x="646" y="1423" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >Turbidity A (5.5k/5.5k)</text>
+<rect x="880" y="1411" width="58" height="16" rx="8" fill="#d9a800"/>
+<text x="909" y="1423" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" >GPIO27</text>
+<text x="946" y="1423" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >Flow (5.5k/11k)</text>
+<rect x="1180" y="1411" width="58" height="16" rx="8" fill="#ec4899"/>
+<text x="1209" y="1423" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" >GPIO4</text>
+<text x="1246" y="1423" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >DS18B20 (5.5k pull-up)</text>
+<rect x="1480" y="1411" width="58" height="16" rx="8" fill="#0d9488"/>
+<text x="1509" y="1423" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" >GPIO21</text>
+<text x="1546" y="1423" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >OLED SDA</text>
+<rect x="280" y="1431" width="58" height="16" rx="8" fill="#92400e"/>
+<text x="309" y="1443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" >GPIO22</text>
+<text x="346" y="1443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >OLED SCL</text>
+<rect x="580" y="1431" width="58" height="16" rx="8" fill="#2563eb"/>
+<text x="609" y="1443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" >GPIO25</text>
+<text x="646" y="1443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >Relay IN1 - pump A</text>
+<rect x="880" y="1431" width="58" height="16" rx="8" fill="#0ea5e9"/>
+<text x="909" y="1443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" >GPIO26</text>
+<text x="946" y="1443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >Relay IN2 - pump B</text>
+<rect x="1180" y="1431" width="58" height="16" rx="8" fill="#b45309"/>
+<text x="1209" y="1443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" >GPIO0</text>
+<text x="1246" y="1443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >BOOT = dispense</text>
+<rect x="1480" y="1431" width="58" height="16" rx="8" fill="#6b7280"/>
+<text x="1509" y="1443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" >GPIO23</text>
+<text x="1546" y="1443" font-family="Consolas, 'Cascadia Mono', monospace" font-size="10.5" font-weight="600" fill="#334155" text-anchor="start" >lock jumper (opt.)</text>
+<text x="980.0" y="1478" font-family="Consolas, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#475569" text-anchor="middle" >Pumps: relay COM1 / COM2 = +5V,  NO1 -&gt; pump A (+),  NO2 -&gt; pump B (+),  both pump (-) to GND.   Relay inputs are active-LOW (LOW = pump ON).   Both pumps stay OFF at power-up.</text>
+</svg>
