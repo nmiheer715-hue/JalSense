@@ -222,6 +222,8 @@ The sensing, decision, pump switching, flow metering, fail-safes and dashboards 
 
 Built by Team JalSense for an SDG hackathon. Maintained by [Miheer Nikam](https://github.com/nmiheer715-hue), Electrical and Electronics Engineering, BMS College of Engineering, Bengaluru.
 
+**Contributors:** [Nipun2323](https://github.com/Nipun2323)
+
 ## Sources
 
 1. [Deccan Herald: RO filters waste 50–80% of feed water](https://www.deccanherald.com/opinion/regulatory-vacuum-unregulated-splurge-2144644)
