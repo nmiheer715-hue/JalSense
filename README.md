@@ -142,6 +142,12 @@ The same numbers are available as JSON at `http://192.168.4.1/data`. This is a l
 
 Full parts list, wiring table and pre-power checklist: [`hardware/`](hardware/README.md).
 
+<div align="center">
+<img src="hardware/jalsense-circuit-schematic-v2.png" alt="JalSense circuit schematic of the prototype as built" width="1000">
+<br>
+<sub>Circuit schematic of the prototype as built (<a href="hardware/jalsense-circuit-schematic-v2.svg">SVG</a>)</sub>
+</div>
+
 | Sheet | What it shows |
 |---|---|
 | [Schematic, as built](hardware/jalsense-circuit-schematic-v2.png) | the working prototype: 5.5 kΩ resistors, relay VCC on 5 V, analog TDS meter on GPIO34 |
