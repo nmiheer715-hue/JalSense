@@ -33,7 +33,7 @@ UV/UF disinfection stays on in both paths; only the RO membrane is skipped. The 
 
 ## The prototype
 
-A bench rig built on a breadboard from off-the-shelf modules, about ₹2,100 in parts:
+A bench rig built on a breadboard from off-the-shelf modules:
 
 | Block | Parts |
 |---|---|
@@ -48,6 +48,10 @@ In a home, mains or tank pressure feeds the purifier and two solenoid valves cho
 ![Wiring diagram](hardware/jalsense-wiring.svg)
 
 Full parts list, wiring table and pre-power checklist: [`hardware/`](hardware/README.md). A high-resolution PNG of the wiring diagram is in [`hardware/jalsense-wiring.png`](hardware/jalsense-wiring.png). The schematic of the **prototype as built** (5.5 kΩ resistors, relay VCC on 5 V) is [`hardware/jalsense-circuit-schematic-v2.png`](hardware/jalsense-circuit-schematic-v2.png).
+
+![Prototype exploded view](hardware/jalsense-prototype-exploded-view.png)
+
+Breadboard layout, hole by hole: [`hardware/jalsense-breadboard-build-v2.png`](hardware/jalsense-breadboard-build-v2.png). Exploded view of the retrofit unit: [`hardware/jalsense-retrofit-exploded-view.png`](hardware/jalsense-retrofit-exploded-view.png).
 
 ## Try it in the browser
 

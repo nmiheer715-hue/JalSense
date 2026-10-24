@@ -14,26 +14,36 @@ Dividers keep every input inside the ESP32's limits: turbidity 4.5 V × 1/2 = 2.
 
 ## Parts list
 
-Also available as [`bom.csv`](bom.csv). Prices marked ≈ are estimates.
+Also available as [`bom.csv`](bom.csv).
 
-| Part | Qty | Job | ₹ |
-|---|---:|---|---:|
-| ESP32-WROOM-32 DevKit, 38-pin | 1 | controller, Wi-Fi dashboard | ≈ 400 |
-| Analog TDS meter V1.0 | 1 | dissolved salts in the inlet water | 350 |
-| Turbidity sensor with module | 1 | detects cloudy water | ≈ 450 |
-| DS18B20 waterproof probe, 1 m | 1 | temperature compensation for TDS | ≈ 120 |
-| YF-S201 water flow sensor | 1 | litres on the bypass path | — |
-| 5 V dual relay module with optocoupler | 1 | switches pump A and pump B | ≈ 90 |
-| DC 3–6 V mini submersible pump | 2 | pump A = bypass, pump B = RO | ≈ 140 |
-| 0.96" OLED, I2C (SSD1306 or SH1106 chip) | 1 | live readings and decision | ≈ 220 |
-| 5 V 2 A adapter | 1 | powers everything | ≈ 150 |
-| DC jack female pigtail, 2.1 × 5.5 mm | 1 | adapter to breadboard rails | ≈ 25 |
-| MB102 830-point breadboard | 1 | holds the circuit | ≈ 120 |
-| Resistors, six of one value (10 kΩ, or 5.5 kΩ as built); a 4.7 kΩ pull-up is typical for the DS18B20 | 6 | dividers (R1 to R4) and DS18B20 pull-up (R5) | 30 |
-| 6 mm silicone tube | 1 m | pump outlets to the jars | 15 |
-| **Total** | | | **≈ 2,100** |
+| Part | Qty | Job |
+|---|---:|---|
+| ESP32-WROOM-32 DevKit, 38-pin | 1 | controller, Wi-Fi dashboard |
+| Analog TDS meter V1.0 | 1 | dissolved salts in the inlet water |
+| Turbidity sensor with module | 1 | detects cloudy water |
+| DS18B20 waterproof probe, 1 m | 1 | temperature compensation for TDS |
+| YF-S201 water flow sensor | 1 | litres on the bypass path |
+| 5 V dual relay module with optocoupler | 1 | switches pump A and pump B |
+| DC 3–6 V mini submersible pump | 2 | pump A = bypass, pump B = RO |
+| 0.96" OLED, I2C (SSD1306 or SH1106 chip) | 1 | live readings and decision |
+| 5 V 2 A adapter | 1 | powers everything |
+| DC jack female pigtail, 2.1 × 5.5 mm | 1 | adapter to breadboard rails |
+| MB102 830-point breadboard | 1 | holds the circuit |
+| Resistors, six of one value (10 kΩ, or 5.5 kΩ as built); a 4.7 kΩ pull-up is typical for the DS18B20 | 6 | dividers (R1 to R4) and DS18B20 pull-up (R5) |
+| 6 mm silicone tube | 1 m | pump outlets to the jars |
 
-Worth adding (about ₹100): another metre of 6 mm tube, two 1/2-inch to 6 mm hose-barb reducers for the YF-S201, and jumper wires. A **470 µF 16 V capacitor** across 5V and GND is part of the build (it is in the schematic).
+Worth adding: another metre of 6 mm tube, two 1/2-inch to 6 mm hose-barb reducers for the YF-S201, and jumper wires. A **470 µF 16 V capacitor** across 5V and GND is part of the build (it is in the schematic).
+
+## Build sheets
+
+| Sheet | What it shows |
+|---|---|
+| [`jalsense-circuit-schematic-v2.png`](jalsense-circuit-schematic-v2.png) | schematic of the prototype as built |
+| [`jalsense-breadboard-build-v2.png`](jalsense-breadboard-build-v2.png) ([SVG](jalsense-breadboard-build-v2.svg)) | the MB102 breadboard layout: every wire, hole by hole, with a wiring table |
+| [`jalsense-prototype-exploded-view.png`](jalsense-prototype-exploded-view.png) ([4K](jalsense-prototype-exploded-view-4k.png), [SVG](jalsense-prototype-exploded-view.svg)) | exploded view of the bench rig |
+| [`jalsense-retrofit-exploded-view.png`](jalsense-retrofit-exploded-view.png) ([SVG](jalsense-retrofit-exploded-view.svg)) | exploded view of the retrofit unit |
+
+The product photos on the breadboard and exploded-view sheets come from the shops and datasheet sites named in each sheet's footer. They belong to their owners; the drawings themselves are original.
 
 ## Wiring table
 
